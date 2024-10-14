@@ -23,7 +23,7 @@
         /* Header with Flexbox */
         .header {
             display: flex;
-            justify-content: space-between; /* Space between logo and menu */
+            justify-content: center; /* Center the logo */
             align-items: center; /* Center items vertically */
             width: 100%;
             position: fixed;
@@ -34,18 +34,22 @@
             background-color: transparent; /* Change if you want a background */
         }
 
-        /* Logo Styling */
-        .logo {
+        /* Logo Container */
+        .logo-container {
+            flex: 1; /* Allow the logo container to grow */
             display: flex;
             justify-content: center; /* Center the logo */
+        }
+
+        /* Logo Styling */
+        .logo {
             margin-bottom: 10px; /* Space between logo and menu */
-            flex-grow: 1; /* Allow logo to take available space */
         }
 
         /* Hamburger Menu Button */
         .menu {
             position: relative; /* Required for absolute positioning of menu */
-            margin-right: 20px; /* Fixed distance from the logo */
+            margin-left: auto; /* Push the menu to the right */
         }
 
         .menu-button {
@@ -103,9 +107,12 @@
 
     <!-- Header with logo and hamburger menu -->
     <div class="header">
-        <!-- Logo -->
-        <div class="logo">
-            <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
+        <!-- Logo Container -->
+        <div class="logo-container">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
+            </div>
         </div>
 
         <!-- Hamburger Menu -->
