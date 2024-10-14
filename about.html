@@ -12,12 +12,11 @@
             color: #FBC31A; /* Yellow text */
             text-align: center;
             font-family: 'Merriweather Sans', 'Merriweather', sans-serif; /* Updated font family */
+            margin: 0; 
+            padding: 0; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0;
-            padding: 20px; 
-            scroll-behavior: smooth; 
         }
 
         /* Header */
@@ -27,6 +26,9 @@
             margin-bottom: 20px;
             background-color: #000; /* Black header */
             position: relative; /* Relative position for menu */
+            display: flex; /* Flex for centering content */
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center children */
         }
 
         /* Logo Row */
@@ -41,6 +43,7 @@
             border: none;
             cursor: pointer;
             color: #FBC31A; /* Yellow menu button */
+            margin-bottom: 10px; /* Space between button and menu */
         }
 
         /* Menu Items */
@@ -56,7 +59,7 @@
             z-index: 200; 
             transition: opacity 0.3s ease; 
             opacity: 0; 
-            top: 50px; /* Position menu directly below the button */
+            top: 60px; /* Position menu directly below the button */
             left: 50%; /* Center the menu horizontally */
             transform: translateX(-50%); /* Center the menu horizontally */
         }
@@ -106,9 +109,9 @@
             background-color: #000; /* Black background for sections */
             padding: 30px; /* Slightly increased padding for emphasis */
             border-radius: 10px; 
-            width: 90%;
+            width: 90%; /* Use 90% of the parent width */
             max-width: 600px; /* Increased max width */
-            margin: 15px auto; 
+            margin: 15px auto; /* Center section */
             border: 1px solid #FBC31A; /* Yellow border */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
         }
@@ -172,10 +175,4 @@
 
     <script>
         function toggleMenu() {
-            const menuItems = document.querySelector('.menu-items');
-            menuItems.classList.toggle('show'); // Add or remove class to toggle visibility
-        }
-    </script>
-
-</body>
-</html>
+            const menuItems = document.querySelector('.menu-
