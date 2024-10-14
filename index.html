@@ -23,8 +23,8 @@
         /* Header with Flexbox */
         .header {
             display: flex;
-            justify-content: center; /* Center logo */
-            align-items: center; /* Center vertically */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
             width: 100%;
             position: fixed;
             top: 0;
@@ -34,9 +34,9 @@
             background-color: transparent; /* Change if you want a background */
         }
 
+        /* Logo Styling */
         .logo {
-            flex-grow: 1; /* Allow logo to take available space */
-            text-align: center; /* Center the logo */
+            margin-bottom: 10px; /* Space between logo and menu */
         }
 
         /* Hamburger Menu Button */
