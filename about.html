@@ -15,28 +15,26 @@
             flex-direction: column;
             align-items: center;
             margin: 0;
-            padding: 15px;
+            padding: 0; /* Remove padding from the body */
         }
 
         /* Header with Flexbox */
         .header {
             display: flex;
             flex-direction: column; /* Stack items vertically */
-            align-items: center; /* Center items horizontally */
             width: 100%;
-            padding: 10px 20px; /* Add padding to the sides */
-            position: fixed; /* Keep header at the top */
-            top: 0;
-            left: 0;
-            z-index: 200;
+            padding: 10px 0; /* Adjust padding */
             background-color: transparent; /* Change if you want a background */
+            position: relative; /* Make positioning relative for menu items */
+            margin-bottom: 40px; /* Space below header */
         }
 
         /* Logo Row */
         .logo-row {
             display: flex;
             justify-content: center; /* Center the logo */
-            flex-grow: 1; /* Allow the logo to take available space */
+            width: 100%; /* Full width */
+            margin-bottom: 10px; /* Space between logo and menu */
         }
 
         /* Hamburger Menu Button */
@@ -52,12 +50,12 @@
 
         /* Menu Items (initially hidden) */
         .menu-items {
-            display: none;
+            display: none; /* Initially hidden */
             list-style-type: none;
             margin: 0;
             padding: 0;
             position: absolute;
-            top: 130px; /* Adjust for header height */
+            top: 60px; /* Position it below the button */
             left: 50%; /* Center the menu */
             transform: translateX(-50%); /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.8);
@@ -95,7 +93,7 @@
 </head>
 <body>
 
-    <!-- Header with logo and hamburger menu -->
+    <!-- Header with hamburger menu and logo -->
     <div class="header">
         <!-- Logo Row -->
         <div class="logo-row">
@@ -106,15 +104,16 @@
 
         <!-- Hamburger Menu Button -->
         <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+        <!-- Menu Items (initially hidden) -->
+        <ul class="menu-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
     </div>
 
-    <h1 style="margin-top: 80px;">About Us</h1>
+    <h1 style="margin-top: 20px;">About Us</h1> <!-- Added margin to push text down below header -->
     <p>Welcome to Highstack. We are committed to providing the best service possible!</p>
-
-    <ul class="menu-items">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-    </ul>
 
     <div class="footer">
         <p>Copyright © 2024 Highstack - All Rights Reserved.</p>
@@ -123,7 +122,12 @@
     <script>
         function toggleMenu() {
             const menuItems = document.querySelector('.menu-items');
-            menuItems.style.display = menuItems.style.display === 'block' ? 'none' : 'block';
+            // Toggle the display property
+            if (menuItems.style.display === 'block') {
+                menuItems.style.display = 'none'; // Hide the menu
+            } else {
+                menuItems.style.display = 'block'; // Show the menu
+            }
         }
     </script>
 
