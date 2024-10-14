@@ -20,14 +20,31 @@
             padding: 15px;
         }
 
-        /* Hamburger Menu Styles */
-        .menu {
+        /* Header for logo and menu */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 20px;
             position: fixed;
-            top: 50px;
-            right: 20px;
-            z-index: 200; /* Ensure it is on top */
+            top: 0;
+            left: 0;
+            z-index: 200;
+            background-color: transparent; /* Adjust if you want a background */
         }
 
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Hamburger Menu Button */
         .menu-button {
             font-size: 30px;
             background: none;
@@ -36,15 +53,16 @@
             color: #000;
         }
 
+        /* Menu Items (initially hidden) */
         .menu-items {
             display: none;
             list-style-type: none;
             margin: 0;
             padding: 0;
             position: absolute;
-            top: 50px; 
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+            top: 50px; /* Adjust based on the height of the header */
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border-radius: 8px;
             padding: 10px;
@@ -73,14 +91,6 @@
             padding: 10px;
             font-size: 0.8em;
             text-align: center;
-        }
-
-        img {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
         }
 
         form {
@@ -114,15 +124,22 @@
     </style>
 </head>
 <body>
-    <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
 
-    <!-- Hamburger Menu -->
-    <div class="menu">
-        <button class="menu-button" onclick="toggleMenu()">☰</button>
-        <ul class="menu-items">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-        </ul>
+    <!-- Header with logo and hamburger menu -->
+    <div class="header">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
+        </div>
+
+        <!-- Hamburger Menu -->
+        <div class="menu">
+            <button class="menu-button" onclick="toggleMenu()">☰</button>
+            <ul class="menu-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </div>
     </div>
 
     <h1>Welcome to Highstack</h1>
@@ -148,5 +165,6 @@
             }
         }
     </script>
+
 </body>
 </html>
