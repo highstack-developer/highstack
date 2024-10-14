@@ -12,14 +12,14 @@
             color: #FBC31A; /* Yellow text */
             text-align: center;
             font-family: 'Merriweather Sans', 'Merriweather', sans-serif; /* Updated font family */
+            margin: 0; 
+            padding: 0; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0;
-            padding: 0; /* Remove padding from the body */
         }
 
-          /* Header with Flexbox */
+        /* Header with Flexbox */
         .header {
             display: flex;
             flex-direction: column; /* Stack items vertically */
@@ -38,17 +38,15 @@
             margin-bottom: 10px; /* Space between logo and menu */
         }
 
-           /* Hamburger Menu Button */
+        /* Hamburger Menu Button */
         .menu-button {
             font-size: 30px;
             background: none;
             border: none;
             cursor: pointer;
             color: #FBC31A; /* Yellow menu button */
-            z-index: 201; /* Ensure the button is on top */
-            margin: 10px 0; /* Add margin for spacing */
-            position: relative; /* Position for the dropdown */
-        
+            margin-bottom: 10px; /* Space between button and menu */
+        }
 
         /* Menu Items */
         .menu-items {
@@ -57,17 +55,15 @@
             margin: 0;
             padding: 0;
             position: absolute; 
-            top: 40px; /* Position menu directly below the button */
-            left: 50%; /* Center the menu horizontally */
-            transform: translateX(-50%); /* Center the menu horizontally */
             background-color: rgba(0, 0, 0, 0.9); /* Darker background for menu */
             color: #FBC31A; 
-            border-radius: 8px;
-            padding: 10px;
+            border-radius: 5px;
             z-index: 200; 
             transition: opacity 0.3s ease; 
             opacity: 0; 
-          
+            top: 60px; /* Position menu directly below the button */
+            left: 50%; /* Center the menu horizontally */
+            transform: translateX(-50%); /* Center the menu horizontally */
         }
 
         .menu-items.show {
@@ -76,7 +72,7 @@
         }
 
         .menu-items li {
-            margin: 10px 0;
+            margin: 5px 0;
         }
 
         .menu-items li a {
@@ -91,21 +87,22 @@
         .menu-items li a:hover {
             color: white; /* Change to white on hover */
         }
+
         .footer {
-            position: relative;
-            bottom: 0;
-            width: 90%;
+            width: 100%; /* Full width */
             background-color: #000; /* Black footer */
             padding: 10px;
             font-size: 0.8em;
             text-align: center;
             color: #FBC31A; /* Yellow text */
+            margin-top: auto; /* Push footer to the bottom */
         }
 
         main {
             display: flex; /* Use flexbox for centering */
             flex-direction: column;
             align-items: center; /* Center items */
+            justify-content: center; /* Center items vertically */
             margin: 20px 0; 
             width: 90%; /* Full width */
         }
@@ -115,15 +112,16 @@
             padding: 30px; /* Slightly increased padding for emphasis */
             border-radius: 10px; 
             width: 90%; /* Use 90% of the parent width */
-            max-width: 550px; /* Increased max width */
+            max-width: 575px; /* Increased max width */
             margin: 15px auto; /* Center section */
             border: 1px solid #FBC31A; /* Yellow border */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
         }
 
         section h5 {
+            margin: 0; /* Remove default margin */
             margin-bottom: 8px;
-            font-size: 1.5em; /* Increased heading size */
+            font-size: 1.8em; /* Increased heading size */
             color: #FBC31A; 
         }
 
