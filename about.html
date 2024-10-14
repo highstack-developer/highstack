@@ -19,21 +19,23 @@
             align-items: center;
         }
 
-        /* Header */
+          /* Header with Flexbox */
         .header {
-            width: 90%;
-            padding: 20px 0;
-            margin-bottom: 20px;
-            background-color: #000; /* Black header */
-            position: relative; /* Relative position for menu */
-            display: flex; /* Flex for centering content */
-            flex-direction: column; /* Stack elements vertically */
-            align-items: center; /* Center children */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            width: 100%;
+            padding: 10px 0; /* Adjust padding */
+            background-color: transparent; /* Change if you want a background */
+            position: relative; /* Make positioning relative for menu items */
+            margin-bottom: 40px; /* Space below header */
         }
 
         /* Logo Row */
         .logo-row {
-            margin-bottom: 10px;
+            display: flex;
+            justify-content: center; /* Center the logo */
+            width: 100%; /* Full width */
+            margin-bottom: 10px; /* Space between logo and menu */
         }
 
         /* Hamburger Menu Button */
