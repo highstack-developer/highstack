@@ -27,14 +27,7 @@
             width: 100%;
             padding: 10px 20px; /* Add padding to the sides */
             background-color: transparent; /* Change if you want a background */
-        }
-
-        /* Hamburger Menu Row */
-        .menu-row {
-            display: flex;
-            justify-content: space-between; /* Space between items */
-            width: 100%; /* Full width */
-            margin-bottom: 5px; /* Space between menu and logo */
+            margin-bottom: 40px; /* Space below header */
         }
 
         /* Logo Row */
@@ -42,7 +35,7 @@
             display: flex;
             justify-content: center; /* Center the logo */
             width: 100%; /* Full width */
-            margin-bottom: 20px; /* Space between logo and text */
+            margin-bottom: 10px; /* Space between logo and menu */
         }
 
         /* Hamburger Menu Button */
@@ -53,6 +46,7 @@
             cursor: pointer;
             color: #000;
             z-index: 201; /* Ensure the button is on top */
+            margin: 10px 0; /* Add margin for spacing */
         }
 
         /* Menu Items (initially hidden) */
@@ -62,8 +56,9 @@
             margin: 0;
             padding: 0;
             position: absolute;
-            top: 50px; /* Adjust for header height */
-            right: 20px; /* Align to the right */
+            top: 130px; /* Adjust for header height */
+            left: 50%; /* Center the menu */
+            transform: translateX(-50%); /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border-radius: 8px;
@@ -130,25 +125,19 @@
 
     <!-- Header with hamburger menu and logo -->
     <div class="header">
-        <!-- Hamburger Menu Row -->
-        <div class="menu-row">
-            <button class="menu-button" onclick="toggleMenu()">☰</button>
-            <ul class="menu-items">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-            </ul>
-        </div>
-
         <!-- Logo Row -->
         <div class="logo-row">
             <div class="logo">
                 <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
             </div>
         </div>
+
+        <!-- Hamburger Menu Button -->
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
     </div>
 
-    <h1 style="margin-top: 80px;">Welcome to Highstack</h1> <!-- Added margin to push text down below header -->
-    <h2>Contact Us</h2>
+    <h1 style="margin-top: 20px;">Welcome to Highstack</h1> <!-- Adjusted margin to give spacing -->
+    <h2 style="margin-top: 10px;">Contact Us</h2> <!-- Adjusted margin to give spacing -->
     <form action="mailto:info@highstack.ca" method="post" enctype="text/plain">
         <input type="text" name="name" placeholder="Name" required>
         <input type="email" name="email" placeholder="Email" required>
