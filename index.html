@@ -46,6 +46,7 @@
             color: #000;
             z-index: 201; /* Ensure the button is on top */
             margin: 10px 0; /* Add margin for spacing */
+            position: relative; /* Position for the dropdown */
         }
 
         /* Menu Items (initially hidden) */
@@ -54,10 +55,10 @@
             list-style-type: none;
             margin: 0;
             padding: 0;
-            position: absolute;
-            top: 60px; /* Position it below the button */
-            left: 50%; /* Center the menu */
-            transform: translateX(-50%); /* Center horizontally */
+            position: absolute; /* Position it relative to the button */
+            top: 40px; /* Place it below the button */
+            left: 50%; /* Center it horizontally */
+            transform: translateX(-50%); /* Adjust to truly center it */
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border-radius: 8px;
@@ -132,17 +133,19 @@
         </div>
 
         <!-- Hamburger Menu Button -->
-        <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <div style="position: relative;">
+            <button class="menu-button" onclick="toggleMenu()">☰</button>
 
-        <!-- Menu Items (initially hidden) -->
-        <ul class="menu-items">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-        </ul>
+            <!-- Menu Items (initially hidden) -->
+            <ul class="menu-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </div>
     </div>
 
-    <h1 style="margin-top: 20px;">Welcome to Highstack</h1>
-    <h2 style="margin-top: 10px;">Contact Us</h2>
+    <h1 style="margin-top: 20px;">Welcome to Highstack</h1> <!-- Added margin to push text down below header -->
+    <h2>Contact Us</h2>
     <form action="mailto:info@highstack.ca" method="post" enctype="text/plain">
         <input type="text" name="name" placeholder="Name" required>
         <input type="email" name="email" placeholder="Email" required>
@@ -158,11 +161,7 @@
         function toggleMenu() {
             const menuItems = document.querySelector('.menu-items');
             // Toggle the display property
-            if (menuItems.style.display === 'block') {
-                menuItems.style.display = 'none'; // Hide the menu
-            } else {
-                menuItems.style.display = 'block'; // Show the menu
-            }
+            menuItems.style.display = menuItems.style.display === 'block' ? 'none' : 'block'; // Show or hide the menu
         }
     </script>
 
