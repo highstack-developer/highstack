@@ -49,11 +49,6 @@
             margin-bottom: 20px; /* Space between logo and text */
         }
 
-        /* Logo Styling */
-        .logo {
-            margin: 0; /* No margin */
-        }
-
         /* Hamburger Menu Button */
         .menu-button {
             font-size: 30px;
@@ -62,6 +57,7 @@
             cursor: pointer;
             color: #000;
             margin-right: 20px; /* Space from the right edge */
+            z-index: 201; /* Ensure the button is on top */
         }
 
         /* Menu Items (initially hidden) */
@@ -72,7 +68,7 @@
             padding: 0;
             position: absolute;
             top: 50px; /* Adjust for header height */
-            right: 20px; /* Add space from the right */
+            right: 20px; /* Align to the right */
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border-radius: 8px;
@@ -108,7 +104,7 @@
 </head>
 <body>
 
-    <!-- Header with hamburger menu and logo -->
+    <!-- Header with logo and hamburger menu -->
     <div class="header">
         <!-- Hamburger Menu Row -->
         <div class="menu-row">
@@ -127,8 +123,8 @@
         </div>
     </div>
 
-    <h1 style="margin-top: 80px;">About Us</h1> <!-- Added margin to push text down below header -->
-    <p>Welcome to the About Us page of Highstack. Here you can learn more about our mission and values.</p>
+    <h1 style="margin-top: 80px;">About Us</h1>
+    <p>Welcome to Highstack. We are committed to providing the best service possible!</p>
 
     <div class="footer">
         <p>Copyright © 2024 Highstack - All Rights Reserved.</p>
