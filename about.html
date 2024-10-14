@@ -21,8 +21,8 @@
         /* Header with Flexbox */
         .header {
             display: flex;
-            justify-content: center; /* Center the logo */
-            align-items: center; /* Center items vertically */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
             width: 100%;
             padding: 10px 20px; /* Add padding to the sides */
             position: fixed; /* Keep header at the top */
@@ -37,20 +37,17 @@
             display: flex;
             justify-content: center; /* Center the logo */
             flex-grow: 1; /* Allow the logo to take available space */
-            position: relative; /* Needed to position the logo correctly */
         }
 
         /* Hamburger Menu Button */
         .menu-button {
-            position: absolute; /* Positioning it absolutely within the header */
-            left: 20px; /* Space from the left edge */
-            top: 10px; /* Space from the top */
             font-size: 30px;
             background: none;
             border: none;
             cursor: pointer;
             color: #000;
             z-index: 201; /* Ensure the button is on top */
+            margin: 10px 0; /* Add margin for spacing */
         }
 
         /* Menu Items (initially hidden) */
@@ -60,8 +57,9 @@
             margin: 0;
             padding: 0;
             position: absolute;
-            top: 60px; /* Adjust for header height */
-            left: 20px; /* Position beside the hamburger menu */
+            top: 130px; /* Adjust for header height */
+            left: 50%; /* Center the menu */
+            transform: translateX(-50%); /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border-radius: 8px;
@@ -99,15 +97,15 @@
 
     <!-- Header with logo and hamburger menu -->
     <div class="header">
-        <!-- Hamburger Menu Button -->
-        <button class="menu-button" onclick="toggleMenu()">☰</button>
-
         <!-- Logo Row -->
         <div class="logo-row">
             <div class="logo">
                 <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
             </div>
         </div>
+
+        <!-- Hamburger Menu Button -->
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
     </div>
 
     <h1 style="margin-top: 80px;">About Us</h1>
