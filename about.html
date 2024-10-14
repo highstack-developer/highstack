@@ -13,9 +13,7 @@
             font-family: 'Roboto', sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
             margin: 0;
             padding: 15px;
         }
@@ -23,30 +21,28 @@
         /* Header with Flexbox */
         .header {
             display: flex;
-            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items vertically */
             width: 100%;
-            position: fixed;
+            padding: 10px 20px; /* Add padding to the sides */
+            position: fixed; /* Keep header at the top */
             top: 0;
             left: 0;
             z-index: 200;
-            padding: 10px 20px; /* Add padding to the sides */
             background-color: transparent; /* Change if you want a background */
-        }
-
-        /* Hamburger Menu Row */
-        .menu-row {
-            display: flex;
-            justify-content: flex-end; /* Align the menu to the right */
-            width: 100%; /* Full width */
-            margin-bottom: 5px; /* Space between menu and logo */
         }
 
         /* Logo Row */
         .logo-row {
             display: flex;
             justify-content: center; /* Center the logo */
-            width: 100%; /* Full width */
+            flex-grow: 1; /* Allow the logo to take available space */
             margin-bottom: 20px; /* Space between logo and text */
+        }
+
+        /* Hamburger Menu Row */
+        .menu-row {
+            display: flex;
+            align-items: center; /* Center items vertically */
         }
 
         /* Hamburger Menu Button */
@@ -56,7 +52,6 @@
             border: none;
             cursor: pointer;
             color: #000;
-            margin-right: 20px; /* Space from the right edge */
             z-index: 201; /* Ensure the button is on top */
         }
 
@@ -68,7 +63,7 @@
             padding: 0;
             position: absolute;
             top: 50px; /* Adjust for header height */
-            right: 20px; /* Align to the right */
+            left: 20px; /* Position beside the hamburger menu */
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border-radius: 8px;
@@ -106,6 +101,13 @@
 
     <!-- Header with logo and hamburger menu -->
     <div class="header">
+        <!-- Logo Row -->
+        <div class="logo-row">
+            <div class="logo">
+                <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
+            </div>
+        </div>
+
         <!-- Hamburger Menu Row -->
         <div class="menu-row">
             <button class="menu-button" onclick="toggleMenu()">☰</button>
@@ -113,13 +115,6 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
             </ul>
-        </div>
-
-        <!-- Logo Row -->
-        <div class="logo-row">
-            <div class="logo">
-                <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
-            </div>
         </div>
     </div>
 
