@@ -21,7 +21,7 @@
         /* Header with Flexbox */
         .header {
             display: flex;
-            justify-content: space-between; /* Space between logo and menu */
+            justify-content: center; /* Center the logo */
             align-items: center; /* Center items vertically */
             width: 100%;
             padding: 10px 20px; /* Add padding to the sides */
@@ -37,17 +37,20 @@
             display: flex;
             justify-content: center; /* Center the logo */
             flex-grow: 1; /* Allow the logo to take available space */
+            position: relative; /* Needed to position the logo correctly */
         }
 
         /* Hamburger Menu Button */
         .menu-button {
+            position: absolute; /* Positioning it absolutely within the header */
+            left: 20px; /* Space from the left edge */
+            top: 10px; /* Space from the top */
             font-size: 30px;
             background: none;
             border: none;
             cursor: pointer;
             color: #000;
             z-index: 201; /* Ensure the button is on top */
-            margin-left: 10px; /* Space from the left edge */
         }
 
         /* Menu Items (initially hidden) */
@@ -57,8 +60,8 @@
             margin: 0;
             padding: 0;
             position: absolute;
-            top: 50px; /* Adjust for header height */
-            left: 10px; /* Position beside the hamburger menu */
+            top: 60px; /* Adjust for header height */
+            left: 20px; /* Position beside the hamburger menu */
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border-radius: 8px;
