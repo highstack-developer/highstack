@@ -19,13 +19,23 @@
             margin: 0; /* Remove default margin */
             padding: 15px; /* Add some padding */
         }
-}
         .footer {
-            margin-top: auto; /* Push the footer to the bottom */
-            padding: 10px; /* Add some padding */
-            font-size: 0.8em; /* Make the text smaller */
-            text-align: center; /* Center the footer text */
-          }
+    position: fixed; /* Fix the footer to the bottom */
+    bottom: 0; /* Align it to the bottom of the page */
+    left: 0; /* Align to the left edge */
+    width: 100%; /* Make the footer take up the full width */
+    background-color: rgba(0, 0, 0, 0.1); /* Optional: Add a background color */
+    padding: 10px; /* Add some padding */
+    font-size: 0.8em; /* Make the text smaller */
+    text-align: center; /* Center the footer text */
+}
+        img {
+    position: fixed; /* Fix the logo to the top */
+    top: 10px; /* Set a little space from the top */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Correct the offset from 50% positioning */
+    z-index: 100; /* Ensure the logo is above other content */
+}
         form {
             background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
             padding: 20px; /* Add padding */
