@@ -5,28 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Highstack - About Us</title>
     <link rel="icon" href="Highstack%20Needle.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #FFEA63; /* Solid background color */
-            color: #000;
+            background-color: #000; /* Black background */
+            color: #FBC31A; /* Yellow text */
             text-align: center;
-            font-family: 'Merriweather Sans', sans-serif;
+            font-family: 'Helvetica Neue', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 0;
-            padding: 20px; /* Consistent padding */
+            padding: 20px; 
             scroll-behavior: smooth; 
         }
 
         /* Header */
         .header {
             width: 100%;
-            padding: 10px 0;
+            padding: 20px 0;
             margin-bottom: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: none; /* Removed shadow for minimalism */
+            background-color: #000; /* Black header */
         }
 
         /* Logo Row */
@@ -40,7 +39,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: #000;
+            color: #FBC31A; /* Yellow menu button */
         }
 
         /* Menu Items */
@@ -50,8 +49,8 @@
             margin: 0;
             padding: 0;
             position: absolute; 
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
+            background-color: rgba(0, 0, 0, 0.9); /* Darker background for menu */
+            color: #FBC31A; 
             border-radius: 5px;
             z-index: 200; 
             transition: opacity 0.3s ease; 
@@ -69,24 +68,24 @@
 
         .menu-items li a {
             text-decoration: none;
-            color: white;
-            font-weight: normal; /* Normal font weight */
+            color: #FBC31A; /* Yellow links */
+            font-weight: normal; 
             transition: color 0.3s;
         }
 
         .menu-items li a:hover {
-            color: #FFEA63; 
+            color: white; /* Change to white on hover */
         }
 
         .footer {
             position: relative;
             bottom: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: #000; /* Black footer */
             padding: 10px;
             font-size: 0.8em;
             text-align: center;
-            box-shadow: none; 
+            color: #FBC31A; /* Yellow text */
         }
 
         main {
@@ -94,28 +93,30 @@
         }
 
         section {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px; /* Reduced padding */
-            border-radius: 10px; /* Slightly rounded corners */
+            background-color: #000; /* Black background for sections */
+            padding: 30px; /* Slightly increased padding for emphasis */
+            border-radius: 10px; 
             width: 90%;
-            max-width: 400px; /* Max width for larger screens */
+            max-width: 600px; /* Increased max width */
             margin: 15px auto; 
+            border: 1px solid #FBC31A; /* Yellow border */
         }
 
         section h4 {
             margin-bottom: 8px;
-            font-size: 1.4em; 
+            font-size: 1.8em; /* Increased heading size */
             color: #FBC31A; 
         }
 
         section p {
-            font-size: 0.9em; /* Smaller paragraph size */
-            line-height: 1.4; /* Slightly reduced line height */
+            font-size: 1em; /* Standard paragraph size */
+            line-height: 1.5; 
+            color: #FFF; /* White text for readability */
         }
 
         /* Icons */
         .icon {
-            width: 20px; /* Reduced icon size */
+            width: 20px; 
             margin-right: 5px; 
             vertical-align: middle; 
         }
@@ -133,7 +134,7 @@
     <!-- Header with hamburger menu and logo -->
     <div class="header">
         <div class="logo-row">
-            <img src="Highstack Logo.png" alt="Highstack Logo" width="120"> <!-- Adjusted logo size -->
+            <img src="Highstack Logo.png" alt="Highstack Logo" width="120">
         </div>
         <button class="menu-button" onclick="toggleMenu()">☰</button>
         <ul class="menu-items">
@@ -162,7 +163,7 @@
     </main>
 
     <div class="footer">
-        <p>Copyright © 2024 Highstack Inc. All Rights Reserved.</p>       
+        <p>Copyright © 2024 Highstack Inc. All Rights Reserved.</p>
     </div>
 
     <script>
