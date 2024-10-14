@@ -38,56 +38,48 @@
             margin-bottom: 10px; /* Space between logo and menu */
         }
 
-        /* Hamburger Menu Button */
+          /* Hamburger Menu Button */
         .menu-button {
             font-size: 30px;
             background: none;
             border: none;
             cursor: pointer;
-            color: #FBC31A; /* Yellow menu button */
-            margin-bottom: 10px; /* Space between button and menu */
+            color: #000;
+            z-index: 201; /* Ensure the button is on top */
+            margin: 10px 0; /* Add margin for spacing */
+            position: relative; /* Position for the dropdown */
         }
 
-        /* Menu Items */
+        /* Menu Items (initially hidden) */
         .menu-items {
-            display: none; 
+            display: none; /* Initially hidden */
             list-style-type: none;
             margin: 0;
             padding: 0;
-            position: absolute; 
-            background-color: rgba(0, 0, 0, 0.9); /* Darker background for menu */
-            color: #FBC31A; 
-            border-radius: 5px;
-            z-index: 200; 
-            transition: opacity 0.3s ease; 
-            opacity: 0; 
-            top: 60px; /* Position menu directly below the button */
-            left: 50%; /* Center the menu horizontally */
-            transform: translateX(-50%); /* Center the menu horizontally */
-        }
-
-        .menu-items.show {
-            display: block; 
-            opacity: 1; 
+            position: absolute; /* Position it relative to the button */
+            top: 40px; /* Place it below the button */
+            left: 50%; /* Center it horizontally */
+            transform: translateX(-50%); /* Adjust to truly center it */
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 200; /* Ensure the menu items are on top */
         }
 
         .menu-items li {
-            margin: 5px 0;
+            margin: 10px 0;
         }
 
         .menu-items li a {
             text-decoration: none;
-            color: #FBC31A; /* Yellow links */
-            font-weight: normal; 
-            transition: color 0.3s;
-            padding: 10px 20px; /* Add padding for a better click area */
-            display: block; /* Make links block elements for full width */
+            color: white;
+            font-weight: light;
         }
 
         .menu-items li a:hover {
-            color: white; /* Change to white on hover */
+            text-decoration: underline;
         }
-
         .footer {
             position: relative;
             bottom: 0;
