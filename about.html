@@ -20,28 +20,48 @@
             padding: 15px;
         }
 
-        nav {
+        /* Hamburger Menu Styles */
+        .menu {
             position: fixed;
-            top: 50px; 
+            top: 50px;
             right: 20px;
+            z-index: 200;
         }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
+        .menu-button {
+            font-size: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #000;
+        }
+
+        .menu-items {
+            display: none;
+            list-style-type: none;
             margin: 0;
-            display: flex;
-            gap: 15px;
+            padding: 0;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 8px;
+            padding: 10px;
         }
 
-        nav ul li {
-            display: inline;
+        .menu-items li {
+            margin: 10px 0;
         }
 
-        nav ul li a {
+        .menu-items li a {
             text-decoration: none;
-            color: #000000;
+            color: white;
             font-weight: bold;
+        }
+
+        .menu-items li a:hover {
+            text-decoration: underline;
         }
 
         .footer {
@@ -67,13 +87,14 @@
 <body>
     <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
 
-    <!-- Navigation Menu -->
-    <nav>
-        <ul>
+    <!-- Hamburger Menu -->
+    <div class="menu">
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <ul class="menu-items">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
         </ul>
-    </nav>
+    </div>
 
     <h1>About Us</h1>
     <p>Welcome to the About Us page of Highstack. Here, we provide information about our company and mission.</p>
@@ -81,5 +102,16 @@
     <div class="footer">
         <p>Copyright © 2024 Highstack - All Rights Reserved.</p>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const menuItems = document.querySelector('.menu-items');
+            if (menuItems.style.display === 'block') {
+                menuItems.style.display = 'none';
+            } else {
+                menuItems.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
