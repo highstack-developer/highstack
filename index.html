@@ -20,45 +20,50 @@
             padding: 15px; /* Add some padding */
         }
         .footer {
-    position: fixed; /* Fix the footer to the bottom */
-    bottom: 0; /* Align it to the bottom of the page */
-    left: 0; /* Align to the left edge */
-    width: 100%; /* Make the footer take up the full width */
-    background-color: rgba(0, 0, 0, 0.1); /* Optional: Add a background color */
-    padding: 10px; /* Add some padding */
-    font-size: 0.8em; /* Make the text smaller */
-    text-align: center; /* Center the footer text */
-}
-        img {
-    position: fixed; /* Fix the logo to the top */
-    top: 10px; /* Set a little space from the top */
-    left: 50%; /* Center it horizontally */
-    transform: translateX(-50%); /* Correct the offset from 50% positioning */
-    z-index: 100; /* Ensure the logo is above other content */
-}
-        form {
-        background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
-        padding: 20px; /* Add padding */
-        border-radius: 5px; /* Round the corners */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
-        width: 300px; /* Set a width for the form */
-        margin: 100px auto 0; /* Center the form horizontally and add margin from the top */
-        }
-        input, textarea {
+            position: fixed; /* Fix the footer to the bottom */
+            bottom: 0; /* Align it to the bottom of the page */
+            left: 0; /* Align to the left edge */
             width: 100%; /* Full width */
-            margin-bottom: 10px; /* Space below each input */
-            padding: 10px; /* Inner padding */
-            border: none; /* No border */
-            border-radius: 5px; /* Rounded corners */
+            background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent background */
+            padding: 10px; /* Add some padding */
+            font-size: 0.8em; /* Make the text smaller */
+            text-align: center; /* Center the footer text */
         }
-        input[type="submit"] {
-            background-color: #2980b9; /* Button color */
-            color: white; /* Button text color */
-            cursor: pointer; /* Pointer on hover */
+        img {
+            position: fixed; /* Fix the logo to the top */
+            top: 10px; /* A little space from the top */
+            left: 50%; /* Center it horizontally */
+            transform: translateX(-50%); /* Correct the offset */
+            z-index: 100; /* Ensure it stays on top */
         }
-        input[type="submit"]:hover {
-            background-color: #1f6390; /* Darken button on hover */
-        }
+        form {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    padding: 20px; /* Add padding */
+    border-radius: 5px; /* Round the corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
+    width: 300px; /* Set a width for the form */
+    margin: 100px auto 0; /* Center the form horizontally */
+}
+
+input, textarea {
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding and border in the element’s width */
+    margin-bottom: 10px; /* Space below each input */
+    padding: 10px; /* Inner padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+input[type="submit"] {
+    width: 100%; /* Full width of the form */
+    background-color: #2980b9; /* Button color */
+    color: white; /* Button text color */
+    cursor: pointer; /* Pointer on hover */
+}
+
+input[type="submit"]:hover {
+    background-color: #1f6390; /* Darken button on hover */
+}
     </style>
 </head>
 <body>
@@ -75,5 +80,5 @@
     <div class="footer">
         <p>Copyright © 2024 Highstack - All Rights Reserved.</p>
     </div>
-    </body>
+</body>
 </html>
