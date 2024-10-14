@@ -23,8 +23,7 @@
         /* Header with Flexbox */
         .header {
             display: flex;
-            justify-content: space-between; /* Space between logo and menu */
-            align-items: center; /* Center items vertically */
+            flex-direction: column; /* Stack items vertically */
             width: 100%;
             position: fixed;
             top: 0;
@@ -34,26 +33,30 @@
             background-color: transparent; /* Change if you want a background */
         }
 
-        /* Logo Styling */
-        .logo {
+        /* Hamburger Menu Row */
+        .menu-row {
+            display: flex;
+            justify-content: flex-end; /* Align the menu to the right */
+            width: 100%; /* Full width */
+            margin-bottom: 5px; /* Space between menu and logo */
+        }
+
+        /* Logo Row */
+        .logo-row {
             display: flex;
             justify-content: center; /* Center the logo */
-            margin-bottom: 10px; /* Space between logo and menu */
-            flex-grow: 1; /* Allow logo to take available space */
+            width: 100%; /* Full width */
+            margin-bottom: 20px; /* Space between logo and text */
         }
 
         /* Hamburger Menu Button */
-        .menu {
-            position: relative; /* Required for absolute positioning of menu */
-            margin-right: 20px; /* Fixed distance from the logo */
-        }
-
         .menu-button {
             font-size: 30px;
             background: none;
             border: none;
             cursor: pointer;
             color: #000;
+            margin-right: 20px; /* Space from the right edge */
             z-index: 201; /* Ensure the button is on top */
         }
 
@@ -65,7 +68,7 @@
             padding: 0;
             position: absolute;
             top: 50px; /* Adjust for header height */
-            right: 0; /* Align to the right */
+            right: 20px; /* Align to the right */
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border-radius: 8px;
@@ -130,24 +133,26 @@
 </head>
 <body>
 
-    <!-- Header with logo and hamburger menu -->
+    <!-- Header with hamburger menu and logo -->
     <div class="header">
-        <!-- Logo -->
-        <div class="logo">
-            <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
-        </div>
-
-        <!-- Hamburger Menu -->
-        <div class="menu">
+        <!-- Hamburger Menu Row -->
+        <div class="menu-row">
             <button class="menu-button" onclick="toggleMenu()">☰</button>
             <ul class="menu-items">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
             </ul>
         </div>
+
+        <!-- Logo Row -->
+        <div class="logo-row">
+            <div class="logo">
+                <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
+            </div>
+        </div>
     </div>
 
-    <h1>Welcome to Highstack</h1>
+    <h1 style="margin-top: 80px;">Welcome to Highstack</h1> <!-- Added margin to push text down below header -->
     <h2>Contact Us</h2>
     <form action="mailto:info@highstack.ca" method="post" enctype="text/plain">
         <input type="text" name="name" placeholder="Name" required>
