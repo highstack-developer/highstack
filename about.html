@@ -11,31 +11,32 @@
             background-color: #FBC31A; 
             color: #000000;
             text-align: center;
-            font-family: 'Merriweather Sans', sans-serif; /* Updated font-family */
+            font-family: 'Merriweather Sans', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 0;
-            padding: 0; /* Remove padding from the body */
+            padding: 0;
         }
 
         /* Header with Flexbox */
         .header {
             display: flex;
-            flex-direction: column; /* Stack items vertically */
+            flex-direction: column;
             width: 100%;
-            padding: 10px 0; /* Adjust padding */
-            background-color: transparent; /* Change if you want a background */
-            position: relative; /* Make positioning relative for menu items */
-            margin-bottom: 40px; /* Space below header */
+            padding: 10px 0;
+            position: relative;
+            margin-bottom: 40px;
+            background-color: transparent; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Added shadow */
         }
 
         /* Logo Row */
         .logo-row {
             display: flex;
-            justify-content: center; /* Center the logo */
-            width: 100%; /* Full width */
-            margin-bottom: 10px; /* Space between logo and menu */
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 10px;
         }
 
         /* Hamburger Menu Button */
@@ -45,26 +46,35 @@
             border: none;
             cursor: pointer;
             color: #000;
-            z-index: 201; /* Ensure the button is on top */
-            margin: 10px 0; /* Add margin for spacing */
-            position: relative; /* Position for the dropdown */
+            z-index: 201; 
+            margin: 10px 0;
+            position: relative;
         }
 
         /* Menu Items (initially hidden) */
         .menu-items {
-            display: none; /* Initially hidden */
+            display: none; 
             list-style-type: none;
             margin: 0;
             padding: 0;
-            position: absolute; /* Position it relative to the button */
-            top: 40px; /* Place it below the button */
-            left: 50%; /* Center it horizontally */
-            transform: translateX(-50%); /* Adjust to truly center it */
+            position: absolute; 
+            top: 40px; 
+            left: 50%; 
+            transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border-radius: 8px;
             padding: 10px;
-            z-index: 200; /* Ensure the menu items are on top */
+            z-index: 200; 
+            transition: opacity 0.3s ease, visibility 0.3s ease; 
+            opacity: 0; 
+            visibility: hidden; 
+        }
+
+        .menu-items.show {
+            display: block; 
+            opacity: 1; 
+            visibility: visible; 
         }
 
         .menu-items li {
@@ -93,21 +103,25 @@
         }
 
         main {
-            margin-top: 20px; /* Space above main content */
+            margin-top: 20px; 
         }
 
         section {
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
+            padding: 30px; /* Increased padding */
+            border-radius: 15px; /* More rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow */
             width: 400px;
-            margin: 25px auto 0; /* Centered with top margin */
+            margin: 25px auto 0; 
+            transition: transform 0.2s; /* Added scale effect on hover */
         }
 
-        /* Additional margin for the last section */
+        section:hover {
+            transform: scale(1.02); /* Slightly enlarge on hover */
+        }
+
         section:last-of-type {
-            margin-bottom: 150px; /* Space below the last section */
+            margin-bottom: 150px; 
         }
     </style>
 </head>
@@ -115,26 +129,22 @@
 
     <!-- Header with hamburger menu and logo -->
     <div class="header">
-        <!-- Logo Row -->
         <div class="logo-row">
             <div class="logo">
                 <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
             </div>
         </div>
 
-        <!-- Hamburger Menu Button -->
         <div style="position: relative;">
             <button class="menu-button" onclick="toggleMenu()">☰</button>
-
-            <!-- Menu Items (initially hidden) -->
             <ul class="menu-items">
-                <li><a href="/">Home</a></li> <!-- Link to root URL -->
-                <li><a href="/about.html">About Us</a></li> <!-- Link to About page -->
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About Us</a></li>
             </ul>
         </div>
     </div>
 
-    <h2>About Us</h2> <!-- Page title -->
+    <h2>About Us</h2>
 
     <main>
         <section>
@@ -160,8 +170,7 @@
     <script>
         function toggleMenu() {
             const menuItems = document.querySelector('.menu-items');
-            // Toggle the display property
-            menuItems.style.display = menuItems.style.display === 'block' ? 'none' : 'block'; // Show or hide the menu
+            menuItems.classList.toggle('show'); // Add or remove class to toggle visibility
         }
     </script>
 
