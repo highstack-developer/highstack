@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Highstack - About Us</title>
     <link rel="icon" href="Highstack%20Needle.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;1,300&family=Merriweather:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #000; /* Black background */
             color: #FBC31A; /* Yellow text */
             text-align: center;
-            font-family: 'Helvetica Neue', sans-serif;
+            font-family: 'Merriweather Sans', 'Merriweather', sans-serif; /* Updated font family */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -55,6 +55,9 @@
             z-index: 200; 
             transition: opacity 0.3s ease; 
             opacity: 0; 
+            top: 50px; /* Adjust this value to position the menu directly below the button */
+            left: 50%; /* Center the menu horizontally */
+            transform: translateX(-50%); /* Center the menu horizontally */
         }
 
         .menu-items.show {
@@ -114,13 +117,6 @@
             color: #FFF; /* White text for readability */
         }
 
-        /* Icons */
-        .icon {
-            width: 20px; 
-            margin-right: 5px; 
-            vertical-align: middle; 
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             section {
@@ -147,17 +143,17 @@
 
     <main>
         <section>
-            <h4><img class="icon" src="M logo.png" alt="Mission Icon"> Mission</h4>
+            <h4>Mission</h4>
             <p>At Highstack, our mission is to relentlessly innovate to empower our clients with transformative technology solutions.</p>
         </section>
 
         <section>
-            <h4><img class="icon" src="V logo.png" alt="Values Icon"> Values</h4>
+            <h4>Values</h4>
             <p>Our core values are rooted in customer obsession, innovation, and excellence.</p>
         </section>
 
         <section>
-            <h4><img class="icon" src="H logo.png" alt="History Icon"> History</h4>
+            <h4>History</h4>
             <p>Established in 2009, Highstack has always been driven by a passion for innovation.</p>
         </section>
     </main>
