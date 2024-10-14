@@ -28,6 +28,7 @@
             padding: 10px 20px; /* Add padding to the sides */
             background-color: transparent; /* Change if you want a background */
             margin-bottom: 40px; /* Space below header */
+            position: relative; /* Make positioning relative for menu items */
         }
 
         /* Logo Row */
@@ -51,12 +52,12 @@
 
         /* Menu Items (initially hidden) */
         .menu-items {
-            display: none;
+            display: none; /* Initially hidden */
             list-style-type: none;
             margin: 0;
             padding: 0;
             position: absolute;
-            top: 130px; /* Adjust for header height */
+            top: 60px; /* Position it below the button */
             left: 50%; /* Center the menu */
             transform: translateX(-50%); /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.8);
@@ -134,10 +135,16 @@
 
         <!-- Hamburger Menu Button -->
         <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+        <!-- Menu Items (initially hidden) -->
+        <ul class="menu-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
     </div>
 
-    <h1 style="margin-top: 20px;">Welcome to Highstack</h1> <!-- Adjusted margin to give spacing -->
-    <h2 style="margin-top: 10px;">Contact Us</h2> <!-- Adjusted margin to give spacing -->
+    <h1 style="margin-top: 20px;">Welcome to Highstack</h1>
+    <h2 style="margin-top: 10px;">Contact Us</h2>
     <form action="mailto:info@highstack.ca" method="post" enctype="text/plain">
         <input type="text" name="name" placeholder="Name" required>
         <input type="email" name="email" placeholder="Email" required>
@@ -152,7 +159,12 @@
     <script>
         function toggleMenu() {
             const menuItems = document.querySelector('.menu-items');
-            menuItems.style.display = menuItems.style.display === 'block' ? 'none' : 'block';
+            // Toggle the display property
+            if (menuItems.style.display === 'block') {
+                menuItems.style.display = 'none'; // Hide the menu
+            } else {
+                menuItems.style.display = 'block'; // Show the menu
+            }
         }
     </script>
 
