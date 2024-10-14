@@ -12,11 +12,11 @@
             color: #FBC31A; /* Yellow text */
             text-align: center;
             font-family: 'Merriweather Sans', 'Merriweather', sans-serif; /* Updated font family */
-            margin: 0; 
-            padding: 0; 
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: 0;
+            padding: 0; /* Remove padding from the body */
         }
 
           /* Header with Flexbox */
@@ -45,8 +45,10 @@
             border: none;
             cursor: pointer;
             color: #FBC31A; /* Yellow menu button */
-            margin-bottom: 10px; /* Space between button and menu */
-        }
+            z-index: 201; /* Ensure the button is on top */
+            margin: 10px 0; /* Add margin for spacing */
+            position: relative; /* Position for the dropdown */
+        
 
         /* Menu Items */
         .menu-items {
@@ -55,15 +57,17 @@
             margin: 0;
             padding: 0;
             position: absolute; 
+            top: 40px; /* Position menu directly below the button */
+            left: 50%; /* Center the menu horizontally */
+            transform: translateX(-50%); /* Center the menu horizontally */
             background-color: rgba(0, 0, 0, 0.9); /* Darker background for menu */
             color: #FBC31A; 
-            border-radius: 5px;
+            border-radius: 8px;
+            padding: 10px;
             z-index: 200; 
             transition: opacity 0.3s ease; 
             opacity: 0; 
-            top: 60px; /* Position menu directly below the button */
-            left: 50%; /* Center the menu horizontally */
-            transform: translateX(-50%); /* Center the menu horizontally */
+          
         }
 
         .menu-items.show {
@@ -72,7 +76,7 @@
         }
 
         .menu-items li {
-            margin: 5px 0;
+            margin: 10px 0;
         }
 
         .menu-items li a {
