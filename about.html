@@ -23,8 +23,8 @@
         /* Header with Flexbox */
         .header {
             display: flex;
-            flex-direction: column; /* Stack items vertically */
-            align-items: center; /* Center items horizontally */
+            justify-content: space-between; /* Space between logo and menu */
+            align-items: center; /* Center items vertically */
             width: 100%;
             position: fixed;
             top: 0;
@@ -36,12 +36,16 @@
 
         /* Logo Styling */
         .logo {
+            display: flex;
+            justify-content: center; /* Center the logo */
             margin-bottom: 10px; /* Space between logo and menu */
+            flex-grow: 1; /* Allow logo to take available space */
         }
 
         /* Hamburger Menu Button */
         .menu {
             position: relative; /* Required for absolute positioning of menu */
+            margin-right: 20px; /* Fixed distance from the logo */
         }
 
         .menu-button {
@@ -61,7 +65,7 @@
             padding: 0;
             position: absolute;
             top: 50px; /* Adjust for header height */
-            right: 20px; /* Add space from the right */
+            right: 0; /* Align to the right */
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border-radius: 8px;
