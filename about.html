@@ -26,6 +26,7 @@
             padding: 20px 0;
             margin-bottom: 20px;
             background-color: #000; /* Black header */
+            position: relative; /* Relative position for menu */
         }
 
         /* Logo Row */
@@ -55,7 +56,7 @@
             z-index: 200; 
             transition: opacity 0.3s ease; 
             opacity: 0; 
-            top: 50px; /* Adjust this value to position the menu directly below the button */
+            top: 50px; /* Position menu directly below the button */
             left: 50%; /* Center the menu horizontally */
             transform: translateX(-50%); /* Center the menu horizontally */
         }
@@ -74,6 +75,8 @@
             color: #FBC31A; /* Yellow links */
             font-weight: normal; 
             transition: color 0.3s;
+            padding: 10px 20px; /* Add padding for a better click area */
+            display: block; /* Make links block elements for full width */
         }
 
         .menu-items li a:hover {
