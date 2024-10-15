@@ -90,31 +90,32 @@
         }
 
         .footer {
-    margin-top: auto;
-    position: relative; /* Allow footer to stay at the bottom without scrolling */
-    left: 0;
-    width: 90%;
-    padding: 10px;
-    font-size: 0.8em;
-    text-align: center;
-   }
+            margin-top: auto;
+            position: relative; /* Allow footer to stay at the bottom without scrolling */
+            left: 0;
+            width: 90%;
+            padding: 10px;
+            font-size: 0.8em;
+            text-align: center;
+        }
 
         form {
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            width: 300px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 400px;
             margin: 25px auto 0;
         }
 
         input, textarea {
             width: 100%;
             box-sizing: border-box;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
         }
 
         input[type="submit"] {
@@ -122,6 +123,11 @@
             background-color: #000000;
             color: white;
             cursor: pointer;
+            padding: 15px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
         }
 
         input[type="submit"]:hover {
@@ -154,10 +160,10 @@
 
    <h2>Contact Us</h2>
     <form action="mailto:info@highstack.ca" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Name" maxlength="50" required>
-        <input type="email" name="email" placeholder="Email" maxlength="50" required>
-        <textarea id="message" name="message" placeholder="How can we help?" maxlength="1000" required></textarea>
-        <input type="submit" value="Send">
+        <input type="text" name="name" placeholder="Your Name" maxlength="50" required>
+        <input type="email" name="email" placeholder="Your Email" maxlength="50" required>
+        <textarea id="message" name="message" placeholder="How can we help you?" maxlength="1000" required></textarea>
+        <input type="submit" value="Send Message">
     </form>
 
     <div class="footer">
