@@ -130,7 +130,7 @@
 
         /* Logo styling */
         .logo {
-            width: 1.5in; /* Decreased width to 1.5 inches */
+            width: 1.5in; /* Adjusted width */
             margin: 30px 0; /* Increased space above and below the logo */
             border-radius: 10px; /* Rounded corners for the logo */
         }
@@ -193,14 +193,19 @@
         window.addEventListener('scroll', function() {
             const logos = document.querySelectorAll('.logo'); // Select all logos
             const scrollTop = window.scrollY;
-            const maxScroll = window.innerHeight; // Adjust this if needed
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight; // Total scrollable height of the document
             
-            // Calculate rotation based on scroll
-            const rotation = Math.min(scrollTop / maxScroll, 1) * 90; // Rotate up to 90 degrees
-            
-            // Apply rotation to each logo
             logos.forEach(logo => {
-                logo.style.transform = `rotate(${rotation}deg)`; // Apply rotation
+                const logoOffset = logo.offsetTop; // Get the logo's offset from the top of the page
+                const distanceFromTop = scrollTop - logoOffset; // Distance scrolled relative to the logo
+                
+                if (distanceFromTop > 0 && distanceFromTop < window.innerHeight) {
+                    // Calculate the rotation based on scroll position relative to the logo
+                    const rotation = Math.min(distanceFromTop / window.innerHeight, 1) * 90;
+                    logo.style.transform = `rotate(${rotation}deg)`; // Apply rotation
+                } else if (distanceFromTop <= 0) {
+                    logo.style.transform = 'rotate(0deg)'; // Reset rotation when scrolled back up
+                }
             });
         });
     </script>
