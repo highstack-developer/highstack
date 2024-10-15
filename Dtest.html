@@ -31,14 +31,22 @@
         /* Header with Flexbox */
         .header {
             display: flex;
-            flex-direction: row; /* Align items horizontally */
-            justify-content: space-between;
+            flex-direction: column; /* Stack items vertically */
             align-items: center;
             width: 100%;
             padding: 10px 20px; /* Adjust padding */
             background-color: transparent; /* Change if you want a background */
             position: relative; /* Make positioning relative for menu items */
             margin-bottom: 40px; /* Space below header */
+        }
+
+        /* Header Content */
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
         }
 
         /* Logo Row */
@@ -149,22 +157,24 @@
 
     <!-- Header with hamburger menu and logo -->
     <div class="header">
-        <!-- Logo Row -->
-        <div class="logo-row">
-            <div class="logo">
-                <img src="Highstack Logo.png" alt="Highstack Logo" width="250">
+        <div class="header-content">
+            <!-- Logo Row -->
+            <div class="logo-row">
+                <div class="logo">
+                    <img src="Highstack Logo.png" alt="Highstack Logo" width="250">
+                </div>
             </div>
-        </div>
 
-        <!-- Hamburger Menu Button -->
-        <div style="position: relative;">
-            <button class="menu-button" onclick="toggleMenu()">☰</button>
+            <!-- Hamburger Menu Button -->
+            <div style="position: relative;">
+                <button class="menu-button" onclick="toggleMenu()">☰</button>
 
-            <!-- Menu Items (initially hidden) -->
-            <ul class="menu-items">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about.html">About Us</a></li>
-            </ul>
+                <!-- Menu Items (initially hidden) -->
+                <ul class="menu-items">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about.html">About Us</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
