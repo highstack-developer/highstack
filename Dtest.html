@@ -40,19 +40,19 @@
             margin-bottom: 40px; /* Space below header */
         }
 
-        /* Header Content */
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-        }
-
         /* Logo Row */
         .logo-row {
             display: flex;
+            justify-content: center;
             align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         /* Hamburger Menu Button */
@@ -64,6 +64,8 @@
             color: #000;
             z-index: 201; /* Ensure the button is on top */
             margin: 0;
+            position: absolute;
+            right: 20px;
         }
 
         /* Menu Items (initially hidden) */
@@ -157,25 +159,20 @@
 
     <!-- Header with hamburger menu and logo -->
     <div class="header">
-        <div class="header-content">
-            <!-- Logo Row -->
-            <div class="logo-row">
-                <div class="logo">
-                    <img src="Highstack Logo.png" alt="Highstack Logo" width="250">
-                </div>
-            </div>
-
+        <div class="logo-row">
             <!-- Hamburger Menu Button -->
-            <div style="position: relative;">
-                <button class="menu-button" onclick="toggleMenu()">☰</button>
-
-                <!-- Menu Items (initially hidden) -->
-                <ul class="menu-items">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about.html">About Us</a></li>
-                </ul>
+            <button class="menu-button" onclick="toggleMenu()">☰</button>
+            <!-- Logo Row -->
+            <div class="logo">
+                <img src="Highstack Logo.png" alt="Highstack Logo" width="250">
             </div>
         </div>
+
+        <!-- Menu Items (initially hidden) -->
+        <ul class="menu-items">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about.html">About Us</a></li>
+        </ul>
     </div>
 
    <h2>Contact Us</h2>
