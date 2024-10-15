@@ -22,7 +22,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative; /* Position relative for z-index handling */
         }
 
         .header {
@@ -114,12 +113,6 @@
             margin: 40px auto; /* Increased margin for vertical spacing */
             border: 1px solid #FBC31A; 
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
-            transition: transform 0.3s ease, background-color 0.3s ease; /* Transition for hover effects */
-        }
-
-        section:hover {
-            transform: scale(1.05); /* Slightly enlarge the section */
-            background-color: #222; /* Lighter background color on hover */
         }
 
         section h5 {
@@ -137,10 +130,9 @@
 
         /* Logo styling */
         .logo {
-            width: 2in; /* Increased width to 2 inches */
-            margin: 15px 0; /* Space above and below the logo */
-            cursor: pointer; /* Pointer cursor to indicate clickable */
-            transition: transform 0.3s ease; /* Smooth transition for scaling */
+            width: 1.5in; /* Decreased width to 1.5 inches */
+            margin: 30px 0; /* Increased space above and below the logo */
+            border-radius: 10px; /* Rounded corners for the logo */
         }
 
         @media (max-width: 768px) {
@@ -171,14 +163,14 @@
             <p>At Highstack, our mission is to relentlessly innovate to empower our clients with transformative technology solutions. By placing our clients at the center of everything we do, we aim to accelerate their success and redefine what’s possible.</p>
         </section>
 
-        <img src="Full Needle.png" alt="Full Needle Logo" class="logo" id="fullNeedleLogo"> <!-- Logo Below Mission Section -->
+        <img src="Full Needle.png" alt="Full Needle Logo" class="logo"> <!-- Logo Below Mission Section -->
 
         <section>
             <h5>Values</h5>
             <p>Our core values are rooted in customer obsession, innovation, and excellence. We believe in challenging the status quo, simplifying complexity, and collaborating deeply with our clients to deliver unparalleled solutions that drive meaningful impact.</p>
         </section>
 
-        <img src="Full Needle.png" alt="Full Needle Logo" class="logo" id="fullNeedleLogo2"> <!-- Logo Below Values Section -->
+        <img src="Full Needle.png" alt="Full Needle Logo" class="logo"> <!-- Logo Below Values Section -->
 
         <section>
             <h5>History</h5>
@@ -197,23 +189,15 @@
             const menuItems = document.querySelector('.menu-items');
             menuItems.classList.toggle('show'); // Add or remove class to toggle visibility
         }
-
-        // Function to rotate the logo based on scroll
+        
         window.addEventListener('scroll', function() {
-            const logo = document.querySelectorAll('.logo'); // Select both logos
-            const scrollY = window.scrollY; // Current vertical scroll position
-
-            logo.forEach(l => {
-                const logoRect = l.getBoundingClientRect();
-                const logoCenter = logoRect.top + logoRect.height / 2; // Get the center of the logo
-                const windowHeight = window.innerHeight; // Get the height of the window
-                const scrollPercentage = (logoCenter - scrollY) / windowHeight; // Calculate scroll percentage
-
-                // Rotate from 0 to 90 degrees based on scroll percentage
-                const rotation = Math.min(90, Math.max(0, 90 * (1 - scrollPercentage))); // Clamp between 0 and 90
-
-                l.style.transform = `rotate(${rotation}deg)`; // Apply rotation
-            });
+            const logo = document.querySelector('.logo');
+            const scrollTop = window.scrollY;
+            const maxScroll = window.innerHeight; // Adjust this if needed
+            
+            // Calculate rotation based on scroll
+            const rotation = Math.min(scrollTop / maxScroll, 1) * 90; // Rotate up to 90 degrees
+            logo.style.transform = `rotate(${rotation}deg)`; // Apply rotation
         });
     </script>
 
