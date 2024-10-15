@@ -41,7 +41,7 @@
             cursor: pointer;
             color: #000;
             z-index: 201;
-            margin: 10px 0;
+            
         }
 
         .menu-items {
@@ -50,7 +50,7 @@
             margin: 0;
             padding: 0;
             position: absolute;
-            top: 60px; /* Adjusted position to be below the menu button */
+            top: 40px; /* Adjusted position to be below the menu button */
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.8);
@@ -142,7 +142,8 @@
     <div class="header">
         <div class="logo-row">
             <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
-        </div>
+            
+        <div style="position: relative;">
         <button class="menu-button" onclick="toggleMenu()">☰</button>
         <ul class="menu-items">
             <li><a href="/">Home</a></li>
