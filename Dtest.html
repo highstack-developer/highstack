@@ -1,150 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Highstack</title>
-    <link rel="icon" href="Highstack%20Needle.png" type="image/png">
-    <link rel="apple-touch-icon" href="Highstack%20Needle.png" sizes="180x180"> <!-- or use a larger custom size -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-<meta property="og:title" content="Highstack">
-    <meta property="og:description" content="Welcome to Highstack, where we bring technology to accelerate your goals.">
-    <meta property="og:image" content="Highstack%20Needle.png"> <!-- Ensure the path is correct -->
-    <meta property="og:image:width" content="1600"> <!-- Recommended width for iMessage -->
-    <meta property="og:image:height" content="840"> <!-- Recommended height for iMessage -->
-    <meta property="og:url" content="https://www.highstack.ca">
-    <meta property="og:type" content="Highstack">
-    <style>
-        body {
-            background-color: #FBC31A; 
-            color: #000000;
-            text-align: center;
-            font-family: 'Merriweather Sans', sans-serif; /* Updated font-family */
+        .menu-icon {
+            width: 30px;
+            height: 24px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 0; /* Remove padding from the body */
-            min-height: 100vh;
-        }
-
-        /* Header with Flexbox */
-        .header {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
             justify-content: space-between;
-            width: 100%;
-            padding: 40px 20px; /* Increase padding to add space above the logo */
-            background-color: transparent; /* Change if you want a background */
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .logo {
-            margin: 0 auto;
-        }
-
-        /* Hamburger Menu Button */
-        .menu-button {
-            font-size: 30px;
-            background: none;
-            border: none;
             cursor: pointer;
-            color: #000;
-            z-index: 201; /* Ensure the button is on top */
         }
 
-        /* Menu Items (initially hidden) */
-        .menu-items {
-            display: none; /* Initially hidden */
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            position: absolute; /* Position it relative to the button */
-            top: 80px; /* Place it below the button */
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            border-radius: 8px;
-            padding: 10px;
-            z-index: 200; /* Ensure the menu items are on top */
-        }
-
-        .menu-items li {
-            margin: 10px 0;
-        }
-
-        .menu-items li a {
-            text-decoration: none;
-            color: white;
-            font-weight: light;
-        }
-
-        .menu-items li a:hover {
-            text-decoration: underline;
-        }
-
-        .footer {
-            margin-top: auto;
-            position: relative;
-            bottom: 0;
-            left: 0;
+        .menu-icon .bar {
             width: 100%;
-            padding: 10px;
-            font-size: 0.8em;
-            text-align: center;
-            background-color: #FBC31A;
+            height: 4px;
+            background-color: #000;
+            border-radius: 2px;
+            transition: all 0.3s ease;
         }
 
-        @media (max-width: 600px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer {
-                position: relative;
-            }
+        .menu-icon:hover .bar {
+            background-color: #333;
         }
 
-        form {
-            background-color: #FFFFFF;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            width: 400px;
-            margin: 25px auto 0;
-            border: 2px solid #000000;
-        }
-
-        input, textarea {
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #000000;
-            border-radius: 8px;
-            font-size: 1em;
-            background-color: #FBC31A;
-            color: #000000;
-        }
-
-        input[type="submit"] {
-            width: 100%;
-            background-color: #000000;
-            color: #FBC31A;
-            cursor: pointer;
-            padding: 15px;
-            font-size: 1em;
-            border: none;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #333333;
-        }
     </style>
 </head>
 <body>
@@ -152,7 +26,13 @@
     <!-- Header with hamburger menu and logo -->
     <div class="header">
         <!-- Hamburger Menu Button -->
-        <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <div class="menu-button" onclick="toggleMenu()">
+    <div class="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div>
         <!-- Logo Row -->
         <div class="logo">
             <img src="Highstack Logo.png" alt="Highstack Logo" width="250">
