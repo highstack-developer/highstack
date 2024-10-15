@@ -20,8 +20,54 @@
         .header {
             background-color: #FBC31A;
             padding: 10px 0;
-            margin-bottom: 40px;
             text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-row {
+            display: flex;
+            justify-content: center; /* Center the logo */
+            width: 100%; /* Full width */
+            margin-bottom: 10px; /* Space between logo and menu */
+        }
+
+        .menu-button {
+            font-size: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #000;
+            z-index: 201;
+            margin: 10px 0;
+        }
+
+        .menu-items {
+            display: none; /* Initially hidden */
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 200;
+        }
+
+        .menu-items li {
+            margin: 10px 0;
+        }
+
+        .menu-items li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .menu-items li a:hover {
+            text-decoration: underline;
         }
 
         .content {
@@ -51,15 +97,37 @@
 
         /* Smaller Headers for sections */
         h1 {
-            font-size: 1.5em;
+            font-size: 1.8em;
         }
 
         h2 {
-            font-size: 1.2em;
+            font-size: 1.4em;
         }
     </style>
 </head>
 <body>
+
+    <!-- Header with logo and navigation menu -->
+    <div class="header">
+        <!-- Logo Row -->
+        <div class="logo-row">
+            <div class="logo">
+                <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
+            </div>
+        </div>
+
+        <!-- Hamburger Menu Button -->
+        <div style="position: relative;">
+            <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+            <!-- Menu Items -->
+            <ul class="menu-items">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About Us</a></li>
+                <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </div>
 
     <!-- Privacy Policy Content -->
     <div class="content">
@@ -113,6 +181,13 @@
             <a href="/privacy-policy.html">Privacy Policy</a>
         </p>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const menuItems = document.querySelector('.menu-items');
+            menuItems.style.display = menuItems.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 
 </body>
 </html>
