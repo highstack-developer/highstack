@@ -25,6 +25,7 @@
             align-items: center;
             margin: 0;
             padding: 0; /* Remove padding from the body */
+            min-height: 100vh;
         }
 
         /* Header with Flexbox */
@@ -91,12 +92,14 @@
 
         .footer {
             margin-top: auto;
-            position: relative; /* Allow footer to stay at the bottom without scrolling */
+            position: absolute;
+            bottom: 0;
             left: 0;
-            width: 90%;
+            width: 100%;
             padding: 10px;
             font-size: 0.8em;
             text-align: center;
+            background-color: #FBC31A;
         }
 
         form {
