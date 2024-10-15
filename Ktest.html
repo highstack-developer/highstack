@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms and Conditions - Highstack</title>
+    <title>Privacy Policy - Highstack</title>
     <link rel="icon" href="Highstack%20Needle.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #FBC31A; 
+            background-color: #FBC31A;; 
             color: #000000;
             font-family: "Spline Sans", sans-serif;
             display: flex;
@@ -26,9 +26,9 @@
 
         .logo-row {
             display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-bottom: 10px;
+            justify-content: center; /* Center the logo */
+            width: 100%; /* Full width */
+            margin-bottom: 10px; /* Space between logo and menu */
         }
 
         .menu-button {
@@ -42,7 +42,7 @@
         }
 
         .menu-items {
-            display: none;
+            display: none; /* Initially hidden */
             list-style-type: none;
             margin: 0;
             padding: 0;
@@ -70,18 +70,18 @@
             text-decoration: underline;
         }
 
-         .content-container {
-            background-color: #ffffff; /* White background for the box */
-            padding: 20px;
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
-            text-align: left;
-            line-height: 1.6;
-            border: 1px solid #FBC31A; /* Yellow border */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-        }
+        .content-container {
+    background-color: #ffffff; /* White background for the box */
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto; /* Add margin here to create space above and below the box */
+    text-align: left;
+    line-height: 1.6; /* Adjust this value to increase line spacing */        
+    border: 1px solid #FBC31A; /* Yellow border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
 
 
         .footer {
@@ -109,7 +109,8 @@
         h2 {
             font-size: 1.0em;
         }
-          h3 {
+        
+        h3 {
             font-size: 0.8em;
         }
     </style>
@@ -138,7 +139,7 @@
             </ul>
         </div>
     </div>
-   <!-- Terms and Conditions Title and Date -->
+  <!-- Terms and Conditions Title and Date -->
     <h1 style="text-align: center;">Terms and Conditions</h1>
     <h3 style="text-align: center;">Date Last Updated: October 15, 2024</h3>
     
@@ -219,10 +220,9 @@
 
     <script>
         function toggleMenu() {
-            const menuItems = document.querySelector('.menu-items');
-            menuItems.style.display = menuItems.style.display === 'block' ? 'none' : 'block';
+            const menu = document.querySelector('.menu-items');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         }
     </script>
-
 </body>
 </html>
