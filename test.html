@@ -191,13 +191,17 @@
         }
         
         window.addEventListener('scroll', function() {
-            const logo = document.querySelector('.logo');
+            const logos = document.querySelectorAll('.logo'); // Select all logos
             const scrollTop = window.scrollY;
             const maxScroll = window.innerHeight; // Adjust this if needed
             
             // Calculate rotation based on scroll
             const rotation = Math.min(scrollTop / maxScroll, 1) * 90; // Rotate up to 90 degrees
-            logo.style.transform = `rotate(${rotation}deg)`; // Apply rotation
+            
+            // Apply rotation to each logo
+            logos.forEach(logo => {
+                logo.style.transform = `rotate(${rotation}deg)`; // Apply rotation
+            });
         });
     </script>
 
