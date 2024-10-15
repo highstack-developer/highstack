@@ -189,26 +189,6 @@
             const menuItems = document.querySelector('.menu-items');
             menuItems.classList.toggle('show'); // Add or remove class to toggle visibility
         }
-        
-        window.addEventListener('scroll', function() {
-            const logos = document.querySelectorAll('.needle-logo');
-            const scrollTop = window.scrollY;
-            const viewportHeight = window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight - viewportHeight; // Total scrollable height
-            
-            logos.forEach(logo => {
-                const logoOffset = logo.offsetTop;
-                const distanceFromTop = scrollTop - logoOffset + viewportHeight / 2; // Middle of the viewport
-
-                if (distanceFromTop > 0 && distanceFromTop < viewportHeight) {
-                    // Calculate rotation proportionally based on the scroll position
-                    const rotation = Math.min(distanceFromTop / viewportHeight, 1) * 90;
-                    logo.style.transform = `rotate(${rotation}deg)`;
-                } else if (distanceFromTop <= 0) {
-                    logo.style.transform = 'rotate(0deg)';
-                }
-            });
-        });
     </script>
 
 </body>
