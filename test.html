@@ -143,23 +143,24 @@
         }
 
         /* Animation styles for explosion */
+        .piece {
+            position: absolute;
+            width: 5px; /* Width of pieces */
+            height: 5px; /* Height of pieces */
+            background-color: #FBC31A; /* Color of the pieces */
+            border-radius: 50%; /* Make pieces circular */
+            opacity: 0;
+        }
+
         @keyframes explode {
             0% {
                 transform: scale(1);
                 opacity: 1;
             }
-            30% {
-                transform: scale(1.5);
-                opacity: 1;
-            }
             100% {
-                transform: translate(calc(10vw + 50px), calc(-10vh - 50px)) scale(0);
+                transform: translate(calc(10vw * var(--random-x)), calc(10vh * var(--random-y))) scale(0);
                 opacity: 0;
             }
-        }
-
-        .explode {
-            animation: explode 0.5s forwards; /* Apply explosion animation */
         }
 
         @media (max-width: 768px) {
@@ -218,10 +219,46 @@
         }
 
         function explodeLogo(logo) {
-            logo.classList.add('explode'); // Add the explosion class to the clicked logo
-            logo.addEventListener('animationend', () => {
+            const numberOfPieces = 50; // Number of pieces in the explosion
+
+            // Calculate the logo position
+            const rect = logo.getBoundingClientRect();
+            const logoCenterX = rect.left + rect.width / 2;
+            const logoCenterY = rect.top + rect.height / 2;
+
+            // Create pieces
+            for (let i = 0; i < numberOfPieces; i++) {
+                const piece = document.createElement('div');
+                piece.classList.add('piece');
+                piece.style.left = `${logoCenterX}px`;
+                piece.style.top = `${logoCenterY}px`;
+
+                // Randomize the direction of explosion
+                const randomX = Math.random() * 2 - 1; // Between -1 and 1
+                const randomY = Math.random() * 2 - 1; // Between -1 and 1
+                piece.style.setProperty('--random-x', randomX);
+                piece.style.setProperty('--random-y', randomY);
+                
+                // Append to body
+                document.body.appendChild(piece);
+
+                // Trigger explosion animation
+                setTimeout(() => {
+                    piece.style.opacity = '1';
+                    piece.style.animation = 'explode 0.5s forwards';
+                }, 10);
+                
+                // Remove piece after animation
+                piece.addEventListener('animationend', () => {
+                    piece.remove();
+                });
+            }
+
+            // Hide the logo after explosion
+            logo.style.opacity = '0';
+            setTimeout(() => {
                 logo.style.display = 'none'; // Hide the logo after the animation ends
-            });
+            }, 500); // Match the timeout with the animation duration
         }
     </script>
 
