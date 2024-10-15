@@ -31,7 +31,7 @@
             align-items: center;
             justify-content: center; flex-direction: row; position: relative;
             width: 100%;
-            padding: 20px 40px;
+            padding: 20px;
             position: sticky;
             top: 0;
             left: 0;
@@ -87,12 +87,13 @@
             align-items: center;
             position: fixed;
             top: 0;
-            right: -100%;
+            overflow-x: hidden;
+            right: -100vw;
             height: 100%;
-            width: 70%;
+            width: 80%;
             background-color: rgba(0, 0, 0, 0.95);
             color: #fff;
-            padding: 100px 20px;
+            padding: 100px 10px;
             transition: right 0.3s ease;
             z-index: 200;
         }
@@ -202,7 +203,7 @@
             }
 
             .header {
-                padding: 10px 20px;
+                padding: 10px;
             }
 
             .menu-items li a {
@@ -210,7 +211,7 @@
             }
 
             .main-content {
-                padding: 120px 20px;
+                padding: 140px 20px;
             }
         }
     </style>
@@ -222,20 +223,14 @@
         <div class="logo" style="margin: 0 auto; text-align: center;">
             <img src="Highstack Logo.png" alt="Highstack Logo" style="display: block; margin: 0 auto;">
         </div>
-        <div class="menu-button" onclick="toggleMenu()" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%);">
-            <div class="bar"></div>
+        
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
     </div>
 
     <!-- Menu Items -->
-    <ul class="menu-items">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about.html">About Us</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
+    
 
     <!-- Main Content -->
     <div class="main-content">
@@ -253,14 +248,7 @@
         <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-and-conditions.html">Terms and Conditions</a>
     </div>
 
-    <script>
-        function toggleMenu() {
-            const menuButton = document.querySelector('.menu-button');
-            const menuItems = document.querySelector('.menu-items');
-            menuButton.classList.toggle('open');
-            menuItems.classList.toggle('open');
-        }
-    </script>
+    
 
 </body>
 </html>
