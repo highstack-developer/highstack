@@ -45,12 +45,12 @@
         }
 
         .menu-items {
-            display: none; /* Initially hidden */
+            display: none;
             list-style-type: none;
             margin: 0;
             padding: 0;
             position: absolute;
-            top: 40px;
+            top: 60px; /* Adjusted position to be below the menu button */
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.8);
@@ -73,13 +73,13 @@
             text-decoration: underline;
         }
 
-
         .footer {
-            margin-top: auto;
+            width: 90%;
             padding: 10px;
-            background-color: #FBC31A;
             font-size: 0.8em;
             text-align: center;
+            color: #000;
+            margin-top: auto;
         }
 
         a {
@@ -89,7 +89,7 @@
 
         a:hover {
             text-decoration: underline;
-             }
+        }
 
         main {
             display: flex;
@@ -135,15 +135,15 @@
                 width: 90%;
             }
         }
-  </style>
+    </style>
 </head>
 <body>
 
     <div class="header">
         <div class="logo-row">
             <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
-            
-                <button class="menu-button" onclick="toggleMenu()">☰</button>
+        </div>
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
         <ul class="menu-items">
             <li><a href="/">Home</a></li>
             <li><a href="/about.html">About Us</a></li>
