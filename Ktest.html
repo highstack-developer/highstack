@@ -16,7 +16,7 @@
             background-color: #FBC31A; /* Yellow background */
             color: #000000; /* Black text */
             text-align: center;
-            font-family: "Spline Sans", sans-serif;
+            font-family: "Spline Sans", sans-serif; /* Updated font */
             margin: 0;
             padding: 0; 
             display: flex;
@@ -106,7 +106,7 @@
 
         section {
             background-color: #000; 
-            padding: 20px; /* Doubled padding */
+            padding: 40px; /* Doubled padding */
             border-radius: 10px; 
             width: 90%; 
             max-width: 575px; 
@@ -163,14 +163,14 @@
             <p>At Highstack, our mission is to relentlessly innovate to empower our clients with transformative technology solutions. By placing our clients at the center of everything we do, we aim to accelerate their success and redefine what’s possible.</p>
         </section>
 
-        <img src="Full Needle.png" alt="Full Needle Logo" class="logo"> <!-- Logo Below Mission Section -->
+        <img src="Full Needle.png" alt="Full Needle Logo" class="logo needle-logo"> <!-- Logo Below Mission Section -->
 
         <section>
             <h5>Values</h5>
             <p>Our core values are rooted in customer obsession, innovation, and excellence. We believe in challenging the status quo, simplifying complexity, and collaborating deeply with our clients to deliver unparalleled solutions that drive meaningful impact.</p>
         </section>
 
-        <img src="Full Needle.png" alt="Full Needle Logo" class="logo"> <!-- Logo Below Values Section -->
+        <img src="Full Needle.png" alt="Full Needle Logo" class="logo needle-logo"> <!-- Logo Below Values Section -->
 
         <section>
             <h5>History</h5>
@@ -191,20 +191,21 @@
         }
         
         window.addEventListener('scroll', function() {
-            const logos = document.querySelectorAll('.logo'); // Select all logos
+            const logos = document.querySelectorAll('.needle-logo');
             const scrollTop = window.scrollY;
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight; // Total scrollable height of the document
+            const viewportHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight - viewportHeight; // Total scrollable height
             
             logos.forEach(logo => {
-                const logoOffset = logo.offsetTop; // Get the logo's offset from the top of the page
-                const distanceFromTop = scrollTop - logoOffset; // Distance scrolled relative to the logo
-                
-                if (distanceFromTop > 0 && distanceFromTop < window.innerHeight) {
-                    // Calculate the rotation based on scroll position relative to the logo
-                    const rotation = Math.min(distanceFromTop / window.innerHeight, 1) * 90;
-                    logo.style.transform = `rotate(${rotation}deg)`; // Apply rotation
+                const logoOffset = logo.offsetTop;
+                const distanceFromTop = scrollTop - logoOffset + viewportHeight / 2; // Middle of the viewport
+
+                if (distanceFromTop > 0 && distanceFromTop < viewportHeight) {
+                    // Calculate rotation proportionally based on the scroll position
+                    const rotation = Math.min(distanceFromTop / viewportHeight, 1) * 90;
+                    logo.style.transform = `rotate(${rotation}deg)`;
                 } else if (distanceFromTop <= 0) {
-                    logo.style.transform = 'rotate(0deg)'; // Reset rotation when scrolled back up
+                    logo.style.transform = 'rotate(0deg)';
                 }
             });
         });
