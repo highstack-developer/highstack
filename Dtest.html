@@ -92,7 +92,7 @@
             width: 70%;
             background-color: rgba(0, 0, 0, 0.9);
             color: #fff;
-            padding: 60px 20px;
+            padding: 100px 20px;
             transition: right 0.3s ease;
             z-index: 200;
         }
@@ -130,7 +130,7 @@
         }
 
         .main-content {
-            padding: 160px 20px;
+            padding: 180px 20px;
             text-align: center;
             transition: all 0.3s ease;
         }
@@ -142,9 +142,7 @@
             font-size: 0.8em;
             text-align: center;
             background-color: #FBC31A;
-            position: fixed;
-            bottom: 0;
-            left: 0;
+            position: relative;
         }
 
         form {
@@ -200,10 +198,19 @@
         @media (max-width: 600px) {
             .menu-items {
                 width: 100%;
+                padding-top: 80px;
             }
 
             .header {
-                padding: 20px;
+                padding: 10px 20px;
+            }
+
+            .menu-items li a {
+                font-size: 1.2em;
+            }
+
+            .main-content {
+                padding: 120px 20px;
             }
         }
     </style>
