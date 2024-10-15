@@ -23,7 +23,6 @@
             flex-direction: column;
             align-items: center;
             position: relative; /* Position relative for z-index handling */
-            overflow: hidden; /* Prevent scrolling when explosion is active */
         }
 
         .header {
@@ -138,22 +137,10 @@
 
         /* Logo styling */
         .logo {
-            width: 1in; /* Set width to 1 inch */
+            width: 2in; /* Increased width to 2 inches */
             margin: 15px 0; /* Space above and below the logo */
             cursor: pointer; /* Pointer cursor to indicate clickable */
             transition: transform 0.3s ease; /* Smooth transition for scaling */
-        }
-
-        /* Fullscreen explosion container */
-        .explosion-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0); /* Transparent background */
-            pointer-events: none; /* Allow clicks through */
-            z-index: 999; /* On top of all other elements */
         }
 
         /* Animation styles for explosion pieces */
@@ -161,7 +148,6 @@
             position: absolute;
             width: 10px; /* Width of pieces */
             height: 10px; /* Height of pieces */
-            background-color: #FBC31A; /* Color of the pieces */
             border-radius: 50%; /* Make pieces circular */
             opacity: 0;
             pointer-events: none; /* Allow clicks through pieces */
@@ -234,11 +220,6 @@
         }
 
         function explodeLogo(logo) {
-            const explosionContainer = document.createElement('div');
-            explosionContainer.classList.add('explosion-container');
-            document.body.appendChild(explosionContainer); // Add the explosion container to the body
-
-            const logoRect = logo.getBoundingClientRect();
             const piecesCount = 100; // Number of pieces for explosion
             
             // Create pieces
@@ -247,8 +228,12 @@
                 piece.classList.add('piece');
                 
                 // Position the piece at the center of the logo
+                const logoRect = logo.getBoundingClientRect();
                 piece.style.left = `${logoRect.left + logoRect.width / 2}px`;
                 piece.style.top = `${logoRect.top + logoRect.height / 2}px`;
+
+                // Set a random color for each piece
+                piece.style.backgroundColor = getRandomColor();
                 piece.style.opacity = '0';
 
                 // Randomize explosion direction
@@ -257,13 +242,13 @@
                 piece.style.setProperty('--random-x', randomX);
                 piece.style.setProperty('--random-y', randomY);
 
-                // Append to the explosion container
-                explosionContainer.appendChild(piece);
+                // Append to the body
+                document.body.appendChild(piece);
 
                 // Trigger explosion animation
                 setTimeout(() => {
                     piece.style.opacity = '1';
-                    piece.style.animation = 'explode 0.8s forwards'; // Longer duration for bigger explosion
+                    piece.style.animation = 'explode 0.8s forwards'; // Animation duration
                 }, 10);
                 
                 // Remove piece after animation
@@ -276,8 +261,16 @@
             logo.style.opacity = '0';
             setTimeout(() => {
                 logo.style.display = 'none'; // Hide the logo after the animation ends
-                explosionContainer.remove(); // Remove the explosion container after all pieces are gone
             }, 800); // Match the timeout with the animation duration
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
         }
     </script>
 
