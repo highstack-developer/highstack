@@ -31,9 +31,11 @@
         /* Header with Flexbox */
         .header {
             display: flex;
-            flex-direction: column; /* Stack items vertically */
+            flex-direction: row; /* Align items horizontally */
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
-            padding: 10px 0; /* Adjust padding */
+            padding: 10px 20px; /* Adjust padding */
             background-color: transparent; /* Change if you want a background */
             position: relative; /* Make positioning relative for menu items */
             margin-bottom: 40px; /* Space below header */
@@ -42,9 +44,7 @@
         /* Logo Row */
         .logo-row {
             display: flex;
-            justify-content: center; /* Center the logo */
-            width: 100%; /* Full width */
-            margin-bottom: 10px; /* Space between logo and menu */
+            align-items: center;
         }
 
         /* Hamburger Menu Button */
@@ -55,10 +55,7 @@
             cursor: pointer;
             color: #000;
             z-index: 201; /* Ensure the button is on top */
-            margin: 10px;
-            position: absolute;
-            top: 10px;
-            right: 20px;
+            margin: 0;
         }
 
         /* Menu Items (initially hidden) */
@@ -68,7 +65,7 @@
             margin: 0;
             padding: 0;
             position: absolute; /* Position it relative to the button */
-            top: 40px; /* Place it below the button */
+            top: 50px; /* Place it below the button */
             right: 20px; /* Align it with the button */
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
