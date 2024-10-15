@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Highstack</title>
+    <link rel="icon" href="Highstack%20Needle.png" type="image/png">
+    <link rel="apple-touch-icon" href="Highstack%20Needle.png" sizes="180x180">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff; 
+            color: #000000;
+            font-family: 'Merriweather Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 10px 0;
+            background-color: #FBC31A;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .logo-row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .menu-button {
+            font-size: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #000000;
+        }
+
+        .menu-items {
+            display: none;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .menu-items li {
+            margin: 10px 0;
+        }
+
+        .menu-items li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .menu-items li a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .footer {
+            margin-top: auto;
+            width: 100%;
+            padding: 10px;
+            background-color: #FBC31A;
+            font-size: 0.8em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with hamburger menu and logo -->
+    <div class="header">
+        <div class="logo-row">
+            <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
+        </div>
+
+        <!-- Hamburger Menu Button -->
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+        <!-- Menu Items -->
+        <ul class="menu-items">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+    </div>
+
+    <!-- Privacy Policy Content -->
+    <div class="content">
+        <h1>Privacy Policy</h1>
+        <p>Welcome to Highstack! Your privacy is of utmost importance to us. This policy explains how we collect, use, and protect your personal information when you visit our website or use our services.</p>
+        
+        <h2>Information We Collect</h2>
+        <p>We may collect personal data such as your name, email address, and other details when you contact us or sign up for our services. We may also gather non-personal data such as your IP address and browser type to improve your user experience.</p>
+        
+        <h2>How We Use Your Information</h2>
+        <p>We use your personal information to communicate with you, provide services, and improve our offerings. Your data is never shared with third parties without your consent, except where required by law.</p>
+        
+        <h2>Your Rights</h2>
+        <p>You have the right to access, update, or delete your personal information. Please contact us if you wish to exercise any of these rights.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have any questions about our Privacy Policy, please contact us at <a href="mailto:privacy@highstack.ca">privacy@highstack.ca</a>.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Copyright © 2024 Highstack Inc. All Rights Reserved.</p>
+         <br>
+        <a href="/privacy-policy.html" style="color: #000000; text-decoration: none;">Privacy Policy</a>
+    </p>
+</div>
+    <script>
+        function toggleMenu() {
+            const menuItems = document.querySelector('.menu-items');
+            menuItems.style.display = menuItems.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+
+</body>
+</html>
