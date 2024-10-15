@@ -113,6 +113,12 @@
             margin: 30px auto; /* Doubled margin for vertical spacing */
             border: 1px solid #FBC31A; 
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Transition for hover effects */
+        }
+
+        section:hover {
+            transform: scale(1.05); /* Slightly enlarge the section */
+            background-color: #222; /* Lighter background color on hover */
         }
 
         section h5 {
