@@ -9,40 +9,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <meta property="og:title" content="Highstack">
     <meta property="og:description" content="Welcome to Highstack, where we bring technology to accelerate your goals.">
-    <meta property="og:image" content="Highstack%20Needle.png"> <!-- Ensure the path is correct -->
-    <meta property="og:image:width" content="1600"> <!-- Recommended width for iMessage -->
-    <meta property="og:image:height" content="840"> <!-- Recommended height for iMessage -->
+    <meta property="og:image" content="Highstack%20Needle.png">
+    <meta property="og:image:width" content="1600">
+    <meta property="og:image:height" content="840">
     <meta property="og:url" content="https://www.highstack.ca">
     <meta property="og:type" content="Highstack">
     <style>
         body {
             background-color: #FBC31A; 
-            color: #000000;
-            text-align: center;
-            font-family: 'Merriweather Sans', sans-serif; /* Updated font-family */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            color: #000;
+            font-family: 'Merriweather Sans', sans-serif;
             margin: 0;
-            padding: 0; /* Remove padding from the body */
+            padding: 0;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* Header with Flexbox */
         .header {
             display: flex;
-            flex-direction: row;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            padding: 40px 20px; /* Increase padding to add space above the logo */
-            background-color: transparent; /* Change if you want a background */
-            position: relative;
-            margin-bottom: 40px;
+            padding: 20px 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #FBC31A;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 999;
         }
 
-        .logo {
-            margin: 0 auto;
+        .logo img {
+            width: 150px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.1);
         }
 
         /* Modern Menu Button */
@@ -64,71 +68,99 @@
             transition: all 0.3s ease;
         }
 
-        .menu-button:hover .bar {
-            background-color: #333;
+        .menu-button.open .bar:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
         }
 
-        /* Menu Items (initially hidden) */
+        .menu-button.open .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-button.open .bar:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+        /* Menu Items */
         .menu-items {
-            display: none; /* Initially hidden */
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            position: absolute; /* Position it relative to the button */
-            top: 80px; /* Place it below the button */
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            border-radius: 8px;
-            padding: 10px;
-            z-index: 200; /* Ensure the menu items are on top */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100%;
+            width: 70%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            padding: 60px 20px;
+            transition: right 0.3s ease;
+            z-index: 200;
+        }
+
+        .menu-items.open {
+            right: 0;
         }
 
         .menu-items li {
-            margin: 10px 0;
+            list-style: none;
+            margin: 20px 0;
+            animation: fadeIn 0.5s ease both;
         }
 
         .menu-items li a {
             text-decoration: none;
-            color: white;
-            font-weight: light;
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
         }
 
         .menu-items li a:hover {
-            text-decoration: underline;
+            color: #FBC31A;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-content {
+            padding: 160px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
         }
 
         .footer {
             margin-top: auto;
-            position: relative;
-            bottom: 0;
-            left: 0;
             width: 100%;
-            padding: 10px;
+            padding: 20px;
             font-size: 0.8em;
             text-align: center;
             background-color: #FBC31A;
-        }
-
-        @media (max-width: 600px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer {
-                position: relative;
-            }
+            position: fixed;
+            bottom: 0;
+            left: 0;
         }
 
         form {
             background-color: #FFFFFF;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            width: 400px;
-            margin: 25px auto 0;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
             border: 2px solid #000000;
+            transition: transform 0.3s ease;
+        }
+
+        form:hover {
+            transform: translateY(-10px);
         }
 
         input, textarea {
@@ -139,8 +171,14 @@
             border: 1px solid #000000;
             border-radius: 8px;
             font-size: 1em;
-            background-color: #FBC31A;
+            background-color: #FFF;
             color: #000000;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #FBC31A;
+            outline: none;
         }
 
         input[type="submit"] {
@@ -158,52 +196,62 @@
         input[type="submit"]:hover {
             background-color: #333333;
         }
+
+        @media (max-width: 600px) {
+            .menu-items {
+                width: 100%;
+            }
+
+            .header {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header with hamburger menu and logo -->
+    <!-- Header with menu button and logo -->
     <div class="header">
-        <!-- Modern Menu Button -->
+        <div class="logo">
+            <img src="Highstack Logo.png" alt="Highstack Logo">
+        </div>
         <div class="menu-button" onclick="toggleMenu()">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <!-- Logo Row -->
-        <div class="logo">
-            <img src="Highstack Logo.png" alt="Highstack Logo" width="250">
-        </div>
-        <!-- Placeholder for alignment -->
-        <div style="width: 30px;"></div>
     </div>
 
-    <!-- Menu Items (initially hidden) -->
+    <!-- Menu Items -->
     <ul class="menu-items">
         <li><a href="/">Home</a></li>
         <li><a href="/about.html">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
     </ul>
 
-   <h2>Contact Us</h2>
-    <form action="mailto:info@highstack.ca" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" maxlength="50" required>
-        <input type="email" name="email" placeholder="Your Email" maxlength="50" required>
-        <textarea id="message" name="message" placeholder="How can we help you?" maxlength="1000" required></textarea>
-        <input type="submit" value="Send Message">
-    </form>
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Contact Us</h2>
+        <form action="mailto:info@highstack.ca" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" maxlength="50" required>
+            <input type="email" name="email" placeholder="Your Email" maxlength="50" required>
+            <textarea id="message" name="message" placeholder="How can we help you?" maxlength="1000" required></textarea>
+            <input type="submit" value="Send Message">
+        </form>
+    </div>
 
     <div class="footer">
         <p>Copyright © 2024 Highstack Inc. All Rights Reserved.</p>
-           <br>
-            <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-and-conditions.html">Terms and Conditions</a>
-        </p>
+        <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-and-conditions.html">Terms and Conditions</a>
     </div>
 
     <script>
         function toggleMenu() {
+            const menuButton = document.querySelector('.menu-button');
             const menuItems = document.querySelector('.menu-items');
-            // Toggle the display property
-            menuItems.style.display = menuItems.style.display === 'block' ? 'none' : 'block'; // Show or hide the menu
+            menuButton.classList.toggle('open');
+            menuItems.classList.toggle('open');
         }
     </script>
 
