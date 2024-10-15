@@ -6,7 +6,7 @@
     <title>Highstack</title>
     <link rel="icon" href="Highstack%20Needle.png" type="image/png">
     <link rel="apple-touch-icon" href="Highstack%20Needle.png" sizes="180x180"> <!-- or use a larger custom size -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;1,300&family=Avenir&display=swap" rel="stylesheet">
     <meta property="og:title" content="Highstack">
     <meta property="og:description" content="Welcome to Highstack, where we bring technology to accelerate your goals.">
     <meta property="og:image" content="Highstack%20Needle.png">
@@ -18,7 +18,7 @@
         body {
             background-color: #FBC31A; 
             color: #000;
-            font-family: 'Merriweather Sans', sans-serif;
+            font-family: 'Avenir', 'Merriweather Sans', sans-serif;
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -29,10 +29,10 @@
         .header {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center; flex-direction: row; position: relative;
             width: 100%;
             padding: 20px 40px;
-            position: fixed;
+            position: sticky;
             top: 0;
             left: 0;
             background: #FBC31A;
@@ -90,7 +90,7 @@
             right: -100%;
             height: 100%;
             width: 70%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             color: #fff;
             padding: 100px 20px;
             transition: right 0.3s ease;
@@ -130,7 +130,7 @@
         }
 
         .main-content {
-            padding: 180px 20px;
+            padding: 220px 20px;
             text-align: center;
             transition: all 0.3s ease;
         }
@@ -155,7 +155,7 @@
             margin: 50px auto;
             border: 2px solid #000000;
             transition: transform 0.3s ease;
-        }
+         margin-top: 30px;}
 
         form:hover {
             transform: translateY(-10px);
@@ -222,7 +222,7 @@
         <div class="logo">
             <img src="Highstack Logo.png" alt="Highstack Logo">
         </div>
-        <div class="menu-button" onclick="toggleMenu()" style="position: absolute; right: 20px;">
+        <div class="menu-button" onclick="toggleMenu()" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%);">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
