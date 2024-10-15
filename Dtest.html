@@ -55,8 +55,10 @@
             cursor: pointer;
             color: #000;
             z-index: 201; /* Ensure the button is on top */
-            margin: 10px 0; /* Add margin for spacing */
-            position: relative; /* Position for the dropdown */
+            margin: 10px;
+            position: absolute;
+            top: 10px;
+            right: 20px;
         }
 
         /* Menu Items (initially hidden) */
@@ -67,8 +69,7 @@
             padding: 0;
             position: absolute; /* Position it relative to the button */
             top: 40px; /* Place it below the button */
-            left: 50%; /* Center it horizontally */
-            transform: translateX(-50%); /* Adjust to truly center it */
+            right: 20px; /* Align it with the button */
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border-radius: 8px;
