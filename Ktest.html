@@ -3,42 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Highstack - About Us</title>
+    <title>Privacy Policy - Highstack</title>
     <link rel="icon" href="Highstack%20Needle.png" type="image/png">
-    <link rel="apple-touch-icon" href="Highstack%20Needle.png" sizes="180x180">
     <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300&display=swap" rel="stylesheet">
-    <meta property="og:title" content="Highstack - About Us">
-    <meta property="og:description" content="Learn more about Highstack, our mission, values, and history.">
-    <meta property="og:image" content="Highstack%20Needle.png">
-    <meta property="og:url" content="https://www.highstack.ca/about.html">
     <style>
         body {
-            background-color: #FBC31A; /* Yellow background */
-            color: #000000; /* Black text */
-            text-align: center;
-            font-family: "Spline Sans", sans-serif; /* Updated font */
-            margin: 0;
-            padding: 0; 
+            background-color: #FBC31A;; 
+            color: #000000;
+            font-family: "Spline Sans", sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
         .header {
-            display: flex;
-            flex-direction: column;
-            width: 90%;
+            background-color: #FBC31A;
             padding: 10px 0;
-            background-color: transparent; 
-            position: relative; 
-            margin-bottom: 40px; 
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .logo-row {
             display: flex;
-            justify-content: center; 
-            width: 100%; 
-            margin-bottom: 10px; 
+            justify-content: center; /* Center the logo */
+            width: 100%; /* Full width */
+            margin-bottom: 10px; /* Space between logo and menu */
         }
 
         .menu-button {
@@ -46,44 +36,38 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: #000; /* Black menu button */
-            margin: 10px 0; 
-            position: relative; 
+            color: #000;
+            z-index: 201;
+            margin: 10px 0;
         }
 
         .menu-items {
-            display: none; 
+            display: none; /* Initially hidden */
             list-style-type: none;
             margin: 0;
             padding: 0;
-            position: absolute; 
-            background-color: rgba(0, 0, 0, 0.8); 
-            color: #FBC31A; 
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
             border-radius: 8px;
-            z-index: 200; 
-            top: 40px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-        }
-
-        .menu-items.show {
-            display: block; 
+            padding: 10px;
+            z-index: 200;
         }
 
         .menu-items li {
-            margin: 5px 0;
+            margin: 10px 0;
         }
 
         .menu-items li a {
             text-decoration: none;
-            color: #FBC31A; 
-            font-weight: normal; 
-            padding: 10px 20px; 
-            display: block; 
+            color: white;
         }
 
         .menu-items li a:hover {
-            color: white; 
+            text-decoration: underline;
         }
 
         .footer {
