@@ -29,19 +29,19 @@
         .header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             width: 100%;
             padding: 20px 40px;
             position: fixed;
             top: 0;
             left: 0;
             background: #FBC31A;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            
             z-index: 999;
         }
 
         .logo img {
-            width: 150px;
+            width: 200px;
             transition: transform 0.3s ease;
         }
 
@@ -222,7 +222,7 @@
         <div class="logo">
             <img src="Highstack Logo.png" alt="Highstack Logo">
         </div>
-        <div class="menu-button" onclick="toggleMenu()">
+        <div class="menu-button" onclick="toggleMenu()" style="position: absolute; right: 20px;">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
