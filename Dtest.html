@@ -29,14 +29,13 @@
         .header {
             display: flex;
             align-items: center;
-            justify-content: center; flex-direction: row; position: relative;
+            justify-content: center;
             width: 100%;
             padding: 20px;
             position: sticky;
             top: 0;
             left: 0;
             background: #FBC31A;
-            
             z-index: 999;
         }
 
@@ -47,87 +46,6 @@
 
         .logo img:hover {
             transform: scale(1.1);
-        }
-
-        /* Modern Menu Button */
-        .menu-button {
-            width: 30px;
-            height: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-            z-index: 201;
-        }
-
-        .menu-button .bar {
-            width: 100%;
-            height: 4px;
-            background-color: #000;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .menu-button.open .bar:nth-child(1) {
-            transform: translateY(10px) rotate(45deg);
-        }
-
-        .menu-button.open .bar:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-button.open .bar:nth-child(3) {
-            transform: translateY(-10px) rotate(-45deg);
-        }
-
-        /* Menu Items */
-        .menu-items {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            overflow-x: hidden;
-            right: -100vw;
-            height: 100%;
-            width: 80%;
-            background-color: rgba(0, 0, 0, 0.95);
-            color: #fff;
-            padding: 100px 10px;
-            transition: right 0.3s ease;
-            z-index: 200;
-        }
-
-        .menu-items.open {
-            right: 0;
-        }
-
-        .menu-items li {
-            list-style: none;
-            margin: 20px 0;
-            animation: fadeIn 0.5s ease both;
-        }
-
-        .menu-items li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 1.5em;
-            transition: color 0.3s ease;
-        }
-
-        .menu-items li a:hover {
-            color: #FBC31A;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .main-content {
@@ -156,7 +74,8 @@
             margin: 50px auto;
             border: 2px solid #000000;
             transition: transform 0.3s ease;
-         margin-top: 30px;}
+            margin-top: 30px;
+        }
 
         form:hover {
             transform: translateY(-10px);
@@ -197,17 +116,8 @@
         }
 
         @media (max-width: 600px) {
-            .menu-items {
-                width: 100%;
-                padding-top: 80px;
-            }
-
             .header {
                 padding: 10px;
-            }
-
-            .menu-items li a {
-                font-size: 1.2em;
             }
 
             .main-content {
@@ -218,19 +128,12 @@
 </head>
 <body>
 
-    <!-- Header with menu button and logo -->
+    <!-- Header with logo -->
     <div class="header">
         <div class="logo" style="margin: 0 auto; text-align: center;">
             <img src="Highstack Logo.png" alt="Highstack Logo" style="display: block; margin: 0 auto;">
         </div>
-        
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
     </div>
-
-    <!-- Menu Items -->
-    
 
     <!-- Main Content -->
     <div class="main-content">
@@ -247,8 +150,6 @@
         <p>Copyright © 2024 Highstack Inc. All Rights Reserved.</p>
         <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-and-conditions.html">Terms and Conditions</a>
     </div>
-
-    
 
 </body>
 </html>
