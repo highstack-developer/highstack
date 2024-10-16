@@ -4,14 +4,14 @@
     padding: 10px 0;
     text-align: center;
     margin: 0 auto 20px auto; /* Center the header with auto margin */
-    max-width: 1200px; /* Contain the header width */
+    max-width: 90px; /* Contain the header width */
     width: 90%;
 }
 
 .logo-row {
     display: flex;
     justify-content: center; /* Center the logo */
-    width: 100%;
+    width: 90%;
     margin-bottom: 10px;
 }
 
