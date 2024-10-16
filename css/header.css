@@ -1,26 +1,25 @@
-/* Default (Light Mode) Styles */
+/* Header styling */
 .header {
-    background-color: #FBC31A; /* Yellow background for light mode */
-    padding: 10px 0;
+    background-color: #FBC31A; /* Yellow background */
+    padding: 5px 0; /* Reduced padding */
     text-align: center;
     margin: 0 auto 20px auto; /* Center the header with auto margin */
-    max-width: 90px; /* Contain the header width */
-    width: 90%;
+    max-width: 800px; /* Limit the header width */
+    width: 90%; /* Keep the header responsive */
+    height: auto; /* Set to auto to accommodate the logo height */
 }
 
+/* Logo container (logo-row) */
 .logo-row {
     display: flex;
     justify-content: center; /* Center the logo */
-    width: 90%;
-    margin-bottom: 10px;
+    width: 100%; /* Full width of the container */
+    margin-bottom: 5px; /* Space below the logo */
 }
 
-.logo-row img.light-mode-logo {
-    display: block; /* Show light mode logo by default */
-}
-
-.logo-row img.dark-mode-logo {
-    display: none; /* Hide dark mode logo by default */
+.logo-row img {
+    max-width: 90%; /* Logo occupies a maximum of 90% of the page width */
+    height: auto; /* Maintain aspect ratio */
 }
 
 /* Dark Mode Styles */
