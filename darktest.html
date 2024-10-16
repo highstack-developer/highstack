@@ -38,6 +38,14 @@
             color: #000;
         }
 
+        .logo-light {
+            display: block;
+        }
+
+        .logo-dark {
+            display: none;
+        }
+
         /* Dark Mode Styles */
         @media (prefers-color-scheme: dark) {
             body {
@@ -71,6 +79,14 @@
 
             .menu-items li a {
                 color: black;
+            }
+
+            .logo-light {
+                display: none;
+            }
+
+            .logo-dark {
+                display: block;
             }
         }
 
@@ -160,10 +176,8 @@
     <div class="header">
         <!-- Logo Row -->
         <div class="logo-row">
-            <picture>
-                <source srcset="Highstack Logo YELLOW.png" media="(prefers-color-scheme: dark)">
-                <img src="Highstack Logo.png" alt="Highstack Logo" width="150">
-            </picture>
+            <img src="Highstack Logo.png" alt="Highstack Logo Light" width="150" class="logo-light">
+            <img src="Highstack Logo YELLOW.png" alt="Highstack Logo Dark" width="150" class="logo-dark">
         </div>
 
         <!-- Hamburger Menu Button -->
