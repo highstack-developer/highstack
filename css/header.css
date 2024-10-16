@@ -1,52 +1,41 @@
-.header {
-    background-color: #FBC31A;
-    padding: 10px 0;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.logo-row {
+body {
+    background-color: #FBC31A; 
+    color: #000000;
+    font-family: "Spline Sans", sans-serif;
     display: flex;
-    justify-content: center; /* Center the logo */
-    width: 100%; /* Full width */
-    margin-bottom: 10px; /* Space between logo and menu */
-}
-
-.menu-button {
-    font-size: 30px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #000;
-    z-index: 201;
-    margin: 10px 0;
-}
-
-.menu-items {
-    display: none; /* Initially hidden */
-    list-style-type: none;
+    flex-direction: column;
     margin: 0;
     padding: 0;
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border-radius: 8px;
-    padding: 10px;
-    z-index: 200;
 }
 
-.menu-items li {
-    margin: 10px 0;
+.content-container {
+    background-color: #ffffff; /* White background for the box */
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto; /* Center the container */
+    text-align: left;
+    line-height: 1.6; /* Line spacing */
+    border: 1px solid #FBC31A; /* Yellow border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
 }
 
-.menu-items li a {
+h1 {
+    font-size: 1.5em;
+    text-align: center; /* Center title */
+}
+
+h3 {
+    font-size: 0.8em;
+    text-align: center; /* Center subtitle */
+}
+
+a {
+    color: #000000;
     text-decoration: none;
-    color: white;
 }
 
-.menu-items li a:hover {
+a:hover {
     text-decoration: underline;
 }
