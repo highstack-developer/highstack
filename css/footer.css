@@ -4,6 +4,7 @@ footer {
     color: #000000; /* Black text for light mode */
     padding: 20px; /* Padding around the footer */
     text-align: center; /* Center the content */
+    font-size: 0.8em; /* Set footer font size to 0.8em */
 }
 
 /* Links in the Footer */
