@@ -1,41 +1,52 @@
-/* Header styling */
 .header {
-    background-color: #FBC31A; /* Yellow background */
-    padding: 5px 0; /* Reduced padding */
+    background-color: #FBC31A;
+    padding: 10px 0;
     text-align: center;
-    margin: 0 auto 20px auto; /* Center the header with auto margin */
-    max-width: 800px; /* Limit the header width */
-    width: 90%; /* Keep the header responsive */
-    height: auto; /* Set to auto to accommodate the logo height */
+    margin-bottom: 20px;
 }
 
-/* Logo container (logo-row) */
 .logo-row {
     display: flex;
     justify-content: center; /* Center the logo */
-    width: 100%; /* Full width of the container */
-    margin-bottom: 5px; /* Space below the logo */
+    width: 100%; /* Full width */
+    margin-bottom: 10px; /* Space between logo and menu */
 }
 
-.logo-row img {
-    max-width: 90%; /* Logo occupies a maximum of 90% of the page width */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 60px; /* Optional: Limit the height of the logo */
-    object-fit: contain; /* Ensure the logo fits without distortion */
+.menu-button {
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    z-index: 201;
+    margin: 10px 0;
 }
 
-/* Dark Mode Styles */
-@media (prefers-color-scheme: dark) {
-    .header {
-        background-color: #000000; /* Black background for dark mode */
-        color: #ffffff; /* White text in dark mode */
-    }
+.menu-items {
+    display: none; /* Initially hidden */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 200;
+}
 
-    .logo-row img.light-mode-logo {
-        display: none; /* Hide light mode logo in dark mode */
-    }
+.menu-items li {
+    margin: 10px 0;
+}
 
-    .logo-row img.dark-mode-logo {
-        display: block; /* Show dark mode logo */
-    }
+.menu-items li a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu-items li a:hover {
+    text-decoration: underline;
 }
