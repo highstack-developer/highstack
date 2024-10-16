@@ -1,21 +1,38 @@
-/* Header styling */
+/* Default (Light Mode) Styles */
 .header {
-    background-color: #FBC31A; /* Yellow background */
-    padding: 10px 0; /* Top and bottom padding */
+    background-color: #FBC31A; /* Yellow background for light mode */
+    padding: 10px 0;
     text-align: center;
-    margin-bottom: 20px; /* Space below the header */
+    margin-bottom: 20px;
 }
 
-/* Logo container (logo-row) */
 .logo-row {
     display: flex;
     justify-content: center; /* Center the logo */
-    width: 100%; /* Full width of the container */
-    margin-bottom: 10px; /* Space between the logo and menu */
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-/* Logo image styling */
-.logo-row img {
-    max-width: 150px; /* Adjust size of logo */
-    height: auto; /* Maintain aspect ratio */
+.logo-row img.light-mode-logo {
+    display: block; /* Show light mode logo by default */
+}
+
+.logo-row img.dark-mode-logo {
+    display: none; /* Hide dark mode logo by default */
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+    .header {
+        background-color: #000000; /* Black background for dark mode */
+        color: #ffffff; /* White text in dark mode */
+    }
+
+    .logo-row img.light-mode-logo {
+        display: none; /* Hide light mode logo in dark mode */
+    }
+
+    .logo-row img.dark-mode-logo {
+        display: block; /* Show dark mode logo */
+    }
 }
