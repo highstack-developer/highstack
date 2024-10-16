@@ -1,35 +1,16 @@
-/* Default (Light Mode) Styles */
-footer {
-    background-color: #FBC31A; /* Yellow background for light mode */
-    color: #000000; /* Black text for light mode */
-    padding: 20px; /* Padding around the footer */
-    text-align: center; /* Center the content */
-    font-size: 0.8em; /* Set footer font size to 0.8em */
+.footer {
+    margin-top: auto;
+    padding: 10px;
+    background-color: #FBC31A;
+    font-size: 0.8em;
+    text-align: center;
 }
 
-/* Links in the Footer */
-footer a {
-    color: #000000; /* Black links in light mode */
+a {
+    color: #000000;
     text-decoration: none;
-    padding: 0 10px; /* Space between links */
 }
 
-footer a:hover {
-    text-decoration: underline; /* Underline on hover */
-}
-
-/* Dark Mode Styles */
-@media (prefers-color-scheme: dark) {
-    footer {
-        background-color: #000000; /* Black background for dark mode */
-        color: #FBC31A; /* Yellow text for dark mode */
-    }
-
-    footer a {
-        color: #FBC31A; /* Yellow links in dark mode */
-    }
-
-    footer a:hover {
-        text-decoration: underline; /* Underline on hover */
-    }
+a:hover {
+    text-decoration: underline;
 }
