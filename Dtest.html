@@ -8,8 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #FBC31A;; 
-            color: #000000;
             font-family: "Spline Sans", sans-serif;
             display: flex;
             flex-direction: column;
@@ -17,8 +15,66 @@
             padding: 0;
         }
 
-        .header {
+        /* Light Mode Styles */
+        body {
             background-color: #FBC31A;
+            color: #000000;
+        }
+
+        .header, .footer {
+            background-color: #FBC31A;
+        }
+
+        .content-container {
+            background-color: #ffffff;
+            border: 1px solid #FBC31A;
+        }
+
+        a {
+            color: #000000;
+        }
+
+        .menu-button {
+            color: #000;
+        }
+
+        /* Dark Mode Styles */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #000000;
+                color: #FBC31A;
+            }
+
+            .header, .footer {
+                background-color: #000000;
+                color: #FBC31A;
+            }
+
+            .content-container {
+                background-color: #1a1a1a;
+                border: 1px solid #FBC31A;
+                color: #FBC31A;
+            }
+
+            a {
+                color: #FBC31A;
+            }
+
+            .menu-button {
+                color: #FBC31A;
+            }
+
+            .menu-items {
+                background-color: rgba(255, 255, 0, 0.8);
+                color: black;
+            }
+
+            .menu-items li a {
+                color: black;
+            }
+        }
+
+        .header {
             padding: 10px 0;
             text-align: center;
             margin-bottom: 20px;
@@ -26,9 +82,9 @@
 
         .logo-row {
             display: flex;
-            justify-content: center; /* Center the logo */
-            width: 100%; /* Full width */
-            margin-bottom: 10px; /* Space between logo and menu */
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 10px;
         }
 
         .menu-button {
@@ -36,13 +92,12 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: #000;
             z-index: 201;
             margin: 10px 0;
         }
 
         .menu-items {
-            display: none; /* Initially hidden */
+            display: none;
             list-style-type: none;
             margin: 0;
             padding: 0;
@@ -50,8 +105,6 @@
             top: 40px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
             border-radius: 8px;
             padding: 10px;
             z-index: 200;
@@ -63,7 +116,6 @@
 
         .menu-items li a {
             text-decoration: none;
-            color: white;
         }
 
         .menu-items li a:hover {
@@ -71,34 +123,21 @@
         }
 
         .content-container {
-    background-color: #ffffff; /* White background for the box */
-    padding: 20px;
-    width: 80%;
-    max-width: 800px;
-    margin: 20px auto; /* Add margin here to create space above and below the box */
-    text-align: left;
-    line-height: 1.6; /* Adjust this value to increase line spacing */        
-    border: 1px solid #FBC31A; /* Yellow border */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-}
-
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: left;
+            line-height: 1.6;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
         .footer {
             margin-top: auto;
             padding: 10px;
-            background-color: #FBC31A;
             font-size: 0.8em;
             text-align: center;
-        }
-
-        a {
-            color: #000000;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
         }
 
         /* Smaller Headers for sections */
