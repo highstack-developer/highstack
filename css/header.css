@@ -3,7 +3,9 @@
     background-color: #FBC31A; /* Yellow background for light mode */
     padding: 10px 0;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto; /* Center the header with auto margin */
+    max-width: 1200px; /* Contain the header width */
+    width: 90%;
 }
 
 .logo-row {
