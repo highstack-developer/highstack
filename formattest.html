@@ -10,6 +10,51 @@
     <!-- You can add your navigation menu or other elements here -->
 </header>
 
-<footer>
-   <p>&copy; 2024 Your Website Name. All Rights Reserved.</p>
-<footer>
+<body>
+
+    <!-- Header with logo and navigation menu -->
+    <div class="header">
+        <!-- Logo Row -->
+        <div class="logo-row">
+            <div class="logo">
+                <img src="Highstack Logo Light.png" alt="Highstack Logo Light" width="150">
+            </div>
+        </div>
+
+        <!-- Hamburger Menu Button -->
+        <div style="position: relative;">
+            <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+            <!-- Menu Items -->
+            <ul class="menu-items">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About Us</a></li>
+                <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="/terms-and-conditions.html">Terms and Conditions</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Sample Content -->
+    <div class="content-container">
+              
+        <p>Welcome to Highstack!</p>
+       
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>
+            Copyright © 2024 Highstack Inc. All Rights Reserved.
+            <br>
+            <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-and-conditions.html">Terms and Conditions</a>
+        </p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu-items');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
