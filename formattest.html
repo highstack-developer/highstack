@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Highstack</title>
     <link rel="icon" href="Highstack%20Needle.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -20,7 +19,7 @@
         </div>
 
         <div style="position: relative;">
-            <button class="menu-button" onclick="toggleMenu()">☰</button>
+            <button class="menu-button" aria-label="Menu" aria-expanded="false" onclick="toggleMenu()">☰</button>
             <ul class="menu-items">
                 <li><a href="/">Home</a></li>
                 <li><a href="/about.html">About Us</a></li>
@@ -52,7 +51,11 @@
     <script>
         function toggleMenu() {
             const menu = document.querySelector('.menu-items');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
         }
     </script>
 </body>
