@@ -95,21 +95,6 @@
             }
         }
 
-        /* Light Mode Menu Styles */
-        .menu-items {
-            background-color: #ffffff;
-            border: 1px solid #000000;
-            color: #000000;
-        }
-
-        .menu-items li a {
-            color: #000000;
-        }
-
-        .menu-items li a:hover {
-            text-decoration: underline;
-        }
-
         .header {
             padding: 10px 0;
             text-align: center;
@@ -130,6 +115,32 @@
             cursor: pointer;
             z-index: 201;
             margin: 10px 0;
+        }
+
+        .menu-items {
+            display: none;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 200;
+        }
+
+        .menu-items li {
+            margin: 10px 0;
+        }
+
+        .menu-items li a {
+            text-decoration: none;
+        }
+
+        .menu-items li a:hover {
+            text-decoration: underline;
         }
 
         .content-container {
