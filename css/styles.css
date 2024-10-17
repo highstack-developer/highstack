@@ -1,24 +1,26 @@
 body {
-    background-color: #FBC31A; /* Fixed extra semicolon */
+    background-color: #FBC31A; /* Yellow background */
     color: #000000;
     font-family: "Spline Sans", sans-serif;
     display: flex;
     flex-direction: column;
     margin: 0;
     padding: 0;
+    height: 100%; /* Ensure body covers full height */
 }
 
 .header {
-    background-color: #FBC31A;
+    background-color: #FBC31A; /* Keep header background yellow */
     padding: 10px 0;
     text-align: center;
     margin-bottom: 20px;
-    position: relative; /* Added to manage .menu-items positioning */
+    position: relative; /* Manage menu positioning */
 }
 
 .logo-row {
     display: flex;
     justify-content: center; /* Center the logo */
+    align-items: center; /* Center logo vertically */
     width: 100%; /* Full width */
     margin-bottom: 10px; /* Space between logo and menu */
 }
@@ -29,7 +31,7 @@ body {
     border: none;
     cursor: pointer;
     color: #000;
-    z-index: 100; /* Lowered from 201 */
+    z-index: 999; /* Ensure button is on top */
     margin: 10px 0;
 }
 
@@ -39,14 +41,14 @@ body {
     margin: 0;
     padding: 0;
     position: absolute;
-    top: 40px;
+    top: 60px; /* Adjusted position */
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     border-radius: 8px;
     padding: 10px;
-    z-index: 200;
+    z-index: 998; /* Below button */
 }
 
 .menu-items li {
@@ -63,14 +65,14 @@ body {
 }
 
 .content-container {
-    background-color: #FBC31A; /* White background for the box */
+    background-color: #fff; /* White background for contrast */
     padding: 20px;
     width: 80%;
     max-width: 800px;
-    margin: 20px auto; /* Add margin here to create space above and below the box */
+    margin: 20px auto; /* Centered container */
     text-align: left;
-    line-height: 1.6; /* Adjust this value to increase line spacing */        
-    border: 1px solid #FBC31A; /* Yellow border */
+    line-height: 1.6; /* Line spacing */
+    border: 1px solid #000; /* Black border for definition */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
 }
@@ -78,13 +80,13 @@ body {
 .footer {
     margin-top: auto;
     padding: 10px;
-    background-color: #FBC31A;
+    background-color: #FBC31A; /* Footer background yellow */
     font-size: 0.8em;
     text-align: center;
 }
 
 a {
-    color: #000000;
+    color: #000000; /* Link color */
     text-decoration: none;
 }
 
