@@ -46,8 +46,22 @@
             display: none;
         }
 
-        /* Dark Mode Styles */
-        #ffffff
+        $1
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #E0E0E0;
+            }
+
+            .header, .footer {
+                background-color: #1E1E1E;
+                color: #FBC31A;
+            }
+
+            .content-container {
+                background-color: #1E1E1E;
+                border: 1px solid #FBC31A;
+                color: #E0E0E0;
             }
 
             a {
@@ -59,90 +73,25 @@
             }
 
             .menu-items {
-                background-color: rgba(255, 255, 0, 0.8);
-                color: black;
+                background-color: #333333;
+                color: #FBC31A;
             }
 
             .menu-items li a {
-                color: black;
+                color: #FBC31A;
             }
 
             .logo-light {
-            display: block;
-        }
+                display: none;
+            }
 
             .logo-dark {
-            display: none;
+                display: block;
+            }
         }
         }
 
-        .header {
-            padding: 10px 0;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .logo-row {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .menu-button {
-            font-size: 30px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 201;
-            margin: 10px 0;
-        }
-
-        .menu-items {
-            display: none;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 8px;
-            padding: 10px;
-            z-index: 200;
-        }
-
-        .menu-items li {
-            margin: 10px 0;
-        }
-
-        .menu-items li a {
-            text-decoration: none;
-        }
-
-        .menu-items li a:hover {
-            text-decoration: underline;
-        }
-
-        .content-container {
-            padding: 20px;
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
-            text-align: left;
-            line-height: 1.6;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .footer {
-            margin-top: auto;
-            padding: 10px;
-            font-size: 0.8em;
-            text-align: center;
-        }
-
-        /* Smaller Headers for sections */
+        $2
         h1 {
             font-size: 1.5em;
         }
