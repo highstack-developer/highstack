@@ -107,6 +107,8 @@
             margin-bottom: 10px;
         }
 
+/* Menu Size Settings */
+
         .menu-button {
             font-size: 30px;
             background: none;
@@ -142,6 +144,8 @@
             text-decoration: underline;
         }
 
+/* Content Box Style Settings */
+
         .content-container {
             padding: 20px;
             width: 80%;
@@ -152,6 +156,8 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
+
+/* Footer Style Settings */
 
         .footer {
     margin-top: auto;
@@ -168,6 +174,7 @@
     text-decoration: underline;
 }
 
+ /* Form Style Settings */
   form {
             background-color: rgba(255, 255, 255, 0.2);
             padding: 20px;
