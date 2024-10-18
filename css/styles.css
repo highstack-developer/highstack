@@ -40,6 +40,11 @@
         .menu-button {
             color: #000;
         }
+        .menu-items {
+        background-color: #1a1a1a; /* Set a white background for the menu in light mode */
+        border: 1px solid #FBC31A; /* Border color */
+        color: #ffffff; /* Text color */
+        }
 
         .logo-light {
             display: block;
