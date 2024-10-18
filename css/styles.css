@@ -36,6 +36,24 @@
         .menu-button {
             color: #000;
         }
+      .menu-items {
+                background-color: #1a1a1a;
+                border: 1px solid #FBC31A;
+                color: #FBC31A;
+                   .menu-items li {
+            margin: 10px 0;
+        }
+
+        .menu-items li a {
+            text-decoration: none;
+            color: white;
+            font-weight: light;
+        }
+
+        .menu-items li a:hover {
+            text-decoration: underline;
+        }
+
 
         .logo-light {
             display: block;
