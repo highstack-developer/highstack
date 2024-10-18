@@ -1,128 +1,167 @@
-body {
-    background-color: #FBC31A; /* Yellow background */
-    color: #000000;
-    font-family: "Spline Sans", sans-serif;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    height: 100%; /* Ensure body covers full height */
-}
+<style>
+        body {
+            font-family: "Spline Sans", sans-serif;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
 
-    .content-container {
-        background-color: #333;
-        color: #FBC31A;
-    }
+        /* Default (Light Mode) Styles */
+        body {
+            background-color: #FBC31A;
+            color: #000000;
+        }
 
-    a {
-        color: #FBC31A;
-    }
-}
-.header {
-    background-color: #FBC31A; /* Keep header background yellow */
-    padding: 10px 0;
-    text-align: center;
-    margin-bottom: 20px;
-    position: relative; /* Manage menu positioning */
-}
+        .header, .footer {
+            background-color: #FBC31A;
+        }
 
-.logo-row {
-    display: flex;
-    justify-content: center; /* Center the logo */
-    align-items: center; /* Center logo vertically */
-    width: 100%; /* Full width */
-    margin-bottom: 10px; /* Space between logo and menu */
-}
+        .content-container {
+            background-color: #ffffff;
+            border: 1px solid #FBC31A;
+        }
 
-.menu-button {
-    font-size: 30px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #000;
-    z-index: 999; /* Ensure button is on top */
-    margin: 10px 0;
-}
+        a {
+            color: #000000;
+        }
 
-.menu-items {
-    display: none; /* Initially hidden */
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 60px; /* Adjusted position */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border-radius: 8px;
-    padding: 10px;
-    z-index: 998; /* Below button */
-}
+        .menu-button {
+            color: #000;
+        }
 
-.menu-items li {
-    margin: 10px 0;
-}
+        .logo-light {
+            display: block;
+        }
 
-.menu-items li a {
-    text-decoration: none;
-    color: white;
-}
+        .logo-dark {
+            display: none;
+        }
 
-.menu-items li a:hover {
-    text-decoration: underline;
-}
+        /* Dark Mode Styles */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #000000;
+                color: #FBC31A;
+            }
 
-.content-container {
-    background-color: #fff; /* White background for contrast */
-    padding: 20px;
-    width: 80%;
-    max-width: 800px;
-    margin: 20px auto; /* Centered container */
-    text-align: left;
-    line-height: 1.6; /* Line spacing */
-    border: 1px solid #000; /* Black border for definition */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-}
+            .header, .footer {
+                background-color: #000000;
+                color: #FBC31A;
+            }
 
-.footer {
-    margin-top: auto;
-    padding: 10px;
-    background-color: #FBC31A; /* Footer background yellow */
-    font-size: 0.8em;
-    text-align: center;
-}
+            .content-container {
+                background-color: #1a1a1a;
+                border: 1px solid #FBC31A;
+                color: #ffffff;
+            }
 
-a {
-    color: #000000; /* Link color */
-    text-decoration: none;
-}
+            a {
+                color: #FBC31A;
+            }
 
-a:hover {
-    text-decoration: underline;
-}
+            .menu-button {
+                color: #FBC31A;
+            }
 
-/* Smaller Headers for sections */
-h1 {
-    font-size: 1.5em;
-}
+            .menu-items {
+                background-color: #1a1a1a;
+                border: 1px solid #FBC31A;
+                color: #FBC31A;
+            }
 
-h2 {
-    font-size: 1.0em; /* Slightly increased for readability */
-}
+            .menu-items li a {
+                color: #FBC31A;
+            }
 
-h3 {
-    font-size: 0.8em; /* Slightly increased for readability */
-}
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #000000; /* Dark background */
-        color: #ffffff; /* white text */
-    }
+            .menu-items li a:hover {
+                text-decoration: underline;
+            }
 
-    .header {
-        background-color: #000000;
-        color: #FBC31A;
-    }
+            .logo-light {
+                display: none;
+            }
+
+            .logo-dark {
+                display: block;
+            }
+        }
+
+        .header {
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .menu-button {
+            font-size: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 201;
+            margin: 10px 0;
+        }
+
+        .menu-items {
+            display: none;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 200;
+        }
+
+        .menu-items li {
+            margin: 10px 0;
+        }
+
+        .menu-items li a {
+            text-decoration: none;
+        }
+
+        .menu-items li a:hover {
+            text-decoration: underline;
+        }
+
+        .content-container {
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: left;
+            line-height: 1.6;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            margin-top: auto;
+            padding: 10px;
+            font-size: 0.8em;
+            text-align: center;
+        }
+
+        /* Smaller Headers for sections */
+        h1 {
+            font-size: 1.5em;
+        }
+
+        h2 {
+            font-size: 1.0em;
+        }
+        
+        h3 {
+            font-size: 0.8em;
+        }
