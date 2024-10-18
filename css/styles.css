@@ -24,6 +24,10 @@ body {
     width: 100%; /* Full width */
     margin-bottom: 10px; /* Space between logo and menu */
 }
+.logo-row img {
+    width: 150%; /* Increase the size by 50% */
+    height: auto; /* Maintain aspect ratio */
+}
 
 .menu-button {
     font-size: 30px;
