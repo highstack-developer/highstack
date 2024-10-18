@@ -40,7 +40,8 @@
                 background-color: #1a1a1a;
                 border: 1px solid #FBC31A;
                 color: #FBC31A;
-                   .menu-items li {
+      }
+        .menu-items li {
             margin: 10px 0;
         }
 
