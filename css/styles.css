@@ -152,16 +152,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-.content-box {
-    border: 2px solid #FBC31A; /* Yellow border */
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 15px;
-    max-width: 800px;
-    background-color: #000000; /* Black background */
-    color: #FFFFFF; /* White text */
-}
-
 
         .footer {
     margin-top: auto;
