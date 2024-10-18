@@ -28,6 +28,10 @@
             background-color: #ffffff;
             border: 1px solid #FBC31A;
         }
+      .container-secondary {
+            background-color: #FBC31A;
+            border: 1px solid #FBC31A;
+        }
 
         a {
             color: #000000;
@@ -63,6 +67,11 @@
                 color: #ffffff;
             }
 
+            .container-secondary {
+            background-color: #000000;
+            border: 1px solid #000000;
+        }
+                
             a {
                 color: #FBC31A;
             }
