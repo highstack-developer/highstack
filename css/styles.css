@@ -6,6 +6,14 @@
             padding: 0;
         }
 
+        body a {
+        text-decoration: none;
+        }
+
+        body a:hover {
+        text-decoration: underline;
+        }
+
         /* Default (Light Mode) Styles */
         body {
             background-color: #FBC31A;
