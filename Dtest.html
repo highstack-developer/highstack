@@ -4,166 +4,76 @@
     <link rel="stylesheet" href="css/styles.css"> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms and Conditions</title>
-    <link rel="icon" href="assets/Highstack%20Needle%20Light.png" type="image/png">
+    <title>Highstack</title>
+    <link rel="icon" href="Highstack%20Needle.png" type="image/png">
+    <link rel="apple-touch-icon" href="Highstack%20Needle.png" sizes="180x180"> <!-- or use a larger custom size -->
     <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300&display=swap" rel="stylesheet">
-    <style>
-        .logo-row a {
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-        .logo-row a:hover {
-            transform: scale(1.1);
-        }
-        @media (max-width: 768px) {
-            .logo-row a {
-                transition: transform 0.2s ease;
-            }
-            .logo-row a:active {
-                transform: scale(1.05);
-            }
-        }
-        .social-icons {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .social-icons a {
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 24px;
-            color: black; /* Default color for light mode */
-            transition: transform 0.3s ease;
-        }
-        .social-icons a:hover {
-            transform: scale(1.15);
-        }
-        .social-icons a svg {
-            width: 32px;
-            height: 32px;
-            transition: fill 0.3s ease, transform 0.3s ease;
-        }
-        .social-icons a:hover svg {
-            transform: scale(1.15);
-        }
-        body[data-theme='dark'] .social-icons a {
-            color: #FBC31A; /* Yellow for dark mode */
-        }
-        body[data-theme='dark'] .social-icons a svg {
-            fill: #FBC31A; /* Yellow for dark mode */
-        }
-        body[data-theme='dark'] .social-icons a {
-            color: inherit;
-        }
-    </style>
+<meta property="og:title" content="Highstack">
+    <meta property="og:description" content="Welcome to Highstack, where we bring technology to accelerate your goals.">
+    <meta property="og:image" content="Highstack%20Needle.png"> <!-- Ensure the path is correct -->
+    <meta property="og:image:width" content="1600"> <!-- Recommended width for iMessage -->
+    <meta property="og:image:height" content="840"> <!-- Recommended height for iMessage -->
+    <meta property="og:url" content="https://www.highstack.ca">
+    <meta property="og:type" content="Highstack">
 </head>
 <body>
 
-    <!-- Header with logo -->
-     <div class="header">
+  <!-- Header with logo and navigation menu -->
+    <div class="header">
         <!-- Logo Row -->
         <div class="logo-row">
-            <a href="https://www.highstack.ca/">
-                <img src="assets/Highstack Logo Light.png" alt="Highstack Logo Light" width="250" class="logo-light">
-                <img src="assets/Highstack Logo Dark.png" alt="Highstack Logo Dark" width="250" class="logo-dark">
-            </a>
+            <img src="assets/Highstack Logo Light.png" alt="Highstack Logo Light" width="250" class="logo-light">
+            <img src="assets/Highstack Logo Dark.png" alt="Highstack Logo Dark" width="250" class="logo-dark">
+        </div>
+
+        <!-- Hamburger Menu Button -->
+        <div style="position: relative;">
+            <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+            <!-- Menu Items -->
+            <ul class="menu-items">
+                <li><a href="/">Home</a></li>
+                <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="/terms-of-use.html">Terms of Use</a></li>
+            </ul>
         </div>
     </div>
- <!-- Terms and Conditions Title and Date -->
-    <h1 style="text-align: center;">Terms and Conditions</h1>
-    <h3 style="text-align: center;">Date Last Updated: October 15, 2024</h3>
-    
-    <!-- Terms and Conditions Content -->
-    <div class="content-container">
-    <p>These Terms and Conditions govern your use of the Highstack Inc. website and services. By accessing or using our website, you agree to comply with and be bound by these terms, which are compliant with Canadian regulations regarding online service provision.</p>
-    
-    <h2>1. Acceptance of Terms</h2>
-    <p>By using this website, you agree to be bound by these Terms and Conditions, as well as any additional terms, conditions, or disclaimers found on our website. If you do not agree with these terms, please discontinue your use of our services.</p>
-    
-    <h2>2. Services Provided</h2>
-    <p>Highstack provides web-based services. We reserve the right to modify, update, or discontinue any services at any time without prior notice.</p>
-    
-    <h2>3. User Responsibilities</h2>
-    <ul>
-        <li>You agree to use our services in compliance with all applicable laws, including but not limited to Canadian privacy laws and intellectual property regulations.</li>
-        <li>You are responsible for providing accurate and truthful information when interacting with our website and services.</li>
-        <li>You agree not to upload, post, or transmit any content that is unlawful, harmful, or violates any third-party rights.</li>
-    </ul>
-    
-    <h2>4. User Content</h2>
-    <p>Any content you upload or share through our services remains your property. However, by submitting content, you grant Highstack Inc. a non-exclusive, royalty-free, worldwide license to use, reproduce, modify, adapt, publish, translate, and display such content solely for the purpose of providing and improving our services.</p>
-    
-    <h2>5. Intellectual Property</h2>
-    <p>All content on the Highstack Inc. website, including text, graphics, logos, and software, is the property of Highstack Inc. or its licensors and is protected by Canadian copyright and intellectual property laws. Unauthorized use of any material found on this website may violate copyright, trademark, or other laws.</p>
-    
-    <h2>6. Privacy Policy</h2>
-    <p>Please refer to our Privacy Policy for information on how we collect, use, and disclose personal information in accordance with the Personal Information Protection and Electronic Documents Act (PIPEDA).</p>
-    
-    <h2>7. Disclaimers</h2>
-    <ul>
-        <li>The information provided on our website is for general informational purposes only and may not be accurate, complete, or current.</li>
-        <li>Our website may contain links to third-party websites that are not controlled or operated by Highstack Inc. We are not responsible for the content or practices of these websites.</li>
-    </ul>
-    
-    <h2>8. Limitation of Liability</h2>
-    <p>Highstack Inc. will not be liable for any direct, indirect, incidental, special, or consequential damages that result from the use or inability to use our website or services, including but not limited to reliance on information obtained from our website.</p>
-    
-    <h2>9. Indemnification</h2>
-    <p>You agree to indemnify and hold Highstack Inc., its affiliates, officers, agents, and employees harmless from any claims, damages, obligations, losses, liabilities, costs, or debt, and expenses arising from:</p>
-    <ul>
-        <li>Your use of and access to the website and services.</li>
-        <li>Your violation of any term of these Terms and Conditions.</li>
-        <li>Your violation of any third-party rights, including without limitation any copyright, property, or privacy right.</li>
-    </ul>
-    
-    <h2>10. Modification Notifications</h2>
-    <p>We reserve the right to update or modify these Terms and Conditions at any time. Changes will be effective immediately upon posting the updated terms on our website. If we make significant changes, we will notify you by posting the revised terms on our website and updating the "Last Updated" date at the top of this page. Your continued use of the website or services after such changes constitutes your acceptance of the new Terms and Conditions.</p>
-    
-    <h2>11. Governing Language</h2>
-    <p>In the event of any inconsistency between the English version of these Terms and Conditions and any translation into another language, the English version shall prevail.</p>
-    
-    <h2>12. Force Majeure</h2>
-    <p>Highstack Inc. shall not be liable for any failure to perform its obligations under these Terms and Conditions if such failure results from circumstances beyond our reasonable control, including but not limited to acts of God, war, natural disasters, or any other force majeure event.</p>
-    
-    <h2>13. Severability</h2>
-    <p>If any provision of these Terms and Conditions is found to be unenforceable or invalid by a court of competent jurisdiction, that provision shall be limited or eliminated to the minimum extent necessary so that the remaining provisions remain in full force and effect.</p>
-    
-    <h2>14. Termination</h2>
-    <p>We reserve the right to terminate or suspend your access to our website and services immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms and Conditions.</p>
-    
-    <h2>15. Governing Law</h2>
-    <p>These Terms and Conditions are governed by and construed in accordance with the laws of the Province of Ontario, Canada, without regard to its conflict of law provisions. Any disputes arising from your use of the website will be subject to the exclusive jurisdiction of the courts in Ontario.</p>
-    
-    <h2>16. Contact Information</h2>
-    <p>If you have any questions or concerns about these Terms and Conditions, please contact us at:</p>
-    <p>Email: <a href="mailto:info@highstack.ca">info@highstack.ca</a></p>
-</div>
 
-    <!-- Social Icons -->
-    <div class="social-icons">
-        <h1 style="text-align: center;">Contact Us</h1>
-        <a href="mailto:info@highstack.ca" aria-label="Email">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 13.065L0 4h24L12 13.065zM0 6v12h24V6l-12 9L0 6z"/>
-            </svg>
-        </a>
-        <a href="https://www.linkedin.com/company/highstack" aria-label="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 3H3.553C2.698 3 2 3.699 2 4.553v14.894C2 20.301 2.698 21 3.553 21h16.894C21.301 21 22 20.301 22 19.447V4.553C22 3.699 21.301 3 20.447 3zM8.062 18H5V9h3.062v9zM6.531 7.75A1.72 1.72 0 1 1 6.53 4.31a1.72 1.72 0 1 1 0 3.44zM19 18h-3.062v-4.562c0-1.093-.021-2.5-1.531-2.5-1.531 0-1.766 1.196-1.766 2.437V18H10V9h2.937v1.125h.039c.407-.77 1.399-1.562 2.876-1.562 3.072 0 3.624 2.021 3.624 4.655V18z"/>
-            </svg>
-        </a>
-        <a href="https://www.facebook.com/highstack" aria-label="Facebook">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M22.675 0h-21.35C.595 0 0 .585 0 1.3v21.398c0 .715.595 1.3 1.325 1.3h11.483v-9.292H9.673v-3.62h3.135V8.408c0-3.1 1.894-4.798 4.661-4.798 1.325 0 2.463.098 2.795.142v3.24l-1.918.001c-1.504 0-1.795.716-1.795 1.763v2.31h3.59l-.467 3.62h-3.123V24h6.117c.73 0 1.325-.585 1.325-1.3V1.3C24 .585 23.405 0 22.675 0z"/>
-            </svg>
-        </a>
+    <h1 style="text-align: center;">About Us</h1>
+
+    <div class="content-container">
+             <h2 style="text-align: center;">Mission</h2>
+            <p style="text-align: center;">At Highstack, our mission is to relentlessly innovate to empower our clients with transformative technology solutions. By placing our clients at the center of everything we do, we aim to accelerate their success and redefine what’s possible.</p>
+    </div>
+         
+   <div class="content-container">
+             <h2 style="text-align: center;">Values</h2>
+            <p style="text-align: center;">Our core values are rooted in customer obsession, innovation, and excellence. We believe in challenging the status quo, simplifying complexity, and collaborating deeply with our clients to deliver unparalleled solutions that drive meaningful impact.</p>
+    </div>
+        
+   <div class="content-container">
+             <h2 style="text-align: center;">History</h2>
+            <p style="text-align: center;">Established in 2009, Highstack has always been driven by a passion for innovation and an unwavering commitment to our clients’ success. From our beginnings as a pioneering consulting firm, we’ve consistently delivered forward-thinking solutions that enable our clients to lead and shape their industries.</p>
     </div>
 
+    </div>
+
+  <div class="container-secondary">
+   <h2 style="text-align: center;">Contact Us</h2>
+    <form action="mailto:info@highstack.ca" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Name" maxlength="50" required>
+        <input type="email" name="email" placeholder="Email" maxlength="50" required>
+        <textarea id="message" name="message" placeholder="How can we help?" maxlength="1000" required></textarea>
+        <input type="submit" value="Send">
+    </form>
+  
+</div>
     <!-- Footer -->
     <div class="footer">
         <p>
             Copyright © 2024 Highstack Inc. All Rights Reserved.
             <br>
-            <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-and-conditions.html">Terms and Conditions</a>
+            <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-of-use.html">Terms of Use</a>
         </p>
     </div>
 
