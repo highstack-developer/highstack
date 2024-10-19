@@ -23,11 +23,24 @@
                 transform: scale(1.05);
             }
         }
+        .social-icons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 24px;
+            color: black;
+        }
+        body[data-theme='dark'] .social-icons a {
+            color: #FBC31A;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header with logo and navigation menu -->
+    <!-- Header with logo -->
      <div class="header">
         <!-- Logo Row -->
         <div class="logo-row">
@@ -35,18 +48,6 @@
                 <img src="assets/Highstack Logo Light.png" alt="Highstack Logo Light" width="250" class="logo-light">
                 <img src="assets/Highstack Logo Dark.png" alt="Highstack Logo Dark" width="250" class="logo-dark">
             </a>
-        </div>
-   
-        <!-- Hamburger Menu Button -->
-        <div style="position: relative;">
-            <button class="menu-button" onclick="toggleMenu()">☰</button>
-
-            <!-- Menu Items -->
-            <ul class="menu-items">
-                <li><a href="/">Home</a></li>
-                <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="/terms-and-conditions.html">Terms and Conditions</a></li>
-            </ul>
         </div>
     </div>
  <!-- Terms and Conditions Title and Date -->
@@ -126,6 +127,14 @@
             <br>
             <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-and-conditions.html">Terms and Conditions</a>
         </p>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+        <p>Contact Us:</p>
+        <a href="mailto:info@highstack.ca" aria-label="Email"><span>&#9993;</span> Mail</a>
+        <a href="https://www.linkedin.com/company/highstack" aria-label="LinkedIn"><span>&#x1F465;</span> LinkedIn</a>
+        <a href="https://www.facebook.com/highstack" aria-label="Facebook"><span>&#x1F4F1;</span> Facebook</a>
     </div>
 
     <script>
