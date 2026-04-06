@@ -2,65 +2,254 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Find a Registered Massage Therapist Near You</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    /* ——— GLOBAL STYLES ——— */
-    :root {
-      --primary: #3b82f6;
-      --primary-dark: #1d4ed8;
-      --accent: #22c55e;
-      --bg: #f5f7fb;
-      --text: #111827;
-      --muted: #6b7280;
-      --white: #ffffff;
-      --border: #e5e7eb;
-      --radius-lg: 18px;
-      --radius-md: 10px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
-      --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.08);
-    }
+  <title>Highstack Care – Landing Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/stagingstyles.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">Highstack Care</div>
+      <nav class="nav-links">
+        <a href="#weight-loss">Weight Loss</a>
+        <a href="#mens-health">Men’s Health</a>
+        <a href="#womens-health">Women’s Health</a>
+        <a href="#meals">Meals</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#quiz" class="btn btn-outline">Get Started</a>
+    </div>
+  </header>
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.5;
-    }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow">Join 500,000+ patients</p>
+        <h1>Personalized telehealth care for real life.</h1>
+        <p class="hero-subtitle">
+          Online medical care—simple, direct, and led by licensed providers. No waiting rooms. No extra steps. Just care that works.
+        </p>
+        <div class="hero-actions">
+          <a href="#quiz" class="btn btn-primary">Take the quiz</a>
+          <a href="#learn-more" class="btn btn-ghost">Learn more</a>
+        </div>
+        <div class="hero-badges">
+          <span>Licensed providers</span>
+          <span>100% online</span>
+          <span>Clear pricing</span>
+          <span>Shipped to your door</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <h3>Care that fits your life</h3>
+          <p>
+            Track progress, message your provider, and manage your plan in one secure patient portal.
+          </p>
+          <ul>
+            <li>Doctor-guided treatment</li>
+            <li>Ongoing medical support</li>
+            <li>Fast, discreet delivery</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
+  <!-- Programs overview -->
+  <section class="programs" id="learn-more">
+    <div class="container">
+      <h2>Care built around your goals</h2>
+      <p class="section-subtitle">
+        Evidence-based treatment plans designed to support your health through every stage of life.
+      </p>
+      <div class="program-grid">
+        <article class="program-card" id="weight-loss">
+          <h3>Weight loss & longevity</h3>
+          <p>
+            Doctor-guided GLP‑1 and other options, tailored to your budget and medical history.
+          </p>
+          <a href="#quiz" class="card-link">Explore weight care →</a>
+        </article>
+        <article class="program-card" id="mens-health">
+          <h3>Men’s health</h3>
+          <p>
+            Hormones, energy, and performance support with plans that adjust as your body responds.
+          </p>
+          <a href="#quiz" class="card-link">Explore men’s health →</a>
+        </article>
+        <article class="program-card" id="womens-health">
+          <h3>Women’s health</h3>
+          <p>
+            Care for hormones, weight, and more—designed to evolve with your needs over time.
+          </p>
+          <a href="#quiz" class="card-link">Explore women’s health →</a>
+        </article>
+        <article class="program-card" id="meals">
+          <h3>Medically aligned meals</h3>
+          <p>
+            Chef-prepared meals designed to support fat loss while helping preserve lean muscle.
+          </p>
+          <a href="#quiz" class="card-link">Explore meals →</a>
+        </article>
+        <article class="program-card">
+          <h3>Peptide therapy</h3>
+          <p>
+            Targeted support for recovery, strength, sleep, and long-term performance.
+          </p>
+          <span class="tag">Coming soon</span>
+        </article>
+        <article class="program-card">
+          <h3>Hair & skin</h3>
+          <p>
+            Advanced hair regrowth and skincare that treat root causes—not just cover them up.
+          </p>
+          <span class="tag">Coming soon</span>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    /* ——— NAVBAR ——— */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(18px);
-      background: rgba(245, 247, 251, 0.9);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.7);
-    }
-    .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-    .nav-left { display: flex; align-items: center; gap: 28px; }
-    .logo {
-      display: flex; align-items: center; gap: 8px;
-      font-weight: 700; font-size: 20px; color: var(--primary-dark);
-    }
-    .logo-mark {
-      width: 26px; height: 26px; border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #93c5fd, #1d4ed8);
-      display: flex; align-items: center; justify-content: center;
+  <!-- Coaching / support -->
+  <section class="support">
+    <div class="container support-grid">
+      <div>
+        <h2>Care coaching that keeps you on track</h2>
+        <p>
+          A dedicated care team helps you navigate medication, lifestyle changes, and your day‑to‑day questions—so you’re never on your own.
+        </p>
+        <ul class="checklist">
+          <li>Guidance from trained medical staff</li>
+          <li>Help with side effects and adjustments</li>
+          <li>Support for nutrition, movement, and habits</li>
+        </ul>
+      </div>
+      <div class="support-card">
+        <h3>We sweat the details</h3>
+        <p>
+          Licensed clinicians, regulated pharmacies, and discreet shipping—designed for safety, privacy, and peace of mind.
+        </p>
+        <ul>
+          <li>Online visits and follow‑ups</li>
+          <li>Transparent pricing</li>
+          <li>Ongoing medical support</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>What patients are saying</h2>
+      <p class="section-subtitle">
+        Real stories from people who’ve used telehealth care to make lasting changes.
+      </p>
+      <div class="testimonial-grid">
+        <article class="testimonial-card">
+          <p>
+            “My clinician really listened, explained my options clearly, and made me feel comfortable from the first visit.”
+          </p>
+          <span class="testimonial-name">— Patient A</span>
+        </article>
+        <article class="testimonial-card">
+          <p>
+            “The process was quick and straightforward. I could ask questions anytime and always got a thoughtful response.”
+          </p>
+          <span class="testimonial-name">— Patient B</span>
+        </article>
+        <article class="testimonial-card">
+          <p>
+            “I’ve steadily moved toward my goals with consistent support and clear guidance. It feels sustainable, not extreme.”
+          </p>
+          <span class="testimonial-name">— Patient C</span>
+        </article>
+        <article class="testimonial-card">
+          <p>
+            “I never thought online care could feel this personal. The team is responsive, kind, and genuinely invested.”
+          </p>
+          <span class="testimonial-name">— Patient D</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee / highlights -->
+  <section class="guarantee">
+    <div class="container guarantee-grid">
+      <div>
+        <h2>Care you can count on</h2>
+        <p>
+          From your first visit to ongoing follow‑ups, your care is guided by licensed clinicians and built around your life.
+        </p>
+      </div>
+      <div class="guarantee-badges">
+        <div class="badge-item">
+          <h4>Free, fast delivery</h4>
+          <p>Medications shipped quickly in discreet packaging.</p>
+        </div>
+        <div class="badge-item">
+          <h4>Doctor‑led plans</h4>
+          <p>Evidence‑based treatment tailored to your needs.</p>
+        </div>
+        <div class="badge-item">
+          <h4>No hidden fees</h4>
+          <p>Clear pricing and no surprise charges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz CTA -->
+  <section class="quiz-cta" id="quiz">
+    <div class="container quiz-inner">
+      <div>
+        <h2>Start your personalized care plan</h2>
+        <p>
+          Answer a few questions about your health and goals to see which options may be right for you.
+        </p>
+      </div>
+      <a href="#" class="btn btn-primary btn-large">Take the quiz</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo footer-logo">MEDVi</div>
+        <p class="footer-tagline">
+          Personalized telehealth care for weight, skin, hair, hormones, and more.
+        </p>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>Email: hello@medvi.org</p>
+        <p>Phone: (323) 690‑1564</p>
+        <p>131 Continental Dr. Ste 305<br />Newark, DE 19713</p>
+      </div>
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Privacy Practices</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Medical Consent</a>
+      </div>
+      <div class="footer-column">
+        <h4>Patients</h4>
+        <a href="#">Bill of Rights</a>
+        <a href="#">Patient Portal</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 MEDVi. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>      display: flex; align-items: center; justify-content: center;
       color: #eff6ff; font-size: 16px; font-weight: 800;
     }
     .nav-links {
