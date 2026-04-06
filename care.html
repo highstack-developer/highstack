@@ -1,1 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Opencare – Find a dentist near you</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f5f7fb;
+      --text: #111827;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --radius-md: 10px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: rgba(245, 247, 251, 0.9);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--primary-dark);
+    }
+
+    .logo-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #93c5fd, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #eff6ff;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 4px 0;
+    }
+
+    .nav-links a.active {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .nav-cta-secondary {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text);
+    }
+
+    .nav-cta-primary {
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      flex: 1;
+      padding: 40px 20px 60px;
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px 4px 4px;
+      border-radius: 999px;
+      background: rgba(219, 234, 254, 0.9);
+      color: #1d4ed8;
+      font-size: 12px;
+      width: fit-content;
+    }
+
+    .hero-pill-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--white);
+      font-weight: 600;
+      font-size: 11px;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span {
+      color: var(--primary-dark);
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 460px;
+    }
+
+    /* SEARCH CARD */
+
+    .search-card {
+      margin-top: 8px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 520px;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrap {
+      flex: 1;
+      min-width: 180px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #f9fafb;
+    }
+
+    .search-input-wrap span {
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .search-input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .search-btn {
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .search-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .search-meta span strong {
+      color: var(--text);
+    }
+
+    .search-meta-pill {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #ecfdf3;
+      color: #15803d;
+      font-weight: 500;
+      font-size: 11px;
+    }
+
+    /* STEPS */
+
+    .steps {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1px solid #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    .step strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* HERO RIGHT – VISUAL */
+
+    .hero-right {
+      position: relative;
+      min-height: 320px;
+    }
+
+    .hero-card-main {
+      position: relative;
+      background: var(--white);
+      border-radius: 26px;
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 16px;
+      max-width: 360px;
+      margin-left: auto;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .hero-card-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .hero-card-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-card-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #ecfdf3;
+      color: #15803d;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .hero-dentist-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #bfdbfe, #1d4ed8);
+    }
+
+    .hero-dentist-info {
+      flex: 1;
+      font-size: 12px;
+    }
+
+    .hero-dentist-info strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .hero-dentist-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: #f59e0b;
+    }
+
+    .hero-rating span {
+      color: var(--muted);
+    }
+
+    .hero-card-footer {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-card-footer button {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .hero-floating-card {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      transform: translateX(-10%);
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: var(--shadow-card);
+      padding: 12px 14px;
+      font-size: 11px;
+      max-width: 220px;
+    }
+
+    .hero-floating-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+    }
+
+    .hero-floating-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+
+    .hero-floating-pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    /* TRUST / LOGOS */
+
+    .trust {
+      margin-top: 40px;
+      border-top: 1px solid rgba(209, 213, 219, 0.7);
+      padding-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .trust strong {
+      color: var(--text);
+    }
+
+    .trust-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      font-size: 11px;
+    }
+
+    .trust-logo-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px dashed #d1d5db;
+      background: #f9fafb;
+    }
+
+    /* TESTIMONIALS / SECONDARY SECTION */
+
+    .section {
+      padding: 0 20px 60px;
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .section-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 18px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: var(--shadow-card);
+      padding: 16px 18px;
+      font-size: 13px;
+    }
+
+    .testimonial-quote {
+      margin-bottom: 10px;
+    }
+
+    .testimonial-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .testimonial-meta strong {
+      color: var(--text);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+      font-size: 11px;
+    }
+
+    .metric {
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #eef2ff;
+      color: #3730a3;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 16px;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      border-top: 1px solid #e5e7eb;
+      background: #ffffff;
+      padding: 24px 20px 30px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        flex-wrap: wrap;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        padding-top: 28px;
+      }
+      .hero-card-main {
+        margin: 0 auto;
+      }
+      .hero-floating-card {
+        position: static;
+        transform: none;
+        margin-top: 14px;
+      }
+      .section-inner {
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="#" class="logo">
+          <span class="logo-mark">O</span>
+          <span>opencare</span>
+        </a>
+        <nav class="nav-links">
+          <a href="#" class="active">For patients</a>
+          <a href="#">For dentists</a>
+          <a href="#">How it works</a>
+          <a href="#">About</a>
+        </nav>
+      </div>
+      <div class="nav-right">
+        <a href="#" class="nav-cta-secondary">Log in</a>
+        <button class="nav-cta-primary">Join as a dentist</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="hero">
+    <div class="hero-inner">
+      <!-- LEFT -->
+      <section class="hero-left">
+        <div class="hero-pill">
+          <span class="hero-pill-badge">New</span>
+          <span>Get matched with a top-rated dentist in minutes</span>
+        </div>
+
+        <h1 class="hero-title">
+          Find a <span>dentist you’ll actually love</span>.
+        </h1>
+
+        <p class="hero-subtitle">
+          Answer a few questions and we’ll match you with a hand‑picked dentist nearby,
+          covered by your insurance and trusted by patients like you.
+        </p>
+
+        <div class="search-card">
+          <div class="search-row">
+            <div class="search-input-wrap">
+              <span>📍</span>
+              <input
+                class="search-input"
+                placeholder="Enter your city or postal code"
+              />
+            </div>
+            <button class="search-btn">Find my dentist</button>
+          </div>
+          <div class="search-meta">
+            <span><strong>Over 100,000</strong> appointments booked through Opencare</span>
+            <span class="search-meta-pill">It’s free to use</span>
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-badge">1</div>
+            <div><strong>Tell us about yourself</strong><br />Share your needs and preferences.</div>
+          </div>
+          <div class="step">
+            <div class="step-badge">2</div>
+            <div><strong>Get matched instantly</strong><br />We’ll show you curated options.</div>
+          </div>
+          <div class="step">
+            <div class="step-badge">3</div>
+            <div><strong>Book online</strong><br />No phone calls, no waiting on hold.</div>
+          </div>
+        </div>
+
+        <div class="trust">
+          <span><strong>Loved by patients</strong> and trusted by leading dental practices</span>
+          <div class="trust-logos">
+            <div class="trust-logo-pill">4.8★ average rating</div>
+            <div class="trust-logo-pill">Verified patient reviews</div>
+            <div class="trust-logo-pill">Insurance‑friendly</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT -->
+      <aside class="hero-right">
+        <div class="hero-card-main">
+          <div class="hero-card-header">
+            <div>
+              <div class="hero-card-title">Your match in Toronto</div>
+              <div class="hero-card-sub">Based on your answers</div>
+            </div>
+            <div class="hero-card-badge">Top match</div>
+          </div>
+
+          <div class="hero-dentist-row">
+            <div class="avatar"></div>
+            <div class="hero-dentist-info">
+              <strong>Dr. Sarah Nguyen</strong>
+              <div class="hero-dentist-meta">Family & cosmetic dentistry · 0.4 km away</div>
+              <div class="hero-rating">
+                ★★★★★ <span>4.9 (230 reviews)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card-footer">
+            <span>Next available: <strong>Tomorrow at 3:30 PM</strong></span>
+            <button>Book now</button>
+          </div>
+        </div>
+
+        <div class="hero-floating-card">
+          <strong>“The easiest way I’ve ever booked a dentist.”</strong>
+          <p class="hero-floating-text">
+            Opencare matched me with a great clinic that took my insurance and had evening appointments.
+          </p>
+          <div class="hero-floating-row">
+            <span>— Amanda, new patient</span>
+            <span class="hero-floating-pill">Verified review</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- SECONDARY SECTION / TESTIMONIALS -->
+  <section class="section">
+    <div class="section-inner">
+      <div>
+        <h2 class="section-title">We vet every dentist in our network.</h2>
+        <p class="section-subtitle">
+          Opencare only partners with practices that meet our quality bar for patient experience,
+          clinical standards, and modern technology.
+        </p>
+
+        <div class="metrics-grid">
+          <div class="metric">
+            <strong>200+</strong>
+            Clinics reviewed in your area
+          </div>
+          <div class="metric">
+            <strong>95%</strong>
+            Patients keep their Opencare dentist
+          </div>
+          <div class="metric">
+            <strong>24/7</strong>
+            Online booking availability
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="testimonial-card">
+          <p class="testimonial-quote">
+            “I’d put off going to the dentist for years. Opencare made it simple to find someone
+            who understood my anxiety and didn’t judge me.”
+          </p>
+          <div class="testimonial-meta">
+            <div>
+              <strong>Jason, Toronto</strong><br />
+              New patient, first visit in 5 years
+            </div>
+            <div>★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© 2026 Opencare (demo clone). All names and data are placeholders.</span>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">For dentists</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
 
