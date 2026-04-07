@@ -2,217 +2,187 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>bene – Landing Page</title>
+  <title>Registered Massage Therapy (RMT) – bene</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/stagingstyles.css" />
+  <style>
+    /* Inline additions to support the new layout */
+    .hero-full {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  background: url('https://images.squarespace-cdn.com/content/v1/632eb6ae68f72c60dc56b2f1/3f355e4a-b75a-4df3-b8ca-fffa6652d125/Massage+Therapy.jpeg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+}
+    .hero-overlay {
+      background: rgba(0,0,0,0.45);
+      padding: 3rem;
+      max-width: 600px;
+      margin-left: 5%;
+      border-radius: 8px;
+    }
+    .section {
+      padding: 80px 0;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .benefit-card {
+      background: #fafafa;
+      padding: 24px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .soft-bg {
+      background: #f7f9fb;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .info-card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .cta-banner {
+      background: #1a1a1a;
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
-  <!-- Navigation -->
+
+ <!-- Navigation -->
   <header class="site-header">
     <div class="container nav-container">
-      <div class="logo">bene</div>
+      <a href="https://highstack.ca/care.html" class="logo">bene</a>
       <nav class="nav-links">
-        <a href="#rmt">Registered Massage Therapy</a>
-        <a href="#weight-loss">Weight loss</a>
-        <a href="#chiropractic">Chiropractic care</a>
-        <a href="#physiotherapy">Physiotherapy</a>
+        <a href="rmt.html">Registered Massage Therapy</a>
+        <a href="weight-loss.html">Weight Loss</a>
+        <a href="chiro.html">Chiropractic care</a>
+        <a href="physio.html#meals">Physiotherapy</a>
         <a href="#contact">Contact</a>
       </nav>
       <a href="#quiz" class="btn btn-outline">Get Started</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-text">
-        <p class="eyebrow">25,000+ appointments booked</p>
-        <h1>Unleash your benefits.</h1>
-        <p class="hero-subtitle">
-          Answer a few quick questions and we’ll match you with a hand‑picked health professional nearby — experienced, licensed, and trusted by clients like you.
-        </p>
-        <div class="hero-actions">
-          <a href="#quiz" class="btn btn-primary">Start now</a>
-          <a href="#learn-more" class="btn btn-ghost">Learn more</a>
-        </div>
-        <div class="hero-badges">
-          <span>Licensed providers</span>
-          <span>100% online</span>
-          <span>Fast</span>
-          <span>Customized</span>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-inner">
-          <h3>It’s free to use</h3>
-          <p>
-            Share your goals, pain points, and preferences
-          </p>
-          <ul>
-            <li>Tell us about your needs</li>
-            <li>Get matched instantly</li>
-            <li>Book online</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Programs overview -->
-  <section class="programs" id="learn-more">
-    <div class="container">
-      <h2>Built around your goals</h2>
-      <p class="section-subtitle">
-        We only partner with health experts who meet our standards for client care, professionalism, and expertise
+  <!-- FULL-WIDTH HERO IMAGE -->
+  <section class="hero-full">
+    <div class="hero-overlay">
+      <p class="eyebrow">Registered Massage Therapy</p>
+      <h1>Relief, recovery, and relaxation—backed by licensed RMTs.</h1>
+      <p class="hero-subtitle">
+        Book with a Registered Massage Therapist to reduce pain, improve mobility, and reset your nervous system.
       </p>
-      <div class="program-grid">
-        <article class="program-card" id="rmt">
-          <h3>Registered Massage Therapy (RMT)</h3>
-          <p>
-            Get matched with a top‑rated Registered Massage Therapist in minutes
-          </p>
-          <a href="#quiz" class="card-link">Explore RMT →</a>
-        </article>
-        <article class="program-card" id="weight-loss">
-          <h3>Weight loss & longevity</h3>
-          <p>
-            Personalized nutrition guidance from a Registered Dietitian
-          </p>
-          <a href="#quiz" class="card-link">Explore weight loss →</a>
-        </article>
-        <article class="program-card" id="chiropractic">
-          <h3>Chiropractic care</h3>
-          <p>
-            Spine and joint care from licensed Chiropractors
-          </p>
-          <a href="#quiz" class="card-link">Explore chiropractic care →</a>
-        </article>
-        <article class="program-card" id="physiotherapy">
-          <h3>Physiotherapy</h3>
-          <p>
-            Get paired with a top Physiotherapist for recovery and mobility
-          </p>
-          <a href="#quiz" class="card-link">Explore physiotherapy →</a>
-        </article>
-        <article class="program-card">
-          <h3>Speech Therapist</h3>
-          <p>
-            Expert support for speech, language, and communication.
-          </p>
-          <span class="tag">Coming soon</span>
-        </article>
-        <article class="program-card">
-          <h3>Podiatrist</h3>
-          <p>
-            Foot and gait care from licensed specialists.
-          </p>
-          <span class="tag">Coming soon</span>
-        </article>
+      <a href="#rmt-quiz" class="btn btn-primary">Find an RMT</a>
+    </div>
+  </section>
+
+  <!-- WHY RMT HELPS -->
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <h2>Why see a Registered Massage Therapist?</h2>
+        <p>
+          RMTs combine hands‑on treatment with clinical training to address pain, tension, and movement issues at the source.
+        </p>
+      </div>
+
+      <div>
+        <div class="benefit-card">
+          <h3>Pain reduction</h3>
+          <p>Target back pain, neck tension, headaches, sciatica, and joint discomfort with focused, therapeutic techniques.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Better mobility & posture</h3>
+          <p>Loosen tight muscles, increase range of motion, and support healthier posture for work, sport, and daily life.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Stress & nervous system reset</h3>
+          <p>Calm your nervous system, lower stress, and support deeper, more restorative sleep.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Support for injury recovery</h3>
+          <p>Complement physiotherapy or chiropractic care with soft‑tissue work that speeds up recovery and reduces flare‑ups.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Coaching / support -->
-  <section class="support">
-    <div class="container support-grid">
+  <!-- WHAT TO EXPECT -->
+  <section class="section soft-bg">
+    <div class="container two-col">
       <div>
-        <h2>bene Care+: Coaching that keeps you on track</h2>
+        <h2>What to expect from RMT care</h2>
         <p>
-          A dedicated care team helps you navigate lifestyle changes and your day‑to‑day questions, so you’re never on your own.
+          Every session starts with a brief assessment so your RMT can understand your pain, history, and goals.
         </p>
         <ul class="checklist">
-          <li>Guidance from trained staff</li>
-          <li>Help with changes in lifestyle</li>
-          <li>Support for nutrition, movement, and habits</li>
+          <li>Personalized treatment plans based on your symptoms</li>
+          <li>Clear explanations of what’s causing your pain</li>
+          <li>Home care tips to extend the benefits between visits</li>
         </ul>
       </div>
-      <div class="support-card">
-        <h3>We sweat the details</h3>
-        <p>
-          Expert support, available on your schedule — designed for privacy and peace of mind.
-        </p>
+
+      <div class="info-card">
+        <h3>Techniques your RMT may use</h3>
+        <p>Your therapist will choose techniques that match your comfort level and clinical needs.</p>
         <ul>
-          <li>Online visits and follow‑ups</li>
-          <li>Transparent pricing</li>
-          <li>Ongoing support</li>
+          <li>Deep tissue and Swedish massage</li>
+          <li>Myofascial release and trigger point therapy</li>
+          <li>Joint mobilization and stretching</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="testimonials">
+  <!-- WHO IT'S FOR -->
+  <section class="section">
     <div class="container">
-      <h2>What patients are saying</h2>
+      <h2>Is RMT right for you?</h2>
       <p class="section-subtitle">
-        Real stories from people who’ve used bene Care+ to make lasting changes.
+        Many people use massage therapy as part of an ongoing plan for pain, performance, and overall well‑being.
       </p>
-      <div class="testimonial-grid">
-        <article class="testimonial-card">
-          <p>
-            “My clinician really listened, explained my options clearly, and made me feel comfortable from the first visit.”
-          </p>
-          <span class="testimonial-name">— Patient A</span>
-        </article>
-        <article class="testimonial-card">
-          <p>
-            “The process was quick and straightforward. I could ask questions anytime and always got a thoughtful response.”
-          </p>
-          <span class="testimonial-name">— Patient B</span>
-        </article>
-        <article class="testimonial-card">
-          <p>
-            “I’ve steadily moved toward my goals with consistent support and clear guidance. It feels sustainable, not extreme.”
-          </p>
-          <span class="testimonial-name">— Patient C</span>
-        </article>
-        <article class="testimonial-card">
-          <p>
-            “I never thought online care could feel this personal. The team is responsive, kind, and genuinely invested.”
-          </p>
-          <span class="testimonial-name">— Patient D</span>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <!-- Guarantee / highlights -->
-  <section class="guarantee">
-    <div class="container guarantee-grid">
-      <div>
-        <h2>Care you can count on</h2>
-        <p>
-          From your first visit to ongoing follow‑ups, your care is guided by experts and built around your life.
-        </p>
-      </div>
-      <div class="guarantee-badges">
-        <div class="badge-item">
-          <h4>Available 24/7</h4>
-          <p>Advice when you need it.</p>
+      <div class="grid-4">
+        <div class="info-card">
+          <h3>Desk and remote workers</h3>
+          <p>Address chronic neck, shoulder, and low‑back tension from long hours at a computer or on your phone.</p>
         </div>
-        <div class="badge-item">
-          <h4>Researched plans</h4>
-          <p>Evidence‑based options tailored to your needs.</p>
+        <div class="info-card">
+          <h3>Athletes and active people</h3>
+          <p>Support performance, recovery, and flexibility with regular soft‑tissue work tailored to your sport.</p>
         </div>
-        <div class="badge-item">
-          <h4>No hidden fees</h4>
-          <p>Clear pricing and no surprise charges.</p>
+        <div class="info-card">
+          <h3>Chronic pain & stress</h3>
+          <p>Use massage as part of a broader plan to manage ongoing pain, stress, and nervous system overload.</p>
+        </div>
+        <div class="info-card">
+          <h3>Pregnancy & postpartum</h3>
+          <p>Access safe, specialized techniques to relieve strain, swelling, and discomfort during and after pregnancy.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Quiz CTA -->
-  <section class="quiz-cta" id="quiz">
-    <div class="container quiz-inner">
-      <div>
-        <h2>Start your personalized care plan</h2>
-        <p>
-          Answer a few questions about your health and goals to see which options may be right for you.
-        </p>
-      </div>
-      <a href="#" class="btn btn-primary btn-large">Take the quiz</a>
-    </div>
+  <!-- CTA -->
+  <section class="cta-banner" id="rmt-quiz">
+    <h2>Get matched with a Registered Massage Therapist</h2>
+    <p>Answer a few questions about your pain, lifestyle, and goals, and we’ll connect you with an RMT that fits.</p>
+    <a href="index.html#quiz" class="btn btn-primary btn-large">Start matching</a>
   </section>
 
   <!-- Footer -->
@@ -221,7 +191,7 @@
       <div>
         <div class="logo footer-logo">bene</div>
         <p class="footer-tagline">
-          Personalized care for massage therepy, weight management, physiotherapy, chiropractics,and more.
+          Personalized care for massage therapy, weight management, physiotherapy, chiropractic care, and more.
         </p>
       </div>
       <div class="footer-column">
@@ -248,5 +218,6 @@
       <p>© 2026 bene. All rights reserved.</p>
     </div>
   </footer>
+
 </body>
 </html>
