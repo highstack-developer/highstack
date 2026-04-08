@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Book Appointment – Maple Grove Counselling</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  body {
+    font-family: system-ui, sans-serif;
+    background: #f7fafc;
+    margin: 0;
+    padding: 40px;
+    color: #1a202c;
+  }
+
+  .card {
+    max-width: 480px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  h2 {
+    margin-top: 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .slot {
+    padding: 10px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    transition: 0.2s;
+  }
+
+  .slot:hover {
+    border-color: #38b2ac;
+  }
+
+  .slot.selected {
+    background: #e6fffa;
+    border-color: #38b2ac;
+    font-weight: 600;
+  }
+
+  .input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    background: #38b2ac;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+  }
+
+  .btn:hover {
+    background: #2c7a7b;
+  }
+
+  .confirmation {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2f855a;
+  }
+</style>
+</head>
+<body>
+
+<div class="card" id="bookingCard">
+  <h2>Book an Appointment</h2>
+  <p><strong>Clinic:</strong> Maple Grove Counselling</p>
+  <p><strong>Next available:</strong> Friday, April 10</p>
+
+  <h3>Select a time</h3>
+  <div class="slots" id="slotContainer">
+    <div class="slot">9:30 AM</div>
+    <div class="slot">1:30 PM</div>
+    <div class="slot">4:00 PM</div>
+  </div>
+
+  <h3>Your Info</h3>
+  <input id="nameInput" class="input" placeholder="Full name" />
+  <input id="emailInput" class="input" placeholder="Email address" />
+
+  <button class="btn" onclick="bookAppointment()">Book Appointment</button>
+</div>
+
+<div class="card confirmation" id="confirmationCard" style="display:none;">
+  🎉 Your appointment is confirmed!  
+  <br><br>
+  <span id="confirmDetails"></span>
+</div>
+
+<script>
+  let selectedSlot = null;
+
+  // Slot selection
+  document.querySelectorAll(".slot").forEach(slot => {
+    slot.addEventListener("click", () => {
+      document.querySelectorAll(".slot").forEach(s => s.classList.remove("selected"));
+      slot.classList.add("selected");
+      selectedSlot = slot.textContent.trim();
+    });
+  });
+
+  // Booking logic
+  function bookAppointment() {
+    const name = document.getElementById("nameInput").value.trim();
+    const email = document.getElementById("emailInput").value.trim();
+
+    if (!selectedSlot) {
+      alert("Please select a time.");
+      return;
+    }
+    if (!name || !email) {
+      alert("Please enter your name and email.");
+      return;
+    }
+
+    // Save booking locally (simulating backend)
+    const booking = {
+      clinic: "Maple Grove Counselling",
+      date: "Friday, April 10",
+      time: selectedSlot,
+      name,
+      email
+    };
+
+    localStorage.setItem("booking", JSON.stringify(booking));
+
+    // Show confirmation
+    document.getElementById("bookingCard").style.display = "none";
+    document.getElementById("confirmationCard").style.display = "block";
+
+    document.getElementById("confirmDetails").innerHTML =
+      `${booking.name}, your appointment at <strong>${booking.clinic}</strong><br>
+       is booked for <strong>${booking.date}</strong> at <strong>${booking.time}</strong>.`;
+  }
+</script>
+
+</body>
+</html>
