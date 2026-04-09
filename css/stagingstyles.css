@@ -363,6 +363,24 @@ section {
   box-shadow: var(--shadow-soft);
 }
 
+/* benessere+ */
+.support-green {
+  background: #e8f5e9; /* soft wellness green */
+  padding: 80px 0;
+}
+
+.support-green h2,
+.support-green p,
+.support-green li {
+  color: #1b3c32; /* deep green for contrast */
+}
+
+.support-green .support-card {
+  background: #ffffff;
+  border: 1px solid #d6e8d8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
 /* Testimonials */
 
 .testimonials {
