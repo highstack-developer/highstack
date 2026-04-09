@@ -1,1503 +1,252 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Find top-rated psychologists</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --primary: #1fbf92;
-      --primary-dark: #0f8a67;
-      --bg: #f7fafc;
-      --card-bg: #ffffff;
-      --text-main: #1a202c;
-      --text-muted: #718096;
-      --border: #e2e8f0;
-      --accent: #ffb347;
-      --danger: #f56565;
-      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
-      --radius-lg: 12px;
-      --radius-md: 8px;
-      --radius-pill: 999px;
-      --transition: 0.2s ease;
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font-main);
-      background: var(--bg);
-      color: var(--text-main);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-      cursor: pointer;
-    }
-
-    /* Layout */
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    header {
-      border-bottom: 1px solid var(--border);
-      background: #ffffff;
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 0;
-      gap: 24px;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 20px;
-      color: var(--primary-dark);
-      letter-spacing: 0.03em;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    .nav a {
-      padding: 4px 0;
-    }
-
-    .nav a.active {
-      color: var(--text-main);
-      font-weight: 600;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .btn-outline {
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--border);
-      padding: 8px 18px;
-      font-size: 14px;
-      background: #ffffff;
-      color: var(--text-main);
-      transition: var(--transition);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--primary);
-      color: var(--primary-dark);
-    }
-
-    .btn-primary {
-      border-radius: var(--radius-pill);
-      border: none;
-      padding: 10px 22px;
-      font-size: 14px;
-      background: var(--primary);
-      color: #ffffff;
-      font-weight: 600;
-      box-shadow: 0 8px 18px rgba(31, 191, 146, 0.35);
-      transition: var(--transition);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      box-shadow: 0 10px 22px rgba(31, 191, 146, 0.45);
-    }
-
-    main {
-      flex: 1;
-      padding: 32px 0 48px;
-    }
-
-    /* Step wrapper */
-
-    .step-wrapper {
-      max-width: 880px;
-      margin: 0 auto;
-    }
-
-    .step-card {
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      padding: 32px 32px 28px;
-      position: relative;
-    }
-
-    .step-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 6px;
-      border-radius: 999px;
-      background: #edf2f7;
-      overflow: hidden;
-      margin-bottom: 24px;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: var(--primary);
-      width: 0;
-      transition: width 0.25s ease;
-    }
-
-    .help-link {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-decoration: underline;
-      cursor: pointer;
-    }
-
-    .step-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .step-subtitle {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-
-    .options-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .option-pill,
-    .option-box {
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      padding: 12px 14px;
-      font-size: 14px;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      transition: var(--transition);
-    }
-
-    .option-pill:hover,
-    .option-box:hover {
-      border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
-    }
-
-    .option-pill.selected,
-    .option-box.selected {
-      border-color: var(--primary);
-      background: #e6fff7;
-    }
-
-    .option-label-main {
-      font-weight: 500;
-    }
-
-    .option-label-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .option-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      background: #edf2f7;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: var(--text-muted);
-      flex-shrink: 0;
-    }
-
-    .option-icon.positive {
-      background: #c6f6d5;
-      color: #22543d;
-    }
-
-    .option-icon.warning {
-      background: #fed7d7;
-      color: #742a2a;
-    }
-
-    .step-footer {
-      margin-top: 24px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
-    }
-
-    .btn-secondary {
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--border);
-      padding: 9px 18px;
-      font-size: 14px;
-      background: #ffffff;
-      color: var(--text-main);
-      transition: var(--transition);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--primary);
-      color: var(--primary-dark);
-    }
-
-    .btn-ghost {
-      border-radius: var(--radius-pill);
-      border: none;
-      padding: 9px 18px;
-      font-size: 14px;
-      background: transparent;
-      color: var(--text-muted);
-    }
-
-    .btn-ghost:hover {
-      color: var(--text-main);
-    }
-
-    .btn-block {
-      width: 100%;
-      justify-content: center;
-      display: inline-flex;
-      align-items: center;
-      text-align: center;
-    }
-
-    .muted-link {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-decoration: underline;
-      cursor: pointer;
-    }
-
-    /* Landing hero */
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 40px;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-
-    .hero-left-title {
-      font-size: 36px;
-      line-height: 1.2;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-
-    .hero-left-subtitle {
-      font-size: 16px;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      max-width: 420px;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 420px;
-    }
-
-    .hero-cta {
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      background: #ffffff;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .hero-cta.primary {
-      border-color: var(--primary);
-      background: #e6fff7;
-    }
-
-    .hero-cta:hover {
-      box-shadow: var(--shadow-soft);
-      border-color: var(--primary);
-    }
-
-    .hero-cta-text-main {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .hero-cta-text-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .hero-cta-arrow {
-      font-size: 18px;
-      color: var(--primary-dark);
-    }
-
-    .hero-right {
-      position: relative;
-      background: linear-gradient(135deg, #edf2ff, #e6fffa);
-      border-radius: 24px;
-      padding: 24px;
-      min-height: 260px;
-      overflow: hidden;
-    }
-
-    .hero-photo {
-      position: absolute;
-      inset: 18px 18px 18px 40%;
-      background: #cbd5f5;
-      border-radius: 18px;
-    }
-
-    .hero-badge {
-      position: relative;
-      z-index: 2;
-      background: #ffffff;
-      border-radius: var(--radius-md);
-      padding: 10px 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: var(--shadow-soft);
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-
-    .hero-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--primary);
-    }
-
-    .hero-bubbles {
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      z-index: 2;
-    }
-
-    .hero-bubble {
-      background: #ffffff;
-      border-radius: var(--radius-pill);
-      padding: 6px 12px;
-      font-size: 12px;
-      box-shadow: var(--shadow-soft);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-bubble-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--primary);
-    }
-
-    /* Address step */
-
-    .address-input-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .input {
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      padding: 10px 12px;
-      font-size: 14px;
-      flex: 1;
-      min-width: 220px;
-    }
-
-    .input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 1px rgba(31, 191, 146, 0.25);
-    }
-
-    .btn-location {
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--border);
-      padding: 9px 14px;
-      font-size: 13px;
-      background: #f7fafc;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--text-main);
-      white-space: nowrap;
-    }
-
-    .btn-location span {
-      font-size: 16px;
-    }
-
-    .btn-continue {
-      margin-top: 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border-radius: var(--radius-pill);
-      border: none;
-      padding: 10px 20px;
-      font-size: 14px;
-      background: var(--primary);
-      color: #ffffff;
-      font-weight: 600;
-      opacity: 0.6;
-      pointer-events: none;
-      transition: var(--transition);
-    }
-
-    .btn-continue.enabled {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* Loading + testimonial */
-
-    .loading-list {
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      padding: 24px 24px 20px;
-      margin-bottom: 18px;
-    }
-
-    .loading-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
-
-    .loading-icon {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      border: 2px solid var(--primary);
-      border-top-color: transparent;
-      animation: spin 0.9s linear infinite;
-    }
-
-    .loading-icon.done {
-      border: none;
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: #c6f6d5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: #22543d;
-    }
-
-    .loading-text-muted {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .testimonial-card {
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      padding: 20px 22px 18px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 14px;
-      align-items: flex-start;
-    }
-
-    .testimonial-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: #fed7e2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-    }
-
-    .testimonial-text {
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
-
-    .testimonial-meta {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .testimonial-arrows {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .arrow-btn {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    /* Results list */
-
-    .results-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-      gap: 20px;
-      margin-top: 18px;
-    }
-
-    .results-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      font-size: 14px;
-    }
-
-    .results-header-title {
-      font-weight: 600;
-    }
-
-    .results-header-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .modify-search-btn {
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--border);
-      padding: 6px 12px;
-      font-size: 13px;
-      background: #ffffff;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .gift-banner {
-      background: #fef3c7;
-      border-radius: var(--radius-md);
-      padding: 10px 12px;
-      font-size: 13px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .gift-pill {
-      background: #fbbf24;
-      color: #1a202c;
-      border-radius: var(--radius-pill);
-      padding: 2px 8px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .practice-card {
-      background: #ffffff;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      padding: 14px 14px 12px;
-      margin-bottom: 10px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
-      gap: 12px;
-    }
-
-    .practice-name {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .practice-location {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .practice-rating {
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 6px;
-    }
-
-    .stars {
-      color: #ecc94b;
-      font-size: 13px;
-    }
-
-    .practice-meta {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .practice-avatars {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 6px;
-    }
-
-    .mini-avatar {
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      background: #bee3f8;
-    }
-
-    .practice-logo {
-      width: 26px;
-      height: 26px;
-      border-radius: 6px;
-      background: #cbd5f5;
-      margin-left: 4px;
-    }
-
-    .practice-slots {
-      font-size: 12px;
-    }
-
-    .slots-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .slot-pill {
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--border);
-      padding: 3px 8px;
-      font-size: 11px;
-      background: #f7fafc;
-    }
-
-    .view-profile-btn {
-      margin-top: 8px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--primary);
-      padding: 6px 12px;
-      font-size: 12px;
-      background: #ffffff;
-      color: var(--primary-dark);
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .map-card {
-      background: #ffffff;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      padding: 12px;
-      min-height: 260px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .map-placeholder {
-      flex: 1;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
-      margin-bottom: 10px;
-    }
-
-    .super-practice {
-      font-size: 12px;
-      background: #edf2ff;
-      border-radius: var(--radius-md);
-      padding: 8px 10px;
-    }
-
-    .super-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #4c51bf;
-      margin-bottom: 2px;
-    }
-
-    /* Responsive */
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-right {
-        order: -1;
-      }
-
-      .results-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .practice-card {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .header-inner {
-        flex-wrap: wrap;
-      }
-
-      .nav {
-        display: none;
-      }
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-  </style>
+  <title>benessere – Landing Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/stagingstyles.css" />
 </head>
 <body>
-<div class="page">
-  <header>
-    <div class="container header-inner">
-      <div class="logo">MindMatch</div>
-      <nav class="nav">
-        <a href="#" class="active">For Patients</a>
-        <a href="#">For Psychologists</a>
-        <a href="#">Company</a>
-        <a href="#">Learning Center</a>
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">benessere</div>
+      <nav class="nav-links">
+        <a href="#rmt">Registered Massage Therapy</a>
+        <a href="#weight-loss">Weight Loss</a>
+        <a href="#chiro">Chiropractic care</a>
+        <a href="#physio">Physiotherapy</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <div class="nav-right">
-        <button class="btn-outline">Log in</button>
-        <button class="btn-primary">Get started</button>
-      </div>
+      <a href="#quiz" class="btn btn-outline">Get Started</a>
     </div>
   </header>
 
-  <main>
-    <div class="container">
-      <!-- STEP 0: Landing hero -->
-      <section id="step-0" class="step-wrapper">
-        <div class="hero">
-          <div>
-            <h1 class="hero-left-title">Find psychologists with the best reviews.</h1>
-            <p class="hero-left-subtitle">
-              MindMatch is a curated network of top-rated psychologists. Find one perfect for you and book online instantly.
-            </p>
-            <div class="hero-cta-group">
-              <div class="hero-cta">
-                <div>
-                  <div class="hero-cta-text-main">Return to previous match</div>
-                  <div class="hero-cta-text-sub">
-                    View the psychologists we recommended in your last search.
-                  </div>
-                </div>
-                <div class="hero-cta-arrow">↩</div>
-              </div>
-              <div class="hero-cta primary" onclick="goToStep(1)">
-                <div>
-                  <div class="hero-cta-text-main">Start a new search</div>
-                  <div class="hero-cta-text-sub">
-                    Answer a new set of questions and get matched with psychologists.
-                  </div>
-                </div>
-                <div class="hero-cta-arrow">➜</div>
-              </div>
-            </div>
-          </div>
-          <div class="hero-right">
-            <div class="hero-photo"></div>
-            <div class="hero-badge">
-              <div class="hero-badge-dot"></div>
-              <span>Top-rated mental health professionals</span>
-            </div>
-            <div class="hero-bubbles">
-              <div class="hero-bubble">
-                <div class="hero-bubble-dot"></div>
-                <span>Instant online booking</span>
-              </div>
-              <div class="hero-bubble">
-                <div class="hero-bubble-dot"></div>
-                <span>Exclusively 5-star psychologists</span>
-              </div>
-              <div class="hero-bubble">
-                <div class="hero-bubble-dot"></div>
-                <span>Personalized recommendations</span>
-              </div>
-            </div>
-          </div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow">25,000+ appointments booked</p>
+        <h1>Unleash your benefits.</h1>
+        <p class="hero-subtitle">
+          Answer a few quick questions and we’ll match you with a hand‑picked health professional nearby — experienced, licensed, and trusted by clients like you.
+        </p>
+        <div class="hero-actions">
+          <a href="#quiz" class="btn btn-primary">Start now</a>
+          <a href="#learn-more" class="btn btn-ghost">Learn more</a>
         </div>
-      </section>
-
-      <!-- STEP 1: Address -->
-      <section id="step-1" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="step-header">
-            <div>
-              <div class="step-title">Let’s find you the perfect psychologist</div>
-              <div class="step-subtitle">
-                Answer a few quick questions and we’ll match you with the right psychologist in under 30 seconds.
-              </div>
-            </div>
-          </div>
-          <label class="step-subtitle" style="margin-bottom:4px; display:block; color:var(--text-main);">
-            Enter your address
-          </label>
-          <div class="address-input-row">
-            <input id="addressInput" class="input" placeholder="e.g. 123 Main St, Toronto, ON" />
-            <button type="button" class="btn-location">
-              <span>📍</span> Use my current location
-            </button>
-          </div>
-          <button id="addressContinue" class="btn-continue" onclick="goToStep(2)">
-            Continue
-          </button>
+        <div class="hero-badges">
+          <span>Licensed providers</span>
+          <span>100% online</span>
+          <span>Fast</span>
+          <span>Customized</span>
         </div>
-      </section>
-
-      <!-- STEP 2: Mental wellness attitude -->
-      <section id="step-2" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:27%;"></div>
-          </div>
-          <div class="step-header">
-            <div>
-              <div class="step-title">When it comes to my mental wellness, I feel…</div>
-            </div>
-            <div class="help-link">Help</div>
-          </div>
-          <div class="options-grid">
-            <button class="option-box" data-single="true">
-              <div>
-                <div class="option-label-main">Committed</div>
-                <div class="option-label-sub">I proactively take care of my mental health.</div>
-              </div>
-            </button>
-            <button class="option-box" data-single="true">
-              <div>
-                <div class="option-label-main">Neutral</div>
-                <div class="option-label-sub">It’s a habit I maintain.</div>
-              </div>
-            </button>
-            <button class="option-box" data-single="true">
-              <div>
-                <div class="option-label-main">Unsure</div>
-                <div class="option-label-sub">I have some work to do.</div>
-              </div>
-            </button>
-          </div>
-          <div class="step-footer">
-            <button class="btn-secondary" onclick="goToStep(1)">Back</button>
-            <button class="btn-primary" onclick="goToStep(3)">Continue</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 3: Last visit -->
-      <section id="step-3" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:40%;"></div>
-          </div>
-          <div class="step-header">
-            <div>
-              <div class="step-title">When was your last visit with a mental health professional?</div>
-              <div class="step-subtitle">
-                We’re not judging! This helps us determine the right type of appointment.
-              </div>
-            </div>
-            <div class="help-link">Help</div>
-          </div>
-          <div class="options-grid">
-            <button class="option-pill" data-single="true"><span>&lt; 1 year</span></button>
-            <button class="option-pill" data-single="true"><span>1 - 2 years</span></button>
-            <button class="option-pill" data-single="true"><span>2+ years</span></button>
-            <button class="option-pill" data-single="true"><span>I’ve never visited</span></button>
-          </div>
-          <div class="step-footer">
-            <button class="btn-secondary" onclick="goToStep(2)">Back</button>
-            <button class="btn-primary" onclick="goToStep(4)">Continue</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 4: Anxiety about visits -->
-      <section id="step-4" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:53%;"></div>
-          </div>
-          <div class="step-header">
-            <div>
-              <div class="step-title">How do you feel about visiting a psychologist?</div>
-              <div class="step-subtitle">
-                If needed, we have psychologists trained specifically in anxiety and trauma-informed care.
-              </div>
-            </div>
-            <div class="help-link">Help</div>
-          </div>
-          <div class="options-grid">
-            <button class="option-pill" data-single="true">Not at all nervous</button>
-            <button class="option-pill" data-single="true">A little nervous</button>
-            <button class="option-pill" data-single="true">Moderately nervous</button>
-            <button class="option-pill" data-single="true">Very nervous</button>
-            <button class="option-pill" data-single="true">Extremely nervous</button>
-          </div>
-          <div class="step-footer">
-            <button class="btn-secondary" onclick="goToStep(3)">Back</button>
-            <button class="btn-primary" onclick="goToStep(5)">Continue</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 5: Goals -->
-      <section id="step-5" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:67%;"></div>
-          </div>
-          <div class="step-header">
-            <div>
-              <div class="step-title">The goals I have for my mental health are…</div>
-              <div class="step-subtitle">Select all that apply</div>
-            </div>
-            <div class="help-link">Help</div>
-          </div>
-          <div class="options-grid">
-            <button class="option-box" data-multi="true">
-              <div class="option-label-main">Reduced anxiety</div>
-            </button>
-            <button class="option-box" data-multi="true">
-              <div class="option-label-main">Improved mood</div>
-            </button>
-            <button class="option-box" data-multi="true">
-              <div class="option-label-main">Better sleep</div>
-            </button>
-            <button class="option-box" data-multi="true">
-              <div class="option-label-main">Coping with stress</div>
-            </button>
-            <button class="option-box" data-multi="true">
-              <div class="option-label-main">Relationship support</div>
-            </button>
-            <button class="option-box" data-multi="true">
-              <div class="option-label-main">Personal growth</div>
-            </button>
-          </div>
-          <div class="step-footer">
-            <button class="btn-secondary" onclick="goToStep(4)">Back</button>
-            <button class="btn-primary" onclick="goToStep(6)">Continue</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 6: Concerns / treatments -->
-      <section id="step-6" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:73%;"></div>
-          </div>
-          <div class="step-header">
-            <div>
-              <div class="step-title">Do you have any specific concerns or types of support you’re seeking?</div>
-              <div class="step-subtitle">Please select any areas you’d like to focus on</div>
-            </div>
-            <div class="help-link">Help</div>
-          </div>
-          <div class="options-grid">
-            <button class="option-box" data-multi="true">General check-in</button>
-            <button class="option-box" data-multi="true">Anxiety</button>
-            <button class="option-box" data-multi="true">Depression</button>
-            <button class="option-box" data-multi="true">Trauma / PTSD</button>
-            <button class="option-box" data-multi="true">Work or academic stress</button>
-            <button class="option-box" data-multi="true">Relationship / family issues</button>
-            <button class="option-box" data-multi="true">Grief / loss</button>
-            <button class="option-box" data-multi="true">Addiction</button>
-            <button class="option-box" data-multi="true">LGBTQ+ affirming care</button>
-            <button class="option-box" data-multi="true">Child / adolescent support</button>
-            <button class="option-box" data-multi="true">Neurodiversity support</button>
-            <button class="option-box" data-multi="true">Other…</button>
-          </div>
-          <button class="btn-secondary btn-block" style="margin-top:16px;">
-            I just need a general check-in
-          </button>
-          <div class="step-footer">
-            <button class="btn-secondary" onclick="goToStep(5)">Back</button>
-            <button class="btn-primary" onclick="goToStep(7)">Continue</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 7: Time of day -->
-      <section id="step-7" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:80%;"></div>
-          </div>
-          <div class="step-header">
-            <div>
-              <div class="step-title">When is the best time of day for your visit?</div>
-              <div class="step-subtitle">Choose all of the times that work for you.</div>
-            </div>
-            <div class="help-link">Help</div>
-          </div>
-          <div class="options-grid">
-            <button class="option-box" data-multi="true">
-              <div>
-                <div class="option-label-main">Early</div>
-                <div class="option-label-sub">Before 9am</div>
-              </div>
-            </button>
-            <button class="option-box" data-multi="true">
-              <div>
-                <div class="option-label-main">Morning</div>
-                <div class="option-label-sub">9am - 12pm</div>
-              </div>
-            </button>
-            <button class="option-box" data-multi="true">
-              <div>
-                <div class="option-label-main">Noon</div>
-                <div class="option-label-sub">12pm - 2pm</div>
-              </div>
-            </button>
-            <button class="option-box" data-multi="true">
-              <div>
-                <div class="option-label-main">Afternoon</div>
-                <div class="option-label-sub">2pm - 5pm</div>
-              </div>
-            </button>
-            <button class="option-box" data-multi="true">
-              <div>
-                <div class="option-label-main">Evening</div>
-                <div class="option-label-sub">After 5pm</div>
-              </div>
-            </button>
-            <button class="option-box" data-multi="true">
-              <div>
-                <div class="option-label-main">Weekends</div>
-                <div class="option-label-sub">Sat - Sun</div>
-              </div>
-            </button>
-          </div>
-          <button class="btn-secondary btn-block" style="margin-top:16px;">
-            No preference
-          </button>
-          <div class="step-footer">
-            <button class="btn-secondary" onclick="goToStep(6)">Back</button>
-            <button class="btn-primary" onclick="goToStep(8)">Continue</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 8: How soon -->
-      <section id="step-8" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:87%;"></div>
-          </div>
-          <div class="step-header">
-            <div>
-              <div class="step-title">How soon would you like to visit a psychologist?</div>
-              <div class="step-subtitle">
-                We’ll try to connect you with a psychologist who has appointments in your time range.
-              </div>
-            </div>
-            <div class="help-link">Help</div>
-          </div>
-          <div class="options-grid">
-            <button class="option-pill" data-single="true">As soon as possible</button>
-            <button class="option-pill" data-single="true">Within 1 week</button>
-            <button class="option-pill" data-single="true">Within 2 weeks</button>
-            <button class="option-pill" data-single="true">In more than 2 weeks</button>
-            <button class="option-pill" data-single="true">No preference</button>
-          </div>
-          <div class="step-footer">
-            <button class="btn-secondary" onclick="goToStep(7)">Back</button>
-            <button class="btn-primary" onclick="goToStep(9)">Continue</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 9: Important factors -->
-      <section id="step-9" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:93%;"></div>
-          </div>
-          <div class="step-header">
-            <div>
-              <div class="step-title">The most important factors in choosing a psychologist are…</div>
-              <div class="step-subtitle">Select all that apply</div>
-            </div>
-            <div class="help-link">Help</div>
-          </div>
-          <div class="options-grid">
-            <button class="option-box" data-multi="true">A high patient rating</button>
-            <button class="option-box" data-multi="true">A location close by</button>
-            <button class="option-box" data-multi="true">Warm, welcoming practice</button>
-            <button class="option-box" data-multi="true">Accepts my benefits / coverage</button>
-            <button class="option-box" data-multi="true">Fits my schedule</button>
-            <button class="option-box" data-multi="true">Highly experienced psychologist</button>
-            <button class="option-box" data-multi="true">Cost of appointment</button>
-          </div>
-          <button class="btn-secondary btn-block" style="margin-top:16px;">
-            No preference
-          </button>
-          <div class="step-footer">
-            <button class="btn-secondary" onclick="goToStep(8)">Back</button>
-            <button class="btn-primary" onclick="goToStep(10)">Continue</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 10: Insurance yes/no -->
-      <section id="step-10" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:96%;"></div>
-          </div>
-          <div class="step-header">
-            <div>
-              <div class="step-title">Do you have mental health coverage or benefits?</div>
-              <div class="step-subtitle">
-                Why do we ask? We want to connect you with a psychologist whose services are covered by your plan.
-              </div>
-            </div>
-            <div class="help-link">Help</div>
-          </div>
-          <div class="options-grid">
-            <button class="option-box" data-single="true">
-              <div class="option-icon positive">✓</div>
-              <div class="option-label-main">Yes, I have coverage</div>
-            </button>
-            <button class="option-box" data-single="true">
-              <div class="option-icon warning">!</div>
-              <div class="option-label-main">No, I don’t have coverage</div>
-            </button>
-          </div>
-          <div class="step-footer">
-            <button class="btn-secondary" onclick="goToStep(9)">Back</button>
-            <button class="btn-primary" onclick="goToStep(11)">Continue</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 11: Insurance provider -->
-      <section id="step-11" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:96%;"></div>
-          </div>
-          <div class="step-header">
-            <div>
-              <div class="step-title">Who is your benefits or insurance provider?</div>
-              <div class="step-subtitle">
-                If you’re not sure, don’t worry—you can change your answer later.
-              </div>
-            </div>
-            <div class="help-link">Help</div>
-          </div>
-          <div class="options-grid">
-            <button class="option-pill" data-single="true">Sun Life Financial</button>
-            <button class="option-pill" data-single="true">Manulife Financial</button>
-            <button class="option-pill" data-single="true">Canada Life</button>
-            <button class="option-pill" data-single="true">Green Shield Canada</button>
-            <button class="option-pill" data-single="true">Desjardins Group</button>
-            <button class="option-pill" data-single="true">Blue Cross</button>
-            <button class="option-pill" data-single="true">ClaimSecure</button>
-            <button class="option-pill" data-single="true">Other provider…</button>
-          </div>
-          <div class="step-footer" style="justify-content:space-between;">
-            <button class="btn-ghost" onclick="goToStep(12)">Skip</button>
-            <div>
-              <button class="btn-secondary" onclick="goToStep(10)">Back</button>
-              <button class="btn-primary" onclick="goToStep(12)">Continue</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 12: Contact info -->
-      <section id="step-12" class="step-wrapper" style="display:none;">
-        <div class="step-card">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:98%;"></div>
-          </div>
-          <div class="step-header">
-            <div>
-              <div class="step-title">What is your contact info?</div>
-              <div class="step-subtitle">
-                Enable secure booking by providing your email. We respect your privacy and time.
-              </div>
-            </div>
-            <div class="help-link">Help</div>
-          </div>
-          <label class="step-subtitle" style="margin-bottom:4px; display:block; color:var(--text-main);">
-            Email address
-          </label>
-          <input class="input" placeholder="you@example.com" />
-          <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">
-            By continuing, you agree to receive emails from MindMatch, and agree to our Terms and Privacy Policy.
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <h3>It’s free to use</h3>
+          <p>
+            Share your goals, pain points, and preferences
           </p>
-          <div class="step-footer" style="justify-content:space-between;">
-            <button class="btn-ghost" onclick="goToStep(13)">Skip</button>
-            <div>
-              <button class="btn-secondary" onclick="goToStep(11)">Back</button>
-              <button class="btn-primary" onclick="goToStep(13)">Continue</button>
-            </div>
-          </div>
+          <ul>
+            <li>Tell us about your needs</li>
+            <li>Get matched instantly</li>
+            <li>Book online</li>
+          </ul>
         </div>
-      </section>
-
-      <!-- STEP 13: Loading + results -->
-      <section id="step-13" class="step-wrapper" style="display:none;">
-        <div class="loading-list">
-          <div class="loading-row">
-            <div class="loading-icon done">✓</div>
-            <div>Finding psychologists near Toronto…</div>
-          </div>
-          <div class="loading-row">
-            <div class="loading-icon done">✓</div>
-            <div>Filtering psychologists that accept your coverage…</div>
-          </div>
-          <div class="loading-row">
-            <div class="loading-icon"></div>
-            <div>Finding psychologists who meet your preferences</div>
-          </div>
-          <div class="loading-text-muted" style="margin-top:6px;">
-            This usually takes just a few seconds.
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-avatar">🙂</div>
-          <div>
-            <div class="testimonial-text">
-              “It was a really good experience. I felt heard and supported, and the process of finding a psychologist was so easy. I’ll definitely continue my sessions!”
-            </div>
-            <div class="testimonial-meta">
-              Alex R. from Toronto · 8 days ago
-            </div>
-          </div>
-          <div class="testimonial-arrows">
-            <button class="arrow-btn">‹</button>
-            <button class="arrow-btn">›</button>
-          </div>
-        </div>
-
-        <div class="results-layout" style="margin-top:24px;">
-          <div>
-            <div class="results-header">
-              <div>
-                <div class="results-header-title">
-                  7 Top-Rated Practices Recommended For You
-                </div>
-                <div class="results-header-sub">
-                  Near 123 Main St, Toronto, ON
-                </div>
-              </div>
-              <button class="modify-search-btn">
-                Modify your search
-              </button>
-            </div>
-            <div class="gift-banner">
-              <div class="gift-pill">$50 Gift</div>
-              <div>
-                Get a $50 wellness credit when you book your first appointment through MindMatch.
-              </div>
-            </div>
-
-            <div class="practice-card">
-              <div>
-                <div class="practice-name">Harbourview Psychology Clinic</div>
-                <div class="practice-location">Downtown · 2.1 km away</div>
-                <div class="practice-rating">
-                  <span class="stars">★★★★★</span>
-                  <span>4.8 (92 reviews)</span>
-                </div>
-                <div class="practice-meta">
-                  18 people booked in the past month
-                </div>
-                <div class="practice-avatars">
-                  <div class="mini-avatar"></div>
-                  <div class="mini-avatar"></div>
-                  <div class="practice-logo"></div>
-                </div>
-              </div>
-              <div class="practice-slots">
-                <div style="font-size:12px; font-weight:600; margin-bottom:4px;">
-                  Next available · Thu, Apr 9
-                </div>
-                <div class="slots-row">
-                  <div class="slot-pill">10:00 am</div>
-                  <div class="slot-pill">11:30 am</div>
-                  <div class="slot-pill">1:00 pm</div>
-                  <div class="slot-pill">3:00 pm</div>
-                </div>
-                <button class="view-profile-btn">
-                  View profile
-                </button>
-              </div>
-            </div>
-
-            <div class="practice-card">
-              <div>
-                <div class="practice-name">Maple Grove Counselling</div>
-                <div class="practice-location">Midtown · 3.4 km away</div>
-                <div class="practice-rating">
-                  <span class="stars">★★★★☆</span>
-                  <span>4.5 (120 reviews)</span>
-                </div>
-                <div class="practice-meta">
-                  12 people booked in the past month
-                </div>
-              </div>
-              <div class="practice-slots">
-                <div style="font-size:12px; font-weight:600; margin-bottom:4px;">
-                  Next available · Fri, Apr 10
-                </div>
-                <div class="slots-row">
-                  <div class="slot-pill">9:30 am</div>
-                  <div class="slot-pill">1:30 pm</div>
-                  <div class="slot-pill">4:00 pm</div>
-                </div>
-                <button class="view-profile-btn">
-                  View profile
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="map-card">
-            <div class="map-placeholder"></div>
-            <div class="super-practice">
-              <div class="super-label">SUPER PRACTICE</div>
-              <div>
-                Super Practices are experienced, highly rated practices committed to providing great care for patients.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      </div>
     </div>
-  </main>
-</div>
+  </section>
 
-<script>
-  const totalSteps = 14; // 0–13
-  function goToStep(step) {
-    for (let i = 0; i < totalSteps; i++) {
-      const el = document.getElementById("step-" + i);
-      if (el) el.style.display = i === step ? "block" : "none";
-    }
-  }
+  <!-- Programs overview -->
+  <section class="programs" id="learn-more">
+    <div class="container">
+      <h2>Built around your goals</h2>
+      <p class="section-subtitle">
+        We only partner with health experts who meet our standards for client care, professionalism, and expertise
+      </p>
+      <div class="program-grid">
+        <article class="program-card" id="rmt">
+          <h3>Registered Massage Therapy (RMT)</h3>
+          <p>
+            Get matched with a top‑rated Registered Massage Therapist in minutes
+          </p>
+          <a href="rmt.html" class="card-link">Explore RMT →</a>
+        </article>
+        <article class="program-card" id="weight-loss">
+          <h3>Weight loss & longevity</h3>
+          <p>
+            Personalized nutrition guidance from a Registered Dietitian
+          </p>
+          <a href="weight-loss.html" class="card-link">Explore weight loss →</a>
+        </article>
+        <article class="program-card" id="chiro">
+          <h3>Chiropractic care</h3>
+          <p>
+            Spine and joint care from licensed Chiropractors
+          </p>
+          <a href="chiro.html" class="card-link">Explore chiropractic care →</a>
+        </article>
+        <article class="program-card" id="physio">
+          <h3>Physiotherapy</h3>
+          <p>
+            Get paired with a top Physiotherapist for recovery and mobility
+          </p>
+          <a href="physio.html" class="card-link">Explore physiotherapy →</a>
+        </article>
+        <article class="program-card">
+          <h3>Speech Therapist</h3>
+          <p>
+            Expert support for speech, language, and communication.
+          </p>
+          <span class="tag">Coming soon</span>
+        </article>
+        <article class="program-card">
+          <h3>Podiatrist</h3>
+          <p>
+            Foot and gait care from licensed specialists.
+          </p>
+          <span class="tag">Coming soon</span>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  // Address continue button enable
-  const addressInput = document.getElementById("addressInput");
-  const addressContinue = document.getElementById("addressContinue");
-  if (addressInput && addressContinue) {
-    addressInput.addEventListener("input", () => {
-      if (addressInput.value.trim().length > 4) {
-        addressContinue.classList.add("enabled");
-      } else {
-        addressContinue.classList.remove("enabled");
-      }
-    });
-  }
+  <!-- Coaching / support -->
+<section class="support support-green">
+  <div class="container support-grid">
+    <div>
+      <h2>benessere+: Coaching that keeps you on track</h2>
+      <p>
+        A dedicated care team helps you navigate lifestyle changes and your day‑to‑day questions, so you’re never on your own.
+      </p>
+      <ul class="checklist">
+        <li>Guidance from trained staff</li>
+        <li>Help with changes in lifestyle</li>
+        <li>Support for nutrition, movement, and habits</li>
+      </ul>
+    </div>
+    <div class="support-card">
+      <h3>We sweat the details</h3>
+      <p>
+        Expert support, available on your schedule — designed for privacy and peace of mind.
+      </p>
+      <ul>
+        <li>Online visits and follow‑ups</li>
+        <li>Transparent pricing</li>
+        <li>Ongoing support</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  // Selection behavior
-  document.addEventListener("click", (e) => {
-    const btn = e.target.closest("button");
-    if (!btn) return;
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>What patients are saying</h2>
+      <p class="section-subtitle">
+        Real stories from people who’ve used benessere+ to make lasting changes.
+      </p>
+      <div class="testimonial-grid">
+        <article class="testimonial-card">
+          <p>
+            “My clinician really listened, explained my options clearly, and made me feel comfortable from the first visit.”
+          </p>
+          <span class="testimonial-name">— Patient A</span>
+        </article>
+        <article class="testimonial-card">
+          <p>
+            “The process was quick and straightforward. I could ask questions anytime and always got a thoughtful response.”
+          </p>
+          <span class="testimonial-name">— Patient B</span>
+        </article>
+        <article class="testimonial-card">
+          <p>
+            “I’ve steadily moved toward my goals with consistent support and clear guidance. It feels sustainable, not extreme.”
+          </p>
+          <span class="testimonial-name">— Patient C</span>
+        </article>
+        <article class="testimonial-card">
+          <p>
+            “I never thought online care could feel this personal. The team is responsive, kind, and genuinely invested.”
+          </p>
+          <span class="testimonial-name">— Patient D</span>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    // Single-select groups
-    if (btn.dataset.single === "true") {
-      const parent = btn.parentElement;
-      Array.from(parent.querySelectorAll("button[data-single]")).forEach((b) =>
-        b.classList.remove("selected")
-      );
-      btn.classList.add("selected");
-    }
+  <!-- Guarantee / highlights -->
+  <section class="guarantee">
+    <div class="container guarantee-grid">
+      <div>
+        <h2>Care you can count on</h2>
+        <p>
+          From your first visit to ongoing follow‑ups, your care is guided by experts and built around your life.
+        </p>
+      </div>
+      <div class="guarantee-badges">
+        <div class="badge-item">
+          <h4>Available 24/7</h4>
+          <p>Advice when you need it.</p>
+        </div>
+        <div class="badge-item">
+          <h4>Researched plans</h4>
+          <p>Evidence‑based options tailored to your needs.</p>
+        </div>
+        <div class="badge-item">
+          <h4>No hidden fees</h4>
+          <p>Clear pricing and no surprise charges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    // Multi-select groups
-    if (btn.dataset.multi === "true") {
-      btn.classList.toggle("selected");
-    }
-  });
-</script>
+  <!-- Quiz CTA -->
+  <section class="quiz-cta" id="quiz">
+    <div class="container quiz-inner">
+      <div>
+        <h2>Start your personalized care plan</h2>
+        <p>
+          Answer a few questions about your health and goals to see which options may be right for you.
+        </p>
+      </div>
+      <a href="#" class="btn btn-primary btn-large">Take the quiz</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo footer-logo">benessere</div>
+        <p class="footer-tagline">
+          Personalized care for massage therepy, weight management, physiotherapy, chiropractics,and more.
+        </p>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>Email: hello@benessere.com</p>
+        <p>Phone: (123) 345‑6789</p>
+        <p>191 Universal Dr. Unit 905<br />Toronto, ON Canada</p>
+      </div>
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Privacy Practices</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Medical Consent</a>
+      </div>
+      <div class="footer-column">
+        <h4>Patients</h4>
+        <a href="#">Bill of Rights</a>
+        <a href="#">Patient Portal</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 benessere. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
-```
