@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Contact',
   description:
     'Reach out to Highstack. Tell us what you’re trying to do — we’ll tell you, honestly, whether we can help.',
+  alternates: { canonical: '/contact' },
 };
 
 export default function ContactPage() {

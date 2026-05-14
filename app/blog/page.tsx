@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Blog',
   description:
     'Notes from the Highstack team on strategy, modernization, cloud, and the operating models behind the technology.',
+  alternates: { canonical: '/blog' },
 };
 
 export default function BlogPage() {

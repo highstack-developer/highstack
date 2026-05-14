@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'About',
   description:
     'Highstack is an independent technology consultancy founded in 2009. Senior people doing senior work — mission, values, and history.',
+  alternates: { canonical: '/about' },
 };
 
 export default function AboutPage() {

@@ -25,9 +25,12 @@ export function generateMetadata({
   return {
     title: cs.title,
     description: cs.summary,
+    alternates: { canonical: `/case-studies/${cs.slug}` },
     openGraph: {
       title: cs.title,
       description: cs.summary,
+      type: 'article',
+      url: `/case-studies/${cs.slug}`,
     },
   };
 }

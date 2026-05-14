@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Terms of Use',
   description:
     'The terms governing your use of the Highstack Inc. website and services, including user responsibilities, intellectual property, and limitations of liability.',
+  alternates: { canonical: '/terms-of-use' },
 };
 
 const LAST_UPDATED = 'October 15, 2024';

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Team',
   description:
     'Meet the senior consultants, engineers, and architects behind Highstack — the people you’ll actually work with on every engagement.',
+  alternates: { canonical: '/team' },
 };
 
 export default function TeamPage() {

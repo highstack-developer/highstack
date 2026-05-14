@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
     'How Highstack Inc. collects, uses, discloses, and protects personal information in accordance with PIPEDA and applicable Canadian privacy laws.',
+  alternates: { canonical: '/privacy-policy' },
 };
 
 const LAST_UPDATED = 'October 15, 2024';

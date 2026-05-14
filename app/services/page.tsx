@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Services',
   description:
     'Highstack delivers technology strategy, software development, digital transformation, cloud, data, and IT consulting — with senior people from end to end.',
+  alternates: { canonical: '/services' },
 };
 
 export default function ServicesPage() {

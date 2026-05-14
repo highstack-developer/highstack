@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Case Studies',
   description:
     'Selected Highstack engagements: platform modernization, cloud migrations, data warehouses, and the outcomes they delivered for our clients.',
+  alternates: { canonical: '/case-studies' },
 };
 
 export default function CaseStudiesPage() {

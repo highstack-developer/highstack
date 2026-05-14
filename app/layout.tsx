@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   },
   description:
     'Highstack is a technology consulting firm helping clients accelerate their goals with transformative software, cloud, and data solutions.',
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     url: 'https://highstack.ca',
@@ -27,17 +28,22 @@ export const metadata: Metadata = {
     description:
       'Highstack is a technology consulting firm helping clients accelerate their goals with transformative software, cloud, and data solutions.',
     images: ['/assets/Highstack Logo Dark.png'],
+    locale: 'en_CA',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Highstack — Technology Consulting',
     description:
       'Highstack is a technology consulting firm helping clients accelerate their goals with transformative software, cloud, and data solutions.',
+    images: ['/assets/Highstack Logo Dark.png'],
   },
   icons: {
     icon: '/assets/Highstack Needle Dark.png',
     apple: '/assets/Highstack Needle Dark.png',
   },
+  authors: [{ name: 'Highstack Inc.' }],
+  creator: 'Highstack Inc.',
+  publisher: 'Highstack Inc.',
 };
 
 export default function RootLayout({
