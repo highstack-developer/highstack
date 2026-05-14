@@ -27,7 +27,14 @@ export const metadata: Metadata = {
     title: 'Highstack — Technology Consulting',
     description:
       'Highstack is a technology consulting firm helping clients accelerate their goals with transformative software, cloud, and data solutions.',
-    images: ['/assets/Highstack Logo Dark.png'],
+    images: [
+      {
+        url: '/assets/Highstack Logo Dark.png',
+        width: 2560,
+        height: 1440,
+        alt: 'Highstack',
+      },
+    ],
     locale: 'en_CA',
   },
   twitter: {
