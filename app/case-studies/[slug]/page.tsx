@@ -4,8 +4,10 @@ import { notFound } from 'next/navigation';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Reveal } from '@/components/ui/Reveal';
 import { CaseStudyCard } from '@/components/ui/CaseStudyCard';
+import { TestimonialCard } from '@/components/ui/TestimonialCard';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { caseStudies } from '@/data/caseStudies';
+import { testimonials } from '@/data/testimonials';
 
 type Params = { slug: string };
 
@@ -56,6 +58,10 @@ export default function CaseStudyDetail({ params }: { params: Params }) {
   const related = caseStudies
     .filter((c) => c.slug !== cs.slug)
     .slice(0, 2);
+
+  const testimonial = cs.testimonialId
+    ? testimonials.find((t) => t.id === cs.testimonialId)
+    : undefined;
 
   return (
     <>
@@ -177,24 +183,8 @@ export default function CaseStudyDetail({ params }: { params: Params }) {
               </div>
             </div>
 
-            {cs.testimonial && (
-              <figure className="bg-brand-ink text-brand-offwhite rounded-xl p-6 border-l-4 border-brand-yellow">
-                <div
-                  aria-hidden
-                  className="text-brand-yellow text-4xl font-bold leading-none -mt-1"
-                >
-                  &ldquo;
-                </div>
-                <blockquote className="mt-2 italic leading-relaxed text-sm">
-                  {cs.testimonial.quote}
-                </blockquote>
-                <figcaption className="mt-4 text-xs">
-                  <div className="font-semibold">{cs.testimonial.author}</div>
-                  <div className="text-brand-offwhite/60">
-                    {cs.testimonial.title}
-                  </div>
-                </figcaption>
-              </figure>
+            {testimonial && (
+              <TestimonialCard testimonial={testimonial} variant="sidebar" />
             )}
           </aside>
         </div>

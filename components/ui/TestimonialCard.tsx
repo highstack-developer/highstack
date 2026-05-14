@@ -5,17 +5,19 @@ type Props = {
   variant?: 'card' | 'sidebar';
 };
 
-function Stars({ count }: { count: number }) {
+function Stars({ count, tone }: { count: number; tone: 'light' | 'dark' }) {
+  const stroke = tone === 'light' ? '#F5C000' : '#F5C000';
+  const empty = tone === 'light' ? 'transparent' : 'transparent';
   return (
-    <div className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
+    <div className="flex gap-0.5 mt-4" aria-label={`${count} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
           width="14"
           height="14"
           viewBox="0 0 24 24"
-          fill={i < count ? '#F5C000' : 'none'}
-          stroke="#F5C000"
+          fill={i < count ? '#F5C000' : empty}
+          stroke={stroke}
           strokeWidth="1.5"
           aria-hidden
         >
@@ -27,14 +29,41 @@ function Stars({ count }: { count: number }) {
 }
 
 export function TestimonialCard({ testimonial, variant = 'card' }: Props) {
+  if (variant === 'sidebar') {
+    return (
+      <figure className="bg-brand-ink text-brand-offwhite rounded-xl p-6 border-l-4 border-brand-yellow">
+        <div
+          aria-hidden
+          className="text-brand-yellow text-4xl font-bold leading-none -mt-1"
+        >
+          &ldquo;
+        </div>
+        <blockquote className="mt-2 italic leading-relaxed text-sm">
+          {testimonial.quote}
+        </blockquote>
+        <Stars count={testimonial.rating} tone="dark" />
+        <figcaption className="mt-4 flex items-center gap-3 text-xs">
+          <div
+            aria-hidden
+            className="w-9 h-9 rounded-full bg-brand-yellow text-brand-ink flex items-center justify-center text-xs font-bold"
+          >
+            {testimonial.avatarInitials}
+          </div>
+          <div>
+            <div className="font-semibold text-brand-offwhite">
+              {testimonial.author}
+            </div>
+            <div className="text-brand-offwhite/60">
+              {testimonial.title} · {testimonial.company}
+            </div>
+          </div>
+        </figcaption>
+      </figure>
+    );
+  }
+
   return (
-    <figure
-      className={
-        variant === 'card'
-          ? 'h-full bg-white rounded-xl p-7 border-l-4 border-brand-yellow flex flex-col'
-          : 'bg-brand-offwhite rounded-xl p-6 border-l-4 border-brand-yellow'
-      }
-    >
+    <figure className="h-full bg-white rounded-xl p-7 border-l-4 border-brand-yellow flex flex-col">
       <div
         aria-hidden
         className="text-brand-yellow text-5xl font-bold leading-none -mt-1"
@@ -44,7 +73,7 @@ export function TestimonialCard({ testimonial, variant = 'card' }: Props) {
       <blockquote className="mt-2 text-brand-ink/85 italic leading-relaxed text-sm">
         {testimonial.quote}
       </blockquote>
-      <Stars count={testimonial.rating} />
+      <Stars count={testimonial.rating} tone="light" />
       <figcaption className="mt-5 flex items-center gap-3">
         <div
           aria-hidden

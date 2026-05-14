@@ -9,11 +9,7 @@ export type CaseStudy = {
   solution: string;
   results: string[];
   technologies: string[];
-  testimonial?: {
-    quote: string;
-    author: string;
-    title: string;
-  };
+  testimonialId?: string;
   featured: boolean;
   coverColor: string;
 };
@@ -38,12 +34,7 @@ export const caseStudies: CaseStudy[] = [
       '$2.4M annual infrastructure savings',
     ],
     technologies: ['TypeScript', 'Node.js', 'PostgreSQL', 'AWS', 'Kafka', 'Terraform'],
-    testimonial: {
-      quote:
-        'Highstack walked into a five-year platform problem and had a credible roadmap in three weeks.',
-      author: 'Priya Anand',
-      title: 'CTO, Northwind Logistics',
-    },
+    testimonialId: 'tm-1',
     featured: true,
     coverColor: '#1C1C2E',
   },
@@ -66,12 +57,7 @@ export const caseStudies: CaseStudy[] = [
       'Two senior analysts retained who had been close to leaving',
     ],
     technologies: ['Snowflake', 'dbt', 'Airflow', 'Looker', 'Python', 'AWS'],
-    testimonial: {
-      quote:
-        'The clearest thinking we’ve had on the table in years. Highstack’s strategy work paid for itself before the first quarter of execution was done.',
-      author: 'Marcus Trent',
-      title: 'VP Engineering, Aurora Financial',
-    },
+    testimonialId: 'tm-2',
     featured: true,
     coverColor: '#F5C000',
   },
@@ -94,12 +80,7 @@ export const caseStudies: CaseStudy[] = [
       'Disaster recovery RTO reduced from 48h to 90 min',
     ],
     technologies: ['AWS', 'Terraform', 'Kubernetes', 'Datadog', 'HIPAA controls'],
-    testimonial: {
-      quote:
-        'They embedded with our engineers like teammates, not consultants. The migration came in under budget and finished a month early.',
-      author: 'Elena Vasquez',
-      title: 'Director of Platform, Cedar Health',
-    },
+    testimonialId: 'tm-3',
     featured: false,
     coverColor: '#F5F4F0',
   },
