@@ -47,6 +47,19 @@ archive/             Legacy WIP pages from before the rebuild
 - **Off-white:** `#F5F4F0`
 - **Type:** Outfit (Google Fonts, variable weight)
 
-## GitHub Pages setup
+## Deployment
 
-Currently `main` / root. At cutover, switch Pages source to `gh-pages` branch / root.
+The `.github/workflows/deploy.yml` action runs on every push to `main`:
+
+1. `npm ci`
+2. `npm run build` → produces `./out`
+3. `peaceiris/actions-gh-pages@v3` pushes `./out` to the `gh-pages` branch with the `highstack.ca` CNAME preserved
+
+### GitHub Pages setup (one-time, at cutover)
+
+Currently Pages serves `main` / root (the legacy static site). At cutover:
+
+1. Merge `dev` → `main`. Wait for the deploy workflow to finish and create/update the `gh-pages` branch.
+2. Repo **Settings → Pages → Source** → set to **`gh-pages` branch / root**.
+3. Confirm the custom domain is `highstack.ca` and **Enforce HTTPS** is enabled.
+4. Verify https://highstack.ca loads the new site.
