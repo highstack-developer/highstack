@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 import './globals.css';
 
 const outfit = Outfit({
@@ -45,7 +47,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={outfit.variable}>
-      <body>{children}</body>
+      <body className="min-h-screen flex flex-col">
+        <Navbar />
+        <main id="main" className="flex-1 pt-16">
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }
