@@ -1,0 +1,62 @@
+---
+title: "Cloud cost isn't an engineering problem"
+date: "2024-10-21"
+author: "Jonas Lindberg"
+authorInitials: "JL"
+excerpt: "Most cloud cost overruns we see aren't caused by bad architecture. They're caused by missing feedback loops between the people who spend and the people who pay."
+tags: ["Cloud", "FinOps"]
+coverColor: "#F5C000"
+readingMinutes: 5
+---
+
+We get called in for cloud cost reviews about once a quarter, and the request
+is almost always framed the same way: "Our AWS bill is up 40% year-over-year.
+Can you help us right-size?"
+
+We usually can. But the right-sizing isn't what saves the money. The
+**feedback loop** is.
+
+## The shape of the problem
+
+In every overrun engagement we've done, the technical root cause was different
+— too many large EC2 instances, runaway egress, dev environments that nobody
+turned off, log retention configured at the maximum. But the **organizational**
+root cause was always the same.
+
+The engineers making the decisions didn't see the bill. The finance team
+seeing the bill didn't understand the decisions. So the cost grew quietly
+until it became an alarm.
+
+## What actually works
+
+Three things, in order:
+
+### 1. Tag everything, then tax everything
+
+Every workload should be tagged with the team that owns it. Then those teams
+should see a daily — not monthly — view of what their workloads cost. The
+exact dollars don't have to be precise. The signal does.
+
+### 2. Make the trade-off visible at the moment of decision
+
+When an engineer is choosing between a managed database that costs $400/mo
+and self-hosting one that costs $80, the right answer depends on the team's
+operational maturity. But that conversation has to happen at the design
+review, not at the next quarterly business review.
+
+### 3. Stop treating the cloud bill like a fixed cost
+
+In most organizations we walk into, the cloud bill is considered overhead.
+That's a category error. The cloud bill is a direct, proportional consequence
+of engineering decisions made every day. Treat it like a P&L line, with
+owners.
+
+## The boring conclusion
+
+There's no exotic FinOps tool that fixes this. There's no architectural
+pattern that, by itself, drops the bill 30%. There's just the work of
+closing the feedback loop between the people who spend and the people
+who pay. Every time we do that work, the savings show up. Every time we
+skip it and just right-size, the bill is back in eighteen months.
+
+The technology is the easy part. The organization always was.

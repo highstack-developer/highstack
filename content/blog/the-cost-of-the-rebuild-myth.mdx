@@ -1,0 +1,60 @@
+---
+title: "The cost of the rebuild myth"
+date: "2024-09-12"
+author: "Rachel Okafor"
+authorInitials: "RO"
+excerpt: "Most teams pitching a full platform rebuild are solving for the wrong constraint. Here's how to tell — and what to do instead."
+tags: ["Strategy", "Modernization"]
+coverColor: "#1C1C2E"
+readingMinutes: 6
+---
+
+Every consultant who's been in the industry for ten years has been in this meeting:
+the leadership team has decided the legacy platform needs to be replaced, and they
+want a number. A timeline. A team.
+
+It is almost always the wrong question.
+
+## The constraint isn't usually the code
+
+When a platform gets called "legacy," there are typically three things going on:
+
+1. Releases take too long, so the business loses confidence in IT
+2. The system is fragile, so people are afraid to touch it
+3. Knowledge of how it works lives in too few heads
+
+Notice none of those are statements about the code itself. They're statements about
+the **operating model** around the code. Rebuilds rarely fix operating models — they
+just hide them for a year, and then the new system inherits the same pathology.
+
+## What we recommend instead
+
+The first three months of a "modernization" engagement should be cheap and ruthlessly
+focused on the operating model. Specifically:
+
+- **Make the release pipeline boring.** If it takes three weeks to deploy a typo
+  fix, no architectural improvement will save you.
+- **Reduce the blast radius.** Find the modules that are touched most often,
+  and put them behind clear interfaces. You'll know within a quarter whether
+  the current architecture supports that or fights it.
+- **Spread the knowledge.** Pair experienced engineers with newer ones on the
+  scariest parts of the codebase. The legacy isn't in the code — it's in
+  who can read it.
+
+By the time you've done those three things, you'll know if the system is
+actually salvageable. About 60% of the time, in our experience, the answer
+is yes. The other 40% — go ahead and rebuild. But now you'll do it for the
+right reasons, with a team that can pull it off.
+
+## The rebuild trap
+
+The reason teams default to rebuild is that it feels like progress. A
+greenfield project has clear scope, a fresh codebase, no political baggage,
+and an end date. Pulling apart a sixteen-year-old monolith has none of those
+things.
+
+But the projects that go badly — the ones that end up on the front page of
+the IT trade press — are almost never failed maintenance. They are almost
+always failed rebuilds.
+
+Be honest about which one you're signing up for.
