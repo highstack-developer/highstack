@@ -48,7 +48,7 @@ export function ShareButtons({ title, slug }: Props) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t.label}
-          className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand-ink/5 text-brand-ink hover:bg-brand-ink hover:text-brand-yellow transition-colors"
+          className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-brand-ink/5 text-brand-ink hover:bg-brand-ink hover:text-brand-yellow transition-colors"
         >
           {t.icon}
         </a>
@@ -57,7 +57,7 @@ export function ShareButtons({ title, slug }: Props) {
         type="button"
         onClick={onCopy}
         aria-label="Copy link"
-        className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand-ink/5 text-brand-ink hover:bg-brand-ink hover:text-brand-yellow transition-colors"
+        className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-brand-ink/5 text-brand-ink hover:bg-brand-ink hover:text-brand-yellow transition-colors"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <path d="M10 14 a4 4 0 0 0 5.66 0 l3.84 -3.84 a4 4 0 0 0 -5.66 -5.66 l-1.42 1.42" />

@@ -76,7 +76,7 @@ export function ContactInfo() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Highstack on LinkedIn"
-          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-ink/5 text-brand-ink hover:bg-brand-ink hover:text-brand-yellow transition-colors"
+          className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-brand-ink/5 text-brand-ink hover:bg-brand-ink hover:text-brand-yellow transition-colors"
         >
           <LinkedInIcon />
         </a>

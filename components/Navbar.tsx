@@ -87,7 +87,7 @@ export function Navbar() {
           aria-controls="mobile-menu"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen((v) => !v)}
-          className="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 text-brand-ink"
+          className="md:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 text-brand-ink"
         >
           <svg
             width="22"
