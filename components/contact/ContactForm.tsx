@@ -272,7 +272,7 @@ export function ContactForm() {
       </button>
 
       {!FORMSPREE_ID && (
-        <p className="text-xs text-brand-ink/50 italic">
+        <p className="text-xs text-brand-ink/70 italic">
           Note: Formspree is not yet configured. Submissions will fail until
           NEXT_PUBLIC_FORMSPREE_ID is set in <code>.env.local</code>.
         </p>

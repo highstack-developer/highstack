@@ -98,7 +98,7 @@ export default function CaseStudyDetail({ params }: { params: Params }) {
       <section className="bg-brand-offwhite py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6">
           <Reveal>
-            <div className="text-xs font-semibold uppercase tracking-wider text-brand-ink/60">
+            <div className="text-xs font-semibold uppercase tracking-wider text-brand-ink/70">
               {cs.client}
             </div>
             <h1 className="mt-3 text-display max-w-4xl text-brand-ink leading-[1.1]">
@@ -174,11 +174,11 @@ export default function CaseStudyDetail({ params }: { params: Params }) {
 
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             <div className="bg-brand-offwhite rounded-xl p-6">
-              <div className="text-label uppercase text-brand-ink/50 mb-2">
+              <div className="text-label uppercase text-brand-ink/70 mb-2">
                 Client
               </div>
               <div className="text-h3 text-brand-ink">{cs.client}</div>
-              <div className="mt-4 text-label uppercase text-brand-ink/50 mb-2">
+              <div className="mt-4 text-label uppercase text-brand-ink/70 mb-2">
                 Industry
               </div>
               <div className="text-sm font-semibold text-brand-ink">

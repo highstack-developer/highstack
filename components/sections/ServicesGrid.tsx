@@ -25,7 +25,7 @@ export function ServicesGrid() {
                   {service.description}
                 </p>
                 <div className="mt-6 pt-5 border-t border-brand-ink/10">
-                  <div className="text-label uppercase text-brand-ink/50 mb-1">
+                  <div className="text-label uppercase text-brand-ink/70 mb-1">
                     Outcome
                   </div>
                   <p className="text-sm font-semibold text-brand-ink">

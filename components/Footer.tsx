@@ -88,7 +88,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-brand-offwhite/10">
-        <div className="mx-auto max-w-7xl px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-sm text-brand-offwhite/60">
+        <div className="mx-auto max-w-7xl px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-sm text-brand-offwhite/75">
           <p>Copyright © {year} Highstack Inc. All Rights Reserved.</p>
           <div className="flex gap-5">
             <Link href="/privacy-policy" className="hover:text-brand-yellow transition-colors">

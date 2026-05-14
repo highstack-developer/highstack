@@ -23,6 +23,38 @@ body {
   line-height: 1.7;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role='tab']:focus-visible {
+  outline: 2px solid var(--color-brand-yellow);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -64px;
+  left: 1rem;
+  z-index: 60;
+  padding: 0.625rem 1rem;
+  background: var(--color-brand-ink);
+  color: var(--color-brand-yellow);
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: top 0.18s ease-out;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 0.75rem;
+  outline: 2px solid var(--color-brand-yellow);
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

@@ -29,7 +29,7 @@ export function CaseStudyCard({ caseStudy }: Props) {
         </div>
       </div>
       <div className="p-7">
-        <div className="text-xs font-semibold uppercase tracking-wider text-brand-ink/60">
+        <div className="text-xs font-semibold uppercase tracking-wider text-brand-ink/70">
           {caseStudy.client}
         </div>
         <h3 className="mt-2 text-h2 text-brand-ink group-hover:text-brand-ink/80 transition-colors">

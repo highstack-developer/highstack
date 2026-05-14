@@ -71,7 +71,7 @@ export default function BlogPost({ params }: { params: Params }) {
             {post.tags.map((t) => (
               <span
                 key={t}
-                className="text-label uppercase text-brand-ink/60"
+                className="text-label uppercase text-brand-ink/70"
               >
                 {t}
               </span>
@@ -102,7 +102,7 @@ export default function BlogPost({ params }: { params: Params }) {
                 <div className="font-semibold text-brand-ink">
                   {post.author}
                 </div>
-                <div className="text-brand-ink/60 text-xs">
+                <div className="text-brand-ink/70 text-xs">
                   {formatDate(post.date)} · {post.readingMinutes} min read
                 </div>
               </div>

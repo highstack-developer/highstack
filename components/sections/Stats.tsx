@@ -59,7 +59,7 @@ export function Stats() {
         <dl className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="border-l-2 border-brand-yellow pl-5">
-              <dt className="text-label uppercase text-brand-offwhite/60">
+              <dt className="text-label uppercase text-brand-offwhite/75">
                 {s.label}
               </dt>
               <dd className="mt-2 text-display text-brand-yellow leading-none">

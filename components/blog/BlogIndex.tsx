@@ -69,7 +69,7 @@ export function BlogIndex({ posts, tags }: Props) {
         </div>
 
         {filtered.length === 0 && (
-          <p className="mt-12 text-brand-ink/60">
+          <p className="mt-12 text-brand-ink/70">
             No posts under this tag yet.
           </p>
         )}

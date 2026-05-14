@@ -69,7 +69,7 @@ export function CaseStudiesIndex() {
         </div>
 
         {filtered.length === 0 && (
-          <p className="mt-12 text-brand-ink/60">
+          <p className="mt-12 text-brand-ink/70">
             No case studies match this filter yet.
           </p>
         )}

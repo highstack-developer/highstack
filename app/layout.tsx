@@ -61,6 +61,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={outfit.variable}>
       <body className="min-h-screen flex flex-col">
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <Navbar />
         <main id="main" className="flex-1 pt-16">
           {children}

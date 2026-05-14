@@ -45,7 +45,7 @@ export function ContactInfo() {
             <MailIcon />
           </span>
           <div>
-            <div className="text-label uppercase text-brand-ink/60">Email</div>
+            <div className="text-label uppercase text-brand-ink/70">Email</div>
             <a
               href="mailto:info@highstack.ca"
               className="text-sm font-semibold text-brand-ink hover:text-brand-yellow transition-colors"
@@ -59,7 +59,7 @@ export function ContactInfo() {
             <LocationIcon />
           </span>
           <div>
-            <div className="text-label uppercase text-brand-ink/60">Location</div>
+            <div className="text-label uppercase text-brand-ink/70">Location</div>
             <div className="text-sm font-semibold text-brand-ink">
               Canada · serving North America
             </div>
@@ -68,7 +68,7 @@ export function ContactInfo() {
       </ul>
 
       <div className="mt-10 pt-6 border-t border-brand-ink/10">
-        <div className="text-label uppercase text-brand-ink/60 mb-3">
+        <div className="text-label uppercase text-brand-ink/70 mb-3">
           Follow along
         </div>
         <a
@@ -82,7 +82,7 @@ export function ContactInfo() {
         </a>
       </div>
 
-      <p className="mt-10 text-xs text-brand-ink/60">
+      <p className="mt-10 text-xs text-brand-ink/70">
         We typically respond within one business day.
       </p>
     </div>

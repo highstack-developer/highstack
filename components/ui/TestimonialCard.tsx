@@ -53,7 +53,7 @@ export function TestimonialCard({ testimonial, variant = 'card' }: Props) {
             <div className="font-semibold text-brand-offwhite">
               {testimonial.author}
             </div>
-            <div className="text-brand-offwhite/60">
+            <div className="text-brand-offwhite/75">
               {testimonial.title} · {testimonial.company}
             </div>
           </div>
@@ -85,7 +85,7 @@ export function TestimonialCard({ testimonial, variant = 'card' }: Props) {
           <div className="text-sm font-semibold text-brand-ink leading-tight">
             {testimonial.author}
           </div>
-          <div className="text-xs text-brand-ink/60">
+          <div className="text-xs text-brand-ink/70">
             {testimonial.title} · {testimonial.company}
           </div>
         </div>

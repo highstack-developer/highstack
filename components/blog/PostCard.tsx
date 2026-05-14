@@ -29,7 +29,7 @@ export function PostCard({ post }: Props) {
           {post.tags.map((t) => (
             <span
               key={t}
-              className="text-label uppercase text-brand-ink/60"
+              className="text-label uppercase text-brand-ink/70"
             >
               {t}
             </span>
@@ -41,7 +41,7 @@ export function PostCard({ post }: Props) {
         <p className="mt-3 text-sm text-brand-ink/75 leading-relaxed">
           {post.excerpt}
         </p>
-        <div className="mt-5 flex items-center gap-3 text-xs text-brand-ink/60">
+        <div className="mt-5 flex items-center gap-3 text-xs text-brand-ink/70">
           <span className="font-semibold text-brand-ink">{post.author}</span>
           <span aria-hidden>·</span>
           <span>{formatDate(post.date)}</span>
