@@ -243,7 +243,7 @@ html, body { overflow-x: clip; }
 [data-theme="ink"], [data-theme="dark"] {
   /* Header */
   & .site-header {
-    background: rgba(20, 20, 20, 0.78);
+    background: var(--bg);
     border-bottom-color: var(--border);
   }
   & .site-header__nav a { color: var(--fg); }
@@ -308,7 +308,7 @@ html, body { overflow-x: clip; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) .site-header,
   [data-theme="paper"] .site-header {
-    background: rgba(20, 20, 20, 0.78);
+    background: var(--bg);
     border-bottom-color: var(--border);
   }
   :root:not([data-theme]) .site-header__nav a,
