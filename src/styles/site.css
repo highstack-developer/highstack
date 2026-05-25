@@ -33,9 +33,9 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
   position: sticky; top: 0; z-index: var(--z-header);
   display: flex; align-items: center; justify-content: space-between;
   padding: 18px var(--grid-margin);
-  background: rgba(249, 194, 25, 0.82);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  /* Solid page color so the header matches the body exactly — no off-tone
+     band from a translucent layer. backdrop-filter would be a no-op here. */
+  background: var(--bg);
   border-bottom: 1px solid rgba(10,10,10,0.22);
 }
 .site-header__lockup img { height: 28px; width: auto; display: block; }
