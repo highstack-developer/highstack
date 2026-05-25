@@ -38,6 +38,12 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
   background: var(--bg);
   border-bottom: 1px solid rgba(10,10,10,0.22);
 }
+/* Paper-themed pages (legal) keep the brand yellow header in light mode —
+   only the page body uses the cream surface. Dark-mode override below
+   still flips this to ink via the @media (prefers-color-scheme: dark) rule. */
+[data-theme="paper"] .site-header {
+  background: var(--hs-yellow);
+}
 .site-header__lockup img { height: 28px; width: auto; display: block; }
 .site-header__nav { display: flex; gap: 32px; position: relative; }
 .site-header__nav a {
