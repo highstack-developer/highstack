@@ -1,0 +1,159 @@
+---
+const cols = [
+  {
+    h: "Company",
+    items: [
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    h: "Portfolio",
+    items: [
+      { label: "Guteno", href: "/portfolio#guteno" },
+      { label: "Benesere", href: "/portfolio#benesere" },
+      { label: "Nicchia", href: "/portfolio#nicchia" },
+      { label: "Granato", href: "/portfolio#granato" },
+      { label: "All companies", href: "/portfolio" },
+    ],
+  },
+  {
+    h: "Notes",
+    items: [
+      { label: "Operator notes", href: "/notes" },
+      { label: "Subscribe", href: "/#subscribe" },
+    ],
+  },
+  {
+    h: "Legal",
+    items: [
+      { label: "Privacy", href: "/privacy-policy" },
+      { label: "Terms", href: "/terms-of-use" },
+    ],
+  },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer section section--ink section--no-rule">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <picture>
+          <source srcset="/brand/highstack-wordmark-yellow.png" media="(prefers-color-scheme: dark)" />
+          <img src="/brand/highstack-wordmark-white.png" alt="Highstack" />
+        </picture>
+        <p class="t-body site-footer__blurb">
+          Focused companies. Carefully built. A small, privately held parent company.
+        </p>
+      </div>
+
+      {
+        cols.map((c) => (
+          <div>
+            <h6 class="t-label site-footer__heading">{c.h}</h6>
+            <ul class="site-footer__list">
+              {c.items.map((i) => (
+                <li>
+                  <a href={i.href}>{i.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <hr class="site-footer__rule" />
+
+    <div class="site-footer__strip">
+      <span class="t-mono">© Highstack {year} · The brand is the work.</span>
+      <span class="t-mono">v.1.0</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-top: 64px;
+    padding-bottom: 32px;
+  }
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+    gap: var(--s-7);
+    align-items: start;
+  }
+  .site-footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+  }
+  .site-footer__brand img {
+    height: 28px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .site-footer__blurb {
+    color: var(--hs-ink-300);
+    max-width: 32ch;
+    margin: 0;
+  }
+  .site-footer__heading {
+    color: var(--hs-ink-400);
+    margin: 0 0 var(--s-3);
+  }
+  .site-footer__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .site-footer__list a {
+    color: var(--hs-ink-0);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    transition: color var(--dur-2) var(--ease-standard);
+  }
+  .site-footer__list a:hover {
+    color: var(--hs-yellow);
+  }
+  .site-footer__rule {
+    border: 0;
+    border-top: 1px solid var(--hs-ink-700);
+    margin: var(--s-9) 0 var(--s-4);
+  }
+  .site-footer__strip {
+    display: flex;
+    justify-content: space-between;
+    color: var(--hs-ink-500);
+  }
+  .site-footer__strip .t-mono {
+    font-size: 11.5px;
+  }
+
+  @media (max-width: 1024px) {
+    .site-footer__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .site-footer__brand {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 600px) {
+    .site-footer__grid {
+      grid-template-columns: 1fr;
+      gap: var(--s-6);
+    }
+    .site-footer__strip {
+      flex-direction: column;
+      gap: var(--s-2);
+    }
+  }
+</style>

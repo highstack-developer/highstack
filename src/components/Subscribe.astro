@@ -1,0 +1,73 @@
+---
+import SubscribeForm from "./islands/SubscribeForm.tsx";
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID;
+---
+
+<section class="section subscribe" id="subscribe">
+  <div class="container container--editorial">
+    <div class="subscribe__grid">
+      <div>
+        <span class="eyebrow">Subscribe</span>
+        <h2 class="t-headline subscribe__headline">
+          Operator notes,<br />quarterly.
+        </h2>
+        <p class="t-body-lg subscribe__lede">
+          Four short letters a year on what we are building and how. No press releases, no
+          forwarded essays, no roundups.
+        </p>
+      </div>
+
+      <div class="subscribe__form-cell">
+        <SubscribeForm client:load formspreeId={formspreeId} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+  .subscribe-form__row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: var(--s-2);
+    flex-wrap: wrap;
+  }
+  .subscribe-form__success {
+    padding-top: var(--s-3);
+    border-top: 2px solid var(--hs-yellow);
+  }
+</style>
+
+<style>
+  .subscribe__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-9);
+    align-items: start;
+  }
+  .subscribe__headline {
+    margin: var(--s-4) 0 var(--s-4);
+    max-width: 16ch;
+  }
+  .subscribe__lede {
+    margin: 0;
+    color: var(--fg-secondary);
+    max-width: 44ch;
+  }
+  .subscribe__form-cell {
+    padding-top: var(--s-3);
+  }
+
+  @media (max-width: 1024px) {
+    .subscribe__grid {
+      grid-template-columns: 1fr;
+      gap: var(--s-7);
+    }
+  }
+</style>

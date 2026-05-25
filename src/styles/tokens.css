@@ -1,0 +1,589 @@
+/* ============================================================================
+   HIGHSTACK · Foundations
+   Color + Typography tokens. Source of truth for every surface in the system.
+   Yellow is the signature. Black, charcoal, and white do the work.
+   ============================================================================ */
+
+/* ── Webfonts ───────────────────────────────────────────────────────────────
+   Geist — neutral grotesque (UI, body, operator voice)
+   Newsreader — editorial serif (display, hero, headline)
+   Geist Mono — mono (tickers, code, fine print)
+   All three are loaded from Google Fonts; swap to self-hosted in production. */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap');
+
+:root {
+  /* ──────────────────────────────────────────────────────────────────────
+     COLOR · Brand
+     One signature yellow. Use it for emphasis, never decoration.
+     ────────────────────────────────────────────────────────────────────── */
+  --hs-yellow:           #F9C219; /* brand signature */
+  --hs-yellow-deep:      #E0AC10; /* hover / pressed on yellow surfaces */
+  --hs-yellow-soft:      #FCE49A; /* tinted backgrounds, sparing */
+  --hs-yellow-paper:     #FBF4DC; /* lightest editorial wash */
+
+  /* ──────────────────────────────────────────────────────────────────────
+     COLOR · Neutral scale (the workhorses)
+     Pure greys, slightly warm. Names map to perceptual lightness.
+     ────────────────────────────────────────────────────────────────────── */
+  --hs-ink-1000:         #0A0A0A; /* near-black, headlines on white */
+  --hs-ink-900:          #141414; /* primary surface (dark mode bg) */
+  --hs-ink-800:          #1C1C1C; /* charcoal, secondary dark surface */
+  --hs-ink-700:          #2A2A2A;
+  --hs-ink-600:          #4A4A4A;
+  --hs-ink-500:          #6E6E6E; /* secondary text */
+  --hs-ink-400:          #9A9A9A; /* tertiary text */
+  --hs-ink-300:          #C6C6C6; /* borders, strong */
+  --hs-ink-200:          #E4E4E4; /* borders, default */
+  --hs-ink-150:          #EDEDED; /* hairline */
+  --hs-ink-100:          #F4F4F4; /* hover wash */
+  --hs-ink-50:           #FAFAFA; /* off-white surface */
+  --hs-ink-0:            #FFFFFF;
+
+  /* Paper — a warm off-white for editorial pages */
+  --hs-paper:            #F6F3EC;
+  --hs-paper-ink:        #1C1A15;
+
+  /* ──────────────────────────────────────────────────────────────────────
+     COLOR · Semantic (use sparingly — this is a quiet system)
+     ────────────────────────────────────────────────────────────────────── */
+  --hs-positive:         #1E6F4A; /* gain, completion */
+  --hs-positive-soft:    #E6F0EB;
+  --hs-negative:         #8E1F1F; /* loss, destructive */
+  --hs-negative-soft:    #F2E4E4;
+  --hs-warning:          #8A6A12; /* maps to a darker yellow for text */
+  --hs-warning-soft:     #FCE49A;
+  --hs-info:             #1F3A5F;
+  --hs-info-soft:        #E5EAF1;
+
+  /* ──────────────────────────────────────────────────────────────────────
+     COLOR · Semantic roles (yellow-first default)
+     The Highstack page is yellow. Ink is the type color. White is reserved
+     for inset card surfaces and form fields — never used as a page bg.
+     Components reference these, not the raw scale above.
+     ────────────────────────────────────────────────────────────────────── */
+  --bg:                  var(--hs-yellow);
+  --bg-subtle:           var(--hs-yellow-deep);
+  --bg-muted:            var(--hs-yellow-soft);
+  --bg-inverse:          var(--hs-ink-1000);
+  --bg-brand:            var(--hs-yellow);
+
+  --surface:             var(--hs-ink-0);     /* inset card surface (white on yellow page) */
+  --surface-raised:      var(--hs-ink-0);
+  --surface-sunken:      var(--hs-yellow-deep);
+
+  --fg:                  var(--hs-ink-1000);
+  --fg-secondary:        rgba(10, 10, 10, 0.72);
+  --fg-tertiary:         rgba(10, 10, 10, 0.58);
+  --fg-quaternary:       rgba(10, 10, 10, 0.40);
+  --fg-inverse:          var(--hs-ink-0);
+  --fg-brand:            var(--hs-ink-1000);
+  --fg-on-brand:         var(--hs-ink-1000);
+  --fg-on-inverse:       var(--hs-ink-0);
+  --fg-disabled:         rgba(10, 10, 10, 0.32);
+
+  --border:              rgba(10, 10, 10, 0.22);
+  --border-strong:       rgba(10, 10, 10, 0.55);
+  --border-subtle:       rgba(10, 10, 10, 0.10);
+  --border-inverse:      var(--hs-ink-700);
+  --border-focus:        var(--hs-ink-1000);
+
+  --overlay-scrim:       rgba(10, 10, 10, 0.48);
+  --overlay-veil:        rgba(10, 10, 10, 0.08);
+  --overlay-paper:       rgba(249, 194, 25, 0.82);  /* yellow-tinted overlay */
+
+  --focus-ring:          var(--hs-ink-1000);
+  --focus-ring-offset:   var(--hs-yellow);
+  --focus-ring-width:    2px;
+  --focus-ring-offset-w: 2px;
+
+  /* ──────────────────────────────────────────────────────────────────────
+     TYPE · Families
+     ────────────────────────────────────────────────────────────────────── */
+  --font-sans:    "Geist", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-serif:   "Newsreader", ui-serif, "Times New Roman", Georgia, serif;
+  --font-mono:    "Geist Mono", ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --font-wordmark: "Geist", ui-sans-serif, system-ui, sans-serif; /* fallback only — real wordmark is the SVG/PNG */
+
+  /* ──────────────────────────────────────────────────────────────────────
+     TYPE · 9-level scale
+     Sizes are desktop. Responsive sizes via clamp() — see role rules below.
+     ────────────────────────────────────────────────────────────────────── */
+  --t-display-size:   clamp(56px, 8vw, 120px);
+  --t-display-lh:     0.96;
+  --t-display-ls:     -0.035em;
+  --t-display-weight: 400;
+
+  --t-hero-size:      clamp(44px, 6vw, 88px);
+  --t-hero-lh:        1.02;
+  --t-hero-ls:        -0.03em;
+  --t-hero-weight:    400;
+
+  --t-headline-size:  clamp(32px, 4vw, 56px);
+  --t-headline-lh:    1.08;
+  --t-headline-ls:    -0.022em;
+  --t-headline-weight:400;
+
+  --t-title-size:     clamp(24px, 2.4vw, 32px);
+  --t-title-lh:       1.18;
+  --t-title-ls:       -0.015em;
+  --t-title-weight:   500;
+
+  --t-subtitle-size:  clamp(18px, 1.6vw, 22px);
+  --t-subtitle-lh:    1.35;
+  --t-subtitle-ls:    -0.005em;
+  --t-subtitle-weight:500;
+
+  --t-bodylg-size:    clamp(17px, 1.3vw, 20px);
+  --t-bodylg-lh:      1.55;
+  --t-bodylg-ls:      -0.003em;
+  --t-bodylg-weight:  400;
+
+  --t-body-size:      16px;
+  --t-body-lh:        1.6;
+  --t-body-ls:        0;
+  --t-body-weight:    400;
+
+  --t-label-size:     13px;
+  --t-label-lh:       1.4;
+  --t-label-ls:       0.04em;
+  --t-label-weight:   500;
+  --t-label-case:     uppercase;
+
+  --t-caption-size:   12px;
+  --t-caption-lh:     1.45;
+  --t-caption-ls:     0.01em;
+  --t-caption-weight: 400;
+
+  /* ──────────────────────────────────────────────────────────────────────
+     SPACING · 8px grid (with 4px minor)
+     ────────────────────────────────────────────────────────────────────── */
+  --s-0:   0px;
+  --s-1:   4px;
+  --s-2:   8px;
+  --s-3:   12px;
+  --s-4:   16px;
+  --s-5:   24px;
+  --s-6:   32px;
+  --s-7:   40px;
+  --s-8:   48px;
+  --s-9:   64px;
+  --s-10:  80px;
+  --s-11:  96px;
+  --s-12:  128px;
+  --s-13:  160px;
+  --s-14:  200px;
+  --s-15:  240px;
+
+  /* Section rhythm */
+  --section-y-sm:   var(--s-9);
+  --section-y-md:   var(--s-11);
+  --section-y-lg:   var(--s-13);
+  --section-y-xl:   var(--s-15);
+
+  /* ──────────────────────────────────────────────────────────────────────
+     LAYOUT · Grid + containers
+     ────────────────────────────────────────────────────────────────────── */
+  --grid-columns:        12;
+  --grid-gutter:         24px;
+  --grid-gutter-tablet:  20px;
+  --grid-gutter-mobile:  16px;
+  --grid-margin:         clamp(24px, 5vw, 96px);
+
+  --container-max:       1440px;
+  --container-text:      720px;   /* readable measure */
+  --container-narrow:    560px;   /* forms, dialogs */
+  --container-editorial: 1080px;
+
+  /* ──────────────────────────────────────────────────────────────────────
+     RADIUS · Restrained. Most surfaces are squared.
+     ────────────────────────────────────────────────────────────────────── */
+  --radius-none:   0px;
+  --radius-xs:     2px;
+  --radius-sm:     4px;
+  --radius-md:     6px;
+  --radius-lg:     10px;
+  --radius-pill:   999px;
+
+  /* ──────────────────────────────────────────────────────────────────────
+     BORDER widths
+     ────────────────────────────────────────────────────────────────────── */
+  --bw-hair:  1px;
+  --bw-thin:  1.5px;
+  --bw-bold:  2px;
+
+  /* ──────────────────────────────────────────────────────────────────────
+     SHADOW · Used sparingly. Elevation comes from borders + space.
+     ────────────────────────────────────────────────────────────────────── */
+  --shadow-none:  none;
+  --shadow-sm:    0 1px 2px rgba(10,10,10,0.04);
+  --shadow-md:    0 4px 16px rgba(10,10,10,0.06), 0 1px 2px rgba(10,10,10,0.04);
+  --shadow-lg:    0 24px 48px -12px rgba(10,10,10,0.12), 0 2px 4px rgba(10,10,10,0.04);
+  --shadow-overlay: 0 32px 64px -16px rgba(10,10,10,0.22);
+
+  /* ──────────────────────────────────────────────────────────────────────
+     MOTION · Durations, easings, delays
+     ────────────────────────────────────────────────────────────────────── */
+  --dur-instant:   0ms;
+  --dur-1:         120ms;   /* micro-feedback (button press, focus) */
+  --dur-2:         180ms;   /* hover, small reveals */
+  --dur-3:         240ms;   /* default UI */
+  --dur-4:         360ms;   /* viewport reveal, exits */
+  --dur-5:         520ms;   /* section transitions */
+  --dur-6:         720ms;   /* cinematic, editorial sweeps */
+  --dur-7:         960ms;   /* pinned narrative moments */
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);          /* default */
+  --ease-emphasize: cubic-bezier(0.16, 1, 0.3, 1);      /* viewport reveal */
+  --ease-entrance: cubic-bezier(0.0, 0.0, 0.2, 1);      /* enter */
+  --ease-exit:     cubic-bezier(0.4, 0.0, 1, 1);        /* exit */
+  --ease-linear:   linear;                              /* scroll-linked */
+
+  --delay-0: 0ms;
+  --delay-1: 60ms;
+  --delay-2: 120ms;
+  --delay-3: 180ms;
+  --delay-stagger: 80ms; /* between siblings */
+
+  /* ──────────────────────────────────────────────────────────────────────
+     Z-index, opacity, breakpoints
+     ────────────────────────────────────────────────────────────────────── */
+  --z-base:      0;
+  --z-raised:    10;
+  --z-sticky:    100;
+  --z-header:    200;
+  --z-drawer:    300;
+  --z-modal:     400;
+  --z-toast:     500;
+  --z-tooltip:   600;
+
+  --opacity-disabled: 0.4;
+  --opacity-veil:     0.06;
+  --opacity-muted:    0.6;
+
+  --bp-sm:  480px;
+  --bp-md:  768px;
+  --bp-lg:  1024px;
+  --bp-xl:  1280px;
+  --bp-2xl: 1600px;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   ALTERNATE THEMES
+   The system is yellow-first. The themes below are intentional escapes
+   from yellow for specific moments — long-reading editorial copy, dark
+   cinematic sections, and the rare calm white surface.
+
+   Apply via [data-theme="…"] on any element. A section can opt out of
+   yellow without rewriting components.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* WHITE — calm/editorial surface. Used sparingly. */
+[data-theme="white"] {
+  --bg:             var(--hs-ink-0);
+  --bg-subtle:      var(--hs-ink-50);
+  --bg-muted:       var(--hs-ink-100);
+  --surface:        var(--hs-ink-0);
+  --surface-raised: var(--hs-ink-0);
+  --surface-sunken: var(--hs-ink-50);
+
+  --fg:             var(--hs-ink-1000);
+  --fg-secondary:   var(--hs-ink-600);
+  --fg-tertiary:    var(--hs-ink-500);
+  --fg-quaternary:  var(--hs-ink-400);
+  --fg-disabled:    var(--hs-ink-400);
+
+  --border:         var(--hs-ink-200);
+  --border-strong:  var(--hs-ink-300);
+  --border-subtle:  var(--hs-ink-150);
+
+  --overlay-paper:  rgba(255, 255, 255, 0.78);
+}
+
+/* PAPER — warm cream surface for long-form notes and operator essays. */
+[data-theme="paper"] {
+  --bg:             var(--hs-paper);
+  --surface:        var(--hs-paper);
+  --surface-sunken: #EEE8D9;
+  --fg:             var(--hs-paper-ink);
+  --fg-secondary:   rgba(28, 26, 21, 0.72);
+  --fg-tertiary:    rgba(28, 26, 21, 0.58);
+  --border:         rgba(28, 26, 21, 0.18);
+  --border-strong:  rgba(28, 26, 21, 0.40);
+}
+
+/* INK — full dark cinematic section / footer / dark mode.
+   Three entry points:
+     · [data-theme="ink"] / [data-theme="dark"] — explicit opt-in
+     · @media (prefers-color-scheme: dark) — follow system setting
+   An explicit [data-theme="yellow"|"white"|"paper"] always wins because its
+   specificity is higher than the media query's :root rule. */
+[data-theme="ink"], [data-theme="dark"] {
+  --bg:             var(--hs-ink-1000);
+  --bg-subtle:      var(--hs-ink-900);
+  --bg-muted:       var(--hs-ink-800);
+  --surface:        var(--hs-ink-900);
+  --surface-raised: var(--hs-ink-800);
+  --surface-sunken: #050505;
+
+  --fg:             var(--hs-ink-0);
+  --fg-secondary:   var(--hs-ink-300);
+  --fg-tertiary:    var(--hs-ink-400);
+  --fg-quaternary:  var(--hs-ink-500);
+  --fg-disabled:    var(--hs-ink-600);
+
+  --border:         var(--hs-ink-700);
+  --border-strong:  var(--hs-ink-500);
+  --border-subtle:  var(--hs-ink-800);
+  --border-inverse: var(--hs-ink-200);
+
+  --overlay-scrim:  rgba(0, 0, 0, 0.64);
+  --overlay-veil:   rgba(255, 255, 255, 0.06);
+  --overlay-paper:  rgba(20, 20, 20, 0.78);
+
+  --focus-ring:        var(--hs-yellow);
+  --focus-ring-offset: var(--hs-ink-1000);
+}
+
+/* System dark mode — applies the same ink tokens to :root when the OS reports
+   prefers-color-scheme: dark and the user has not pinned a theme explicitly.
+   An explicit [data-theme="…"] always wins because its specificity is higher. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:             var(--hs-ink-1000);
+    --bg-subtle:      var(--hs-ink-900);
+    --bg-muted:       var(--hs-ink-800);
+    --surface:        var(--hs-ink-900);
+    --surface-raised: var(--hs-ink-800);
+    --surface-sunken: #050505;
+
+    --fg:             var(--hs-ink-0);
+    --fg-secondary:   var(--hs-ink-300);
+    --fg-tertiary:    var(--hs-ink-400);
+    --fg-quaternary:  var(--hs-ink-500);
+    --fg-disabled:    var(--hs-ink-600);
+
+    --border:         var(--hs-ink-700);
+    --border-strong:  var(--hs-ink-500);
+    --border-subtle:  var(--hs-ink-800);
+    --border-inverse: var(--hs-ink-200);
+
+    --overlay-scrim:  rgba(0, 0, 0, 0.64);
+    --overlay-veil:   rgba(255, 255, 255, 0.06);
+    --overlay-paper:  rgba(20, 20, 20, 0.78);
+
+    --focus-ring:        var(--hs-yellow);
+    --focus-ring-offset: var(--hs-ink-1000);
+  }
+
+  /* Tell the browser native form controls + scrollbars to render dark */
+  :root { color-scheme: dark; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   ROLE-LEVEL TYPOGRAPHY
+   These are the classes you actually use. Each role pairs a family +
+   sizing + tracking + leading from the scale above.
+   ────────────────────────────────────────────────────────────────────────── */
+.t-display {
+  font-family: var(--font-serif);
+  font-size: var(--t-display-size);
+  line-height: var(--t-display-lh);
+  letter-spacing: var(--t-display-ls);
+  font-weight: var(--t-display-weight);
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+
+.t-hero {
+  font-family: var(--font-serif);
+  font-size: var(--t-hero-size);
+  line-height: var(--t-hero-lh);
+  letter-spacing: var(--t-hero-ls);
+  font-weight: var(--t-hero-weight);
+  text-wrap: balance;
+}
+
+.t-hero-sans {
+  font-family: var(--font-sans);
+  font-size: var(--t-hero-size);
+  line-height: var(--t-hero-lh);
+  letter-spacing: var(--t-hero-ls);
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+.t-headline {
+  font-family: var(--font-serif);
+  font-size: var(--t-headline-size);
+  line-height: var(--t-headline-lh);
+  letter-spacing: var(--t-headline-ls);
+  font-weight: var(--t-headline-weight);
+  text-wrap: balance;
+}
+
+.t-headline-sans {
+  font-family: var(--font-sans);
+  font-size: var(--t-headline-size);
+  line-height: var(--t-headline-lh);
+  letter-spacing: var(--t-headline-ls);
+  font-weight: 500;
+}
+
+.t-title {
+  font-family: var(--font-sans);
+  font-size: var(--t-title-size);
+  line-height: var(--t-title-lh);
+  letter-spacing: var(--t-title-ls);
+  font-weight: var(--t-title-weight);
+}
+
+.t-subtitle {
+  font-family: var(--font-sans);
+  font-size: var(--t-subtitle-size);
+  line-height: var(--t-subtitle-lh);
+  letter-spacing: var(--t-subtitle-ls);
+  font-weight: var(--t-subtitle-weight);
+}
+
+.t-body-lg {
+  font-family: var(--font-sans);
+  font-size: var(--t-bodylg-size);
+  line-height: var(--t-bodylg-lh);
+  letter-spacing: var(--t-bodylg-ls);
+  font-weight: var(--t-bodylg-weight);
+  text-wrap: pretty;
+}
+
+.t-body {
+  font-family: var(--font-sans);
+  font-size: var(--t-body-size);
+  line-height: var(--t-body-lh);
+  letter-spacing: var(--t-body-ls);
+  font-weight: var(--t-body-weight);
+  text-wrap: pretty;
+}
+
+.t-label {
+  font-family: var(--font-sans);
+  font-size: var(--t-label-size);
+  line-height: var(--t-label-lh);
+  letter-spacing: var(--t-label-ls);
+  font-weight: var(--t-label-weight);
+  text-transform: var(--t-label-case);
+}
+
+.t-caption {
+  font-family: var(--font-sans);
+  font-size: var(--t-caption-size);
+  line-height: var(--t-caption-lh);
+  letter-spacing: var(--t-caption-ls);
+  font-weight: var(--t-caption-weight);
+}
+
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-feature-settings: "tnum", "ss01";
+}
+
+.t-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--fg-secondary);
+}
+
+.t-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+/* Element defaults — apply these to write semantic HTML and get the look
+   for free. Override with role classes when you need a specific level. */
+.prose h1, h1.t-h1 {
+  font-family: var(--font-serif);
+  font-size: var(--t-headline-size);
+  line-height: var(--t-headline-lh);
+  letter-spacing: var(--t-headline-ls);
+  font-weight: 400;
+  color: var(--fg);
+}
+.prose h2 {
+  font-family: var(--font-serif);
+  font-size: var(--t-title-size);
+  line-height: var(--t-title-lh);
+  letter-spacing: var(--t-title-ls);
+  font-weight: 500;
+  color: var(--fg);
+}
+.prose h3 {
+  font-family: var(--font-sans);
+  font-size: var(--t-subtitle-size);
+  line-height: var(--t-subtitle-lh);
+  font-weight: 600;
+  color: var(--fg);
+}
+.prose p, .prose li {
+  font-family: var(--font-sans);
+  font-size: var(--t-bodylg-size);
+  line-height: var(--t-bodylg-lh);
+  color: var(--fg);
+  max-width: var(--container-text);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Base + a11y resets
+   ────────────────────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--t-body-size);
+  line-height: var(--t-body-lh);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection { background: var(--hs-ink-1000); color: var(--hs-yellow); }
+[data-theme="white"] ::selection { background: var(--hs-yellow); color: var(--hs-ink-1000); }
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset-w);
+  border-radius: var(--radius-xs);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility — yellow accent rule, used as a section opener */
+.hs-rule {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--hs-yellow);
+  border: 0;
+  margin: 0 0 var(--s-5) 0;
+}

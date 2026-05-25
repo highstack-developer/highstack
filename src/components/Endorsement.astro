@@ -1,0 +1,129 @@
+---
+const lockups = [
+  { name: "Guteno", ink: true },
+  { name: "Benesere", ink: false },
+  { name: "Nicchia", ink: false },
+  { name: "Granato", ink: true },
+];
+---
+
+<section class="section section--paper endorsement" id="endorsement">
+  <div class="container">
+    <div class="endorsement__grid">
+      <span class="eyebrow">Endorsement</span>
+      <div>
+        <h2 class="t-hero endorsement__headline">The signature appears once, quietly.</h2>
+        <p class="t-body-lg endorsement__lede">
+          Subcompanies carry their own identities. Highstack appears only through the endorsement
+          line — <em>from Highstack</em> — set in tracked uppercase, with the original wordmark
+          sitting beside it as the signature.
+        </p>
+        <div class="endorsement__lockups">
+          {
+            lockups.map((l) => (
+              <div class:list={["endorsement__lockup", { "endorsement__lockup--ink": l.ink }]}>
+                <span class="endorsement__name">{l.name}</span>
+                <span class="endorsement__from-row">
+                  <span class="endorsement__from">FROM</span>
+                  <img
+                    src={l.ink ? "/brand/highstack-wordmark-white.png" : "/brand/highstack-wordmark-black.png"}
+                    alt="Highstack"
+                    class="endorsement__wordmark"
+                  />
+                </span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .endorsement__grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) 3fr;
+    gap: var(--s-9);
+    align-items: start;
+  }
+  .endorsement__headline {
+    margin: 0 0 var(--s-6);
+    max-width: 22ch;
+    font-size: clamp(36px, 4.4vw, 64px);
+  }
+  .endorsement__lede {
+    margin: 0 0 var(--s-7);
+    color: var(--fg-secondary);
+    max-width: 60ch;
+  }
+  .endorsement__lockups {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-4);
+  }
+
+  .endorsement__lockup {
+    background: var(--hs-ink-0);
+    color: var(--hs-ink-1000);
+    border: 1px solid var(--hs-ink-1000);
+    padding: var(--s-9) var(--s-7) var(--s-7);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 240px;
+    justify-content: flex-end;
+  }
+  .endorsement__lockup--ink {
+    background: var(--hs-ink-1000);
+    color: var(--hs-ink-0);
+  }
+
+  .endorsement__name {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 56px;
+    letter-spacing: -0.024em;
+    line-height: 1;
+  }
+  .endorsement__from-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .endorsement__from {
+    font-family: var(--font-sans);
+    font-weight: 200;
+    font-size: 24px;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .endorsement__wordmark {
+    height: 48px;
+    width: auto;
+    display: block;
+    transform: translateY(1px);
+  }
+
+  @media (max-width: 1024px) {
+    .endorsement__grid {
+      grid-template-columns: 1fr;
+      gap: var(--s-5);
+    }
+  }
+  @media (max-width: 600px) {
+    .endorsement__lockups {
+      grid-template-columns: 1fr;
+    }
+    .endorsement__name {
+      font-size: 42px;
+    }
+    .endorsement__from {
+      font-size: 18px;
+    }
+    .endorsement__wordmark {
+      height: 36px;
+    }
+  }
+</style>

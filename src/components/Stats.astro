@@ -1,0 +1,111 @@
+---
+interface Stat {
+  value: string;
+  unit?: string;
+  label: string;
+  sub?: string;
+}
+
+const stats: Stat[] = [
+  { value: "04", label: "Companies operating", sub: "As of Q1 2026" },
+  { value: "2024", label: "Year founded", sub: "Headquartered, Toronto" },
+  { value: "07", unit: "years", label: "Median holding period", sub: "Across active portfolio" },
+  { value: "100", unit: "%", label: "Privately held", sub: "No external capital" },
+];
+---
+
+<section class="section section--ink section--xl stats" id="numbers">
+  <div class="container">
+    <div class="stats__head">
+      <span class="eyebrow">By the numbers</span>
+      <h2 class="t-headline stats__headline">Small, deliberate, durable.</h2>
+    </div>
+
+    <div class="stats__grid">
+      {
+        stats.map((s) => (
+          <div class="stats__cell reveal">
+            <div class="stats__value-row">
+              <span class="stats__value">{s.value}</span>
+              {s.unit && <span class="stats__unit">{s.unit}</span>}
+            </div>
+            <span class="t-label stats__label">{s.label}</span>
+            {s.sub && <span class="t-mono stats__sub">{s.sub}</span>}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats__head {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) 3fr;
+    gap: var(--s-9);
+    align-items: start;
+    margin-bottom: var(--s-8);
+  }
+  .stats__headline {
+    margin: 0;
+    color: var(--hs-ink-0);
+    max-width: 20ch;
+  }
+  .stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s-7);
+  }
+  .stats__cell {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    padding-top: var(--s-5);
+    border-top: 1px solid var(--hs-ink-700);
+  }
+  .stats__value-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .stats__value {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 72px;
+    letter-spacing: -0.04em;
+    color: var(--hs-ink-0);
+    line-height: 1;
+  }
+  .stats__unit {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--hs-ink-400);
+  }
+  .stats__label {
+    color: var(--hs-ink-0);
+  }
+  .stats__sub {
+    color: var(--hs-ink-400);
+    font-size: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    .stats__head {
+      grid-template-columns: 1fr;
+      gap: var(--s-5);
+    }
+    .stats__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-6);
+    }
+    .stats__value {
+      font-size: 56px;
+    }
+  }
+  @media (max-width: 600px) {
+    .stats__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,92 @@
+---
+const items = [
+  {
+    n: "01",
+    t: "We choose narrowly.",
+    b: "Each company has one clear thesis and one market it intends to serve well. We do not pursue adjacency for its own sake.",
+  },
+  {
+    n: "02",
+    t: "We hold for the long term.",
+    b: "Our holding period is measured in decades, not quarters. Operating discipline compounds; cycle-chasing does not.",
+  },
+  {
+    n: "03",
+    t: "We let the work speak.",
+    b: "Highstack appears as a quiet endorsement. The subcompanies, their teams, and their customers carry the brand.",
+  },
+];
+---
+
+<section class="section section--paper approach" id="approach">
+  <div class="container">
+    <div class="approach__grid">
+      <span class="eyebrow">Approach</span>
+      <div>
+        <h2 class="t-hero approach__headline">How we build.</h2>
+        <div class="approach__items">
+          {
+            items.map((it) => (
+              <div class="approach__item reveal">
+                <span class="t-mono approach__n">{it.n}</span>
+                <h3 class="t-subtitle approach__t">{it.t}</h3>
+                <p class="t-body approach__b">{it.b}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .approach__grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) 3fr;
+    gap: var(--s-9);
+    align-items: start;
+  }
+  .approach__headline {
+    margin: 0 0 var(--s-8);
+    max-width: 20ch;
+    font-size: clamp(36px, 4.4vw, 64px);
+  }
+  .approach__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-6);
+  }
+  .approach__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    padding-top: var(--s-4);
+    border-top: 2px solid var(--hs-yellow);
+  }
+  .approach__n {
+    color: var(--hs-yellow-deep);
+    font-weight: 500;
+  }
+  .approach__t {
+    margin: 0;
+    color: var(--fg);
+  }
+  .approach__b {
+    margin: 0;
+    color: var(--fg-secondary);
+  }
+
+  @media (max-width: 1024px) {
+    .approach__grid {
+      grid-template-columns: 1fr;
+      gap: var(--s-5);
+    }
+  }
+  @media (max-width: 768px) {
+    .approach__items {
+      grid-template-columns: 1fr;
+      gap: var(--s-5);
+    }
+  }
+</style>

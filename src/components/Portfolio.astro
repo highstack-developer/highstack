@@ -1,0 +1,151 @@
+---
+import { getCollection } from "astro:content";
+
+const all = await getCollection("portfolio");
+const companies = all.sort((a, b) => a.data.order - b.data.order);
+
+const sectorLabel = (sector: string) => sector;
+const orderLabel = (order: number) => order.toString().padStart(2, "0");
+---
+
+<section class="section section--paper portfolio" id="portfolio">
+  <div class="container">
+    <div class="portfolio__head">
+      <div class="portfolio__head-left">
+        <span class="eyebrow">Portfolio</span>
+        <h2 class="t-hero portfolio__headline">Focused companies, built with discipline.</h2>
+        <p class="t-body-lg portfolio__lede">
+          Highstack is home to focused companies built with discipline, clarity, and long-term intent.
+        </p>
+      </div>
+      <a href="/portfolio" class="btn btn--ghost">
+        All companies <span class="arrow"></span>
+      </a>
+    </div>
+
+    <div class="portfolio__grid">
+      {
+        companies.map((c, i) => {
+          const active = i === 0;
+          return (
+            <article class:list={["card portfolio__card", { "card--active": active }]}>
+              <div class="portfolio__meta">
+                <span class="t-label">
+                  {sectorLabel(c.data.sector)} · {orderLabel(c.data.order)}
+                </span>
+                <span class="t-label portfolio__status">
+                  <span class="portfolio__dot" />
+                  Operating
+                </span>
+              </div>
+              <h3 class="t-headline portfolio__name">{c.data.name}</h3>
+              <p class="t-body portfolio__desc">{c.data.oneLine}</p>
+              <div class="portfolio__foot">
+                <span class="t-mono">Sector · {sectorLabel(c.data.sector)}</span>
+                {c.data.url ? (
+                  <a href={c.data.url} class="t-label portfolio__cta" rel="noopener">
+                    Visit site <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <span class="t-label portfolio__cta-disabled">Coming soon</span>
+                )}
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .portfolio__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--s-7);
+    margin-bottom: var(--s-7);
+  }
+  .portfolio__head-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+  .portfolio__headline {
+    margin: 0;
+    max-width: 20ch;
+    font-size: clamp(36px, 4.4vw, 64px);
+  }
+  .portfolio__lede {
+    margin: var(--s-3) 0 0;
+    max-width: 60ch;
+  }
+
+  .portfolio__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-4);
+  }
+  .portfolio__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    min-height: 280px;
+  }
+  .portfolio__meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--fg-tertiary);
+  }
+  .portfolio__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--hs-positive);
+  }
+  .card--active .portfolio__status {
+    color: var(--hs-yellow);
+  }
+  .portfolio__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .portfolio__name {
+    margin: var(--s-3) 0 0;
+    font-size: 38px;
+    line-height: 1.05;
+  }
+  .portfolio__desc {
+    margin: 0;
+    max-width: 38ch;
+  }
+  .portfolio__foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-3);
+    margin-top: auto;
+    padding-top: var(--s-3);
+    border-top: 1px solid var(--hs-yellow);
+    white-space: nowrap;
+  }
+  .portfolio__cta {
+    text-decoration: none;
+    color: inherit;
+  }
+  .portfolio__cta-disabled {
+    color: var(--fg-tertiary);
+  }
+
+  @media (max-width: 768px) {
+    .portfolio__head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .portfolio__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
