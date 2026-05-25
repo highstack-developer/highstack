@@ -24,11 +24,33 @@
     </p>
 
     <div class="hero__ctas reveal">
-      <a class="btn btn--primary btn--lg" href="/portfolio">The portfolio</a>
-      <a class="btn btn--secondary btn--lg" href="/about">How we build</a>
+      <a class="btn btn--primary btn--lg" href="#approach">How we build</a>
+      <a class="btn btn--secondary btn--lg" href="#numbers">By the numbers</a>
     </div>
   </div>
 </section>
+
+<script>
+  // Size the threading needle to the rendered width of the display headline,
+  // so it ends end-to-end with "Carefully built." at any viewport — including
+  // breakpoints where the headline doesn't fill the container.
+  const syncNeedle = () => {
+    // Measure "Carefully built." (the italic em on line 2), not the whole
+    // headline — at wider viewports "Focused companies." is longer and we
+    // specifically want the needle to end with "Carefully built."
+    const target = document.querySelector<HTMLElement>(".hero__headline em");
+    const needle = document.querySelector<HTMLElement>(".hero-needle");
+    if (!target || !needle) return;
+    const range = document.createRange();
+    range.selectNodeContents(target);
+    const w = range.getBoundingClientRect().width;
+    if (w > 0) needle.style.maxWidth = `${Math.round(w)}px`;
+  };
+  syncNeedle();
+  window.addEventListener("resize", syncNeedle);
+  // Re-run after fonts swap in — Newsreader's actual metrics differ from fallback
+  if (document.fonts?.ready) document.fonts.ready.then(syncNeedle);
+</script>
 
 <style>
   .hero__headline {
@@ -51,4 +73,18 @@
     flex-wrap: wrap;
     margin-top: var(--s-7);
   }
+
+  /* Below 480px the buttons stack and stretch — looks intentional rather
+     than stranded at different widths. */
+  @media (max-width: 480px) {
+    .hero__ctas {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+    .hero__ctas :global(.btn) {
+      width: 100%;
+    }
+  }
 </style>
+

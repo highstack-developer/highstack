@@ -1,19 +1,9 @@
 ---
-interface Props {
-  active?: string;
-}
-
-const { active } = Astro.props;
-
 const items = [
-  { id: "portfolio", label: "Portfolio", href: "/portfolio" },
-  { id: "about", label: "About", href: "/about" },
-  { id: "notes", label: "Notes", href: "/notes" },
-  { id: "contact", label: "Contact", href: "/contact" },
+  { id: "approach", label: "Approach", href: "/#approach" },
+  { id: "numbers", label: "Numbers", href: "/#numbers" },
+  { id: "subscribe", label: "Notes", href: "/#subscribe" },
 ];
-
-const activeId =
-  active ?? items.find((it) => Astro.url.pathname.startsWith(it.href))?.id ?? "";
 ---
 
 <header class="site-header">
@@ -24,68 +14,49 @@ const activeId =
     </picture>
   </a>
 
-  <nav class="site-header__nav" aria-label="Primary" data-active={activeId}>
+  <nav class="site-header__nav" aria-label="Primary">
     {
       items.map((it) => (
-        <a
-          href={it.href}
-          data-id={it.id}
-          class:list={[{ "is-active": activeId === it.id }]}
-          aria-current={activeId === it.id ? "page" : undefined}
-        >
+        <a href={it.href} data-id={it.id}>
           {it.label}
         </a>
       ))
     }
     <span aria-hidden="true" class="site-header__nav-underline"></span>
   </nav>
-
-  <div class="site-header__right">
-    <a class="subscribe" href="/#subscribe">Subscribe</a>
-    <button
-      type="button"
-      class="site-header__menu-btn"
-      aria-label="Open menu"
-      aria-expanded="false"
-      aria-controls="mobile-nav"
-      data-menu-toggle
-    >
-      <span></span>
-      <span></span>
-    </button>
-  </div>
 </header>
 
-<div id="mobile-nav" class="mobile-nav" hidden data-menu>
-  <div class="mobile-nav__panel">
-    <button
-      type="button"
-      class="mobile-nav__close"
-      aria-label="Close menu"
-      data-menu-toggle
-    >
-      ✕
-    </button>
-    <ul>
-      {
-        items.map((it) => (
-          <li>
-            <a href={it.href} aria-current={activeId === it.id ? "page" : undefined}>
-              {it.label}
-            </a>
-          </li>
-        ))
-      }
-      <li>
-        <a href="/#subscribe">Subscribe</a>
-      </li>
-    </ul>
-  </div>
-  <button type="button" class="mobile-nav__scrim" aria-label="Close menu" data-menu-toggle></button>
-</div>
+<style is:global>
+  /* Override the design system's mobile rule that hides nav below 768px.
+     We keep the inline nav visible at every width — no hamburger. */
+  @media (max-width: 768px) {
+    .site-header { padding: 14px var(--grid-margin); gap: var(--s-4); }
+    .site-header__nav { display: flex !important; gap: var(--s-5); }
+    .site-header__lockup img { height: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-header { padding: 12px var(--s-4); gap: var(--s-3); }
+    .site-header__nav { gap: var(--s-3); }
+    .site-header__nav a { font-size: 13px; }
+  }
+
+  /* Progressive label hiding for hyper-narrow viewports.
+     Real phones are 320px+ → all 3 labels remain visible.
+     Below 320px (browser-resize zone / folded foldables) items
+     drop off from the right to keep the layout intentional. */
+  @media (max-width: 319px) {
+    .site-header__nav a[data-id="subscribe"] { display: none; }
+  }
+  @media (max-width: 269px) {
+    .site-header__nav a[data-id="numbers"] { display: none; }
+  }
+  @media (max-width: 219px) {
+    .site-header__nav a[data-id="approach"] { display: none; }
+  }
+</style>
 
 <script>
-  // Sliding underline that follows the active / hovered nav item.
+  // Sliding underline that follows the hovered/focused nav item.
   const nav = document.querySelector<HTMLElement>(".site-header__nav");
   const underline = nav?.querySelector<HTMLElement>(".site-header__nav-underline");
   if (nav && underline) {
@@ -103,132 +74,11 @@ const activeId =
       underline.style.opacity = "1";
     };
 
-    const activeLink = () => nav.querySelector<HTMLElement>("a.is-active");
-
-    // Initial position
-    requestAnimationFrame(() => position(activeLink()));
-    window.addEventListener("resize", () => position(activeLink()));
-
     for (const a of links) {
       a.addEventListener("mouseenter", () => position(a));
       a.addEventListener("focus", () => position(a));
     }
-    nav.addEventListener("mouseleave", () => position(activeLink()));
-    nav.addEventListener("focusout", () => position(activeLink()));
+    nav.addEventListener("mouseleave", () => position(null));
+    nav.addEventListener("focusout", () => position(null));
   }
-
-  // Mobile nav drawer
-  const drawer = document.querySelector<HTMLElement>("[data-menu]");
-  const toggles = document.querySelectorAll<HTMLElement>("[data-menu-toggle]");
-  const open = (state: boolean) => {
-    if (!drawer) return;
-    drawer.hidden = !state;
-    document.body.style.overflow = state ? "hidden" : "";
-    const btn = document.querySelector<HTMLElement>(".site-header__menu-btn");
-    btn?.setAttribute("aria-expanded", state ? "true" : "false");
-  };
-  for (const t of toggles) {
-    t.addEventListener("click", () => open(drawer?.hidden ?? true));
-  }
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") open(false);
-  });
 </script>
-
-<style>
-  .site-header__menu-btn {
-    display: none;
-    width: 44px;
-    height: 44px;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    padding: 12px;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
-  }
-  .site-header__menu-btn span {
-    display: block;
-    height: 1.5px;
-    background: var(--fg);
-    width: 100%;
-  }
-
-  .mobile-nav {
-    position: fixed;
-    inset: 0;
-    z-index: var(--z-drawer);
-    display: flex;
-    justify-content: flex-end;
-  }
-  .mobile-nav[hidden] {
-    display: none;
-  }
-  .mobile-nav__scrim {
-    position: absolute;
-    inset: 0;
-    background: var(--overlay-scrim);
-    border: 0;
-    z-index: 1;
-    cursor: pointer;
-  }
-  .mobile-nav__panel {
-    position: relative;
-    z-index: 2;
-    background: var(--hs-yellow);
-    width: min(360px, 88vw);
-    height: 100%;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    animation: drawer-in var(--dur-4) var(--ease-emphasize);
-  }
-  @keyframes drawer-in {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: none;
-    }
-  }
-  .mobile-nav__close {
-    align-self: flex-end;
-    width: 44px;
-    height: 44px;
-    background: transparent;
-    border: 0;
-    font-size: 20px;
-    color: var(--fg);
-    cursor: pointer;
-  }
-  .mobile-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-  .mobile-nav a {
-    font-family: var(--font-sans);
-    font-size: 24px;
-    color: var(--fg);
-    text-decoration: none;
-    display: block;
-    padding: 12px 0;
-    border-left: 2px solid transparent;
-    padding-left: 12px;
-    margin-left: -14px;
-  }
-  .mobile-nav a[aria-current="page"] {
-    border-left-color: var(--fg);
-  }
-
-  @media (max-width: 768px) {
-    .site-header__menu-btn {
-      display: flex;
-    }
-  }
-</style>

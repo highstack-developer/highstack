@@ -1,36 +1,7 @@
 ---
-const cols = [
-  {
-    h: "Company",
-    items: [
-      { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    h: "Portfolio",
-    items: [
-      { label: "Guteno", href: "/portfolio#guteno" },
-      { label: "Benesere", href: "/portfolio#benesere" },
-      { label: "Nicchia", href: "/portfolio#nicchia" },
-      { label: "Granato", href: "/portfolio#granato" },
-      { label: "All companies", href: "/portfolio" },
-    ],
-  },
-  {
-    h: "Notes",
-    items: [
-      { label: "Operator notes", href: "/notes" },
-      { label: "Subscribe", href: "/#subscribe" },
-    ],
-  },
-  {
-    h: "Legal",
-    items: [
-      { label: "Privacy", href: "/privacy-policy" },
-      { label: "Terms", href: "/terms-of-use" },
-    ],
-  },
+const legal = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Use", href: "/terms-of-use" },
 ];
 
 const year = new Date().getFullYear();
@@ -40,29 +11,29 @@ const year = new Date().getFullYear();
   <div class="container">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        <picture>
-          <source srcset="/brand/highstack-wordmark-yellow.png" media="(prefers-color-scheme: dark)" />
-          <img src="/brand/highstack-wordmark-white.png" alt="Highstack" />
-        </picture>
+        <a href="/" class="site-footer__lockup" aria-label="Highstack — home">
+          <picture>
+            <source srcset="/brand/highstack-wordmark-yellow.png" media="(prefers-color-scheme: dark)" />
+            <img src="/brand/highstack-wordmark-white.png" alt="Highstack" />
+          </picture>
+        </a>
         <p class="t-body site-footer__blurb">
-          Focused companies. Carefully built. A small, privately held parent company.
+          Focused companies. Carefully built with discipline, taste, and long term intent.
         </p>
       </div>
 
-      {
-        cols.map((c) => (
-          <div>
-            <h6 class="t-label site-footer__heading">{c.h}</h6>
-            <ul class="site-footer__list">
-              {c.items.map((i) => (
-                <li>
-                  <a href={i.href}>{i.label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))
-      }
+      <div class="site-footer__legal">
+        <h6 class="t-label site-footer__heading">Legal</h6>
+        <ul class="site-footer__list">
+          {
+            legal.map((i) => (
+              <li>
+                <a href={i.href}>{i.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
 
     <hr class="site-footer__rule" />
@@ -81,7 +52,7 @@ const year = new Date().getFullYear();
   }
   .site-footer__grid {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
     gap: var(--s-7);
     align-items: start;
   }
@@ -89,6 +60,11 @@ const year = new Date().getFullYear();
     display: flex;
     flex-direction: column;
     gap: var(--s-5);
+  }
+  .site-footer__lockup {
+    display: inline-block;
+    text-decoration: none;
+    align-self: flex-start;
   }
   .site-footer__brand img {
     height: 28px;
@@ -99,7 +75,7 @@ const year = new Date().getFullYear();
   }
   .site-footer__blurb {
     color: var(--hs-ink-300);
-    max-width: 32ch;
+    max-width: 48ch;
     margin: 0;
   }
   .site-footer__heading {
@@ -138,14 +114,6 @@ const year = new Date().getFullYear();
     font-size: 11.5px;
   }
 
-  @media (max-width: 1024px) {
-    .site-footer__grid {
-      grid-template-columns: 1fr 1fr;
-    }
-    .site-footer__brand {
-      grid-column: 1 / -1;
-    }
-  }
   @media (max-width: 600px) {
     .site-footer__grid {
       grid-template-columns: 1fr;

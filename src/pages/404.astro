@@ -1,0 +1,41 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Not found"
+  description="The page you requested is not here."
+>
+  <section class="section section--no-rule section--xl notfound" id="top">
+    <div class="container container--narrow">
+      <span class="eyebrow">404</span>
+      <h1 class="t-display notfound__title">Not here.</h1>
+      <p class="t-body-lg notfound__lede">
+        The page you requested is not on this site. The home page is probably what you are
+        looking for.
+      </p>
+      <div class="notfound__ctas">
+        <a class="btn btn--primary btn--lg" href="/">Home</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound {
+    padding-top: var(--s-15);
+    min-height: 70vh;
+  }
+  .notfound__title {
+    margin: var(--s-5) 0 var(--s-6);
+  }
+  .notfound__lede {
+    margin: 0 0 var(--s-8);
+    color: var(--fg-secondary);
+  }
+  .notfound__ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+</style>

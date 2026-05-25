@@ -4,7 +4,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://highstack.ca",
+  site: "https://www.highstack.ca",
   output: "static",
   integrations: [mdx(), react(), sitemap()],
   trailingSlash: "never",
