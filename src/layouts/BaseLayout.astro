@@ -85,6 +85,30 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
         els.forEach((el) => io.observe(el));
       };
       reveal();
+
+      // iOS Safari paints its bottom URL bar with the same theme-color as the
+      // top status bar — there's no separate top/bottom control. So when the
+      // ink footer is the dominant content in view, swap theme-color to ink
+      // so the URL bar matches the footer instead of the brand yellow above.
+      const themeMeta = document.querySelector<HTMLMetaElement>(
+        'meta[name="theme-color"][media*="light"]',
+      );
+      const footerEl = document.querySelector<HTMLElement>(".site-footer");
+      if (themeMeta && footerEl && "IntersectionObserver" in window) {
+        const YELLOW = "#F9C219";
+        const INK = "#0A0A0A";
+        const io = new IntersectionObserver(
+          (entries) => {
+            const e = entries[0];
+            themeMeta.setAttribute(
+              "content",
+              e.intersectionRatio > 0.4 ? INK : YELLOW,
+            );
+          },
+          { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] },
+        );
+        io.observe(footerEl);
+      }
       document.addEventListener("astro:page-load", reveal);
     </script>
   </body>
