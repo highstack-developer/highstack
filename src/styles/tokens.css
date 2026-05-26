@@ -377,6 +377,16 @@
 
   /* Tell the browser native form controls + scrollbars to render dark */
   :root { color-scheme: dark; }
+
+  /* Paper-themed pages (Privacy / Terms) get the design system's "richer
+     dark surface" treatment in dark mode — warm #1C1A15 + cream text —
+     so they match the dark-mode look of the Approach (.section--paper)
+     section instead of falling through to pure ink. */
+  [data-theme="paper"] {
+    --bg:      #1C1A15;
+    --surface: #1C1A15;
+    --fg:      #E4DDC8;
+  }
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
