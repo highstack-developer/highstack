@@ -86,6 +86,30 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
       };
       reveal();
 
+      // Eyebrow needles thread in from off-viewport-left when the parent
+      // .eyebrow crosses into view. Same easing as the hero needle, shorter
+      // duration in CSS so the repeating mark reads as quiet supporting motion.
+      const revealEyebrows = () => {
+        const els = document.querySelectorAll<HTMLElement>(".eyebrow:not(.is-in)");
+        if (!("IntersectionObserver" in window)) {
+          els.forEach((el) => el.classList.add("is-in"));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("is-in");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
+        );
+        els.forEach((el) => io.observe(el));
+      };
+      revealEyebrows();
+
       // iOS Safari paints its bottom URL bar with the same theme-color as the
       // top status bar — there's no separate top/bottom control. So when the
       // ink footer is the dominant content in view, swap theme-color to ink
@@ -109,7 +133,10 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
         );
         io.observe(footerEl);
       }
-      document.addEventListener("astro:page-load", reveal);
+      document.addEventListener("astro:page-load", () => {
+        reveal();
+        revealEyebrows();
+      });
     </script>
   </body>
 </html>
