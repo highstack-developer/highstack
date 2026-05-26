@@ -192,7 +192,20 @@ html, body { overflow-x: clip; }
   font-family: var(--font-sans); font-weight: 500; font-size: 12px;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--fg-secondary);
 }
-.eyebrow::before { content: ""; display: block; width: 28px; height: 2px; background: var(--hs-ink-1000); }
+/* Eyebrow rule is a miniature horizontal needle — same brand mark used
+   throughout. Mask-image lets the SVG inherit color from background so we
+   only swap the fill per theme (ink on yellow, yellow on ink/paper). */
+.eyebrow::before {
+  content: "";
+  display: block;
+  /* 866:200 source aspect → 4.33:1. 48x11 keeps the eye readable at the
+     intended subtle scale. */
+  width: 48px;
+  height: 11px;
+  background: var(--hs-ink-1000);
+  -webkit-mask: url('/brand/highstack-needle-short-horizontal-black.png') no-repeat left center / contain;
+          mask: url('/brand/highstack-needle-short-horizontal-black.png') no-repeat left center / contain;
+}
 .section--ink   .eyebrow { color: var(--hs-ink-300); }
 .section--ink   .eyebrow::before { background: var(--hs-yellow); }
 .section--paper .eyebrow::before { background: var(--hs-yellow); }
