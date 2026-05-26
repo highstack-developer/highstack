@@ -63,6 +63,32 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
     <Footer />
 
     <script>
+      // Wrap each <h2> + its sibling paragraphs/lists in the legal prose
+      // into a section div with .reveal — same pattern as Approach's
+      // .approach__item.reveal — so the viewport observer animates each
+      // section as a unit instead of needing per-element class plumbing.
+      const wrapLegalSections = () => {
+        document
+          .querySelectorAll<HTMLElement>(".legal__prose")
+          .forEach((prose) => {
+            if (prose.dataset.wrapped) return;
+            let section: HTMLDivElement | null = null;
+            for (const child of Array.from(prose.children)) {
+              if (child.tagName === "H2") {
+                section = document.createElement("div");
+                section.className = "legal__section reveal";
+                prose.insertBefore(section, child);
+                section.appendChild(child);
+              } else if (section) {
+                section.appendChild(child);
+              }
+              // Pre-first-h2 children (Terms' intro paragraph) stay outside.
+            }
+            prose.dataset.wrapped = "1";
+          });
+      };
+      wrapLegalSections();
+
       // Viewport reveal — opacity + 24px translateY, staggered 80ms.
       // Honors prefers-reduced-motion via CSS.
       const reveal = () => {
@@ -134,6 +160,7 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
         io.observe(footerEl);
       }
       document.addEventListener("astro:page-load", () => {
+        wrapLegalSections();
         reveal();
         revealEyebrows();
       });
