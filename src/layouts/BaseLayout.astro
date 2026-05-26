@@ -14,7 +14,7 @@ interface Props {
 const {
   title,
   description = "Highstack — focused companies, carefully built.",
-  ogImage = "/brand/highstack-needle-square-light.png",
+  ogImage = "/brand/og-default.png",
   theme,
   navActive,
 } = Astro.props;
@@ -45,9 +45,9 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="2048" />
-    <meta property="og:image:height" content="2048" />
-    <meta property="og:image:alt" content="Highstack — needle mark" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Highstack — Focused companies. Carefully built." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImageUrl} />
 
