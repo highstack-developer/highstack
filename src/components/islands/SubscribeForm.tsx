@@ -45,11 +45,9 @@ export default function SubscribeForm({ formspreeId }: Props) {
   if (state === "submitted") {
     return (
       <div className="subscribe-form__success">
-        <span className="t-label" style={{ color: "var(--hs-positive)" }}>
-          Subscribed
-        </span>
+        <span className="badge badge--yellow">Subscribed</span>
         <p className="t-body" style={{ marginTop: "var(--s-3)" }}>
-          Check your inbox to confirm. The next note arrives the first week of the new quarter.
+          The next note arrives the first week of the new quarter.
         </p>
       </div>
     );
