@@ -21,20 +21,20 @@ const lastUpdated = "October 15, 2024";
           accessing or using our website, you agree to comply with and be bound by these terms.
         </p>
 
-        <h2>1. Acceptance of Terms</h2>
+        <h2>Acceptance of Terms</h2>
         <p>
           By using this website, you agree to be bound by these Terms of Use, as well as any
           additional terms, conditions, or disclaimers found on our website. If you do not agree
           with these terms, please discontinue your use of our services.
         </p>
 
-        <h2>2. Services Provided</h2>
+        <h2>Services Provided</h2>
         <p>
           Highstack provides web-based services. We reserve the right to modify, update, or
           discontinue any services at any time without prior notice.
         </p>
 
-        <h2>3. User Responsibilities</h2>
+        <h2>User Responsibilities</h2>
         <ul>
           <li>
             You agree to use our services in compliance with all applicable laws, including but
@@ -50,7 +50,7 @@ const lastUpdated = "October 15, 2024";
           </li>
         </ul>
 
-        <h2>4. User Content</h2>
+        <h2>User Content</h2>
         <p>
           Any content you upload or share through our services remains your property. However, by
           submitting content, you grant Highstack Inc. a non-exclusive, royalty-free, worldwide
@@ -58,7 +58,7 @@ const lastUpdated = "October 15, 2024";
           solely for the purpose of providing and improving our services.
         </p>
 
-        <h2>5. Intellectual Property</h2>
+        <h2>Intellectual Property</h2>
         <p>
           All content on the Highstack Inc. website, including text, graphics, logos, and
           software, is the property of Highstack Inc. or its licensors and is protected by
@@ -66,14 +66,14 @@ const lastUpdated = "October 15, 2024";
           found on this website may violate copyright, trademark, or other laws.
         </p>
 
-        <h2>6. Privacy Policy</h2>
+        <h2>Privacy Policy</h2>
         <p>
           Please refer to our <a href="/privacy-policy">Privacy Policy</a> for information on how
           we collect, use, and disclose personal information in accordance with the Personal
           Information Protection and Electronic Documents Act (PIPEDA).
         </p>
 
-        <h2>7. Disclaimers</h2>
+        <h2>Disclaimers</h2>
         <ul>
           <li>
             The information provided on our website is for general informational purposes only
@@ -86,7 +86,7 @@ const lastUpdated = "October 15, 2024";
           </li>
         </ul>
 
-        <h2>8. Limitation of Liability</h2>
+        <h2>Limitation of Liability</h2>
         <p>
           Highstack Inc. will not be liable for any direct, indirect, incidental, special, or
           consequential damages that result from the use or inability to use our website or
@@ -94,7 +94,7 @@ const lastUpdated = "October 15, 2024";
           website.
         </p>
 
-        <h2>9. Indemnification</h2>
+        <h2>Indemnification</h2>
         <p>
           You agree to indemnify and hold Highstack Inc., its affiliates, officers, agents, and
           employees harmless from any claims, damages, obligations, losses, liabilities, costs,
@@ -109,7 +109,7 @@ const lastUpdated = "October 15, 2024";
           </li>
         </ul>
 
-        <h2>10. Modification Notifications</h2>
+        <h2>Modification Notifications</h2>
         <p>
           We reserve the right to update or modify these Terms of Use at any time. Changes will
           be effective immediately upon posting the updated terms on our website. If we make
@@ -119,13 +119,13 @@ const lastUpdated = "October 15, 2024";
           Use.
         </p>
 
-        <h2>11. Governing Language</h2>
+        <h2>Governing Language</h2>
         <p>
           In the event of any inconsistency between the English version of these Terms of Use
           and any translation into another language, the English version shall prevail.
         </p>
 
-        <h2>12. Force Majeure</h2>
+        <h2>Force Majeure</h2>
         <p>
           Highstack Inc. shall not be liable for any failure to perform its obligations under
           these Terms of Use if such failure results from circumstances beyond our reasonable
@@ -133,7 +133,7 @@ const lastUpdated = "October 15, 2024";
           other force majeure event.
         </p>
 
-        <h2>13. Severability</h2>
+        <h2>Severability</h2>
         <p>
           If any provision of these Terms of Use is found to be unenforceable or invalid by a
           court of competent jurisdiction, that provision shall be limited or eliminated to the
@@ -141,14 +141,14 @@ const lastUpdated = "October 15, 2024";
           effect.
         </p>
 
-        <h2>14. Termination</h2>
+        <h2>Termination</h2>
         <p>
           We reserve the right to terminate or suspend your access to our website and services
           immediately, without prior notice or liability, for any reason whatsoever, including
           without limitation if you breach these Terms of Use.
         </p>
 
-        <h2>15. Governing Law</h2>
+        <h2>Governing Law</h2>
         <p>
           These Terms of Use are governed by and construed in accordance with the laws of the
           Province of Ontario, Canada, without regard to its conflict of law provisions. Any
@@ -156,7 +156,7 @@ const lastUpdated = "October 15, 2024";
           jurisdiction of the courts in Ontario.
         </p>
 
-        <h2>16. Contact Information</h2>
+        <h2>Contact Information</h2>
         <p>
           If you have any questions or concerns about these Terms of Use, please contact us at:
         </p>
@@ -180,16 +180,36 @@ const lastUpdated = "October 15, 2024";
   .legal :global(.eyebrow::before) {
     background: var(--hs-yellow);
   }
-  /* Override .prose h2 (serif) — section headings use sans so the legal
-     pages match Approach's t-subtitle item-title treatment. */
+  /* Approach-aligned section pattern: yellow-deep "01" mono numbering above
+     a sans white title, gray body. CSS counter handles numbering so the h2
+     markup stays clean (no inline "1. " prefixes). */
+  .legal__prose {
+    counter-reset: legal-section;
+  }
   .legal__prose :global(h2) {
+    counter-increment: legal-section;
     font-family: var(--font-sans);
     font-size: clamp(18px, 1.6vw, 22px);
     font-weight: 500;
     letter-spacing: -0.005em;
     line-height: 1.35;
+    color: var(--fg);
     margin-top: var(--s-8);
     margin-bottom: var(--s-3);
+  }
+  .legal__prose :global(h2)::before {
+    content: counter(legal-section, decimal-leading-zero);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--hs-yellow-deep);
+    margin-bottom: var(--s-2);
+  }
+  .legal__prose :global(p),
+  .legal__prose :global(li) {
+    color: var(--fg-secondary);
   }
   .legal__prose :global(p) {
     margin: 0 0 var(--s-5);

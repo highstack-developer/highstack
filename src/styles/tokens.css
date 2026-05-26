@@ -379,13 +379,14 @@
   :root { color-scheme: dark; }
 
   /* Paper-themed pages (Privacy / Terms) get the design system's "richer
-     dark surface" treatment in dark mode — warm #1C1A15 + cream text —
-     so they match the dark-mode look of the Approach (.section--paper)
-     section instead of falling through to pure ink. */
+     dark surface" treatment in dark mode — warm #1C1A15 — so they match
+     the dark-mode look of the Approach (.section--paper) section instead
+     of falling through to pure ink. --fg stays at the @media :root white
+     so titles and labels match Approach's explicit var(--fg) treatment;
+     long-form body uses var(--fg-secondary) in the legal page styles. */
   [data-theme="paper"] {
     --bg:      #1C1A15;
     --surface: #1C1A15;
-    --fg:      #E4DDC8;
   }
 }
 
