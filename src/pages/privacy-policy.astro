@@ -176,7 +176,11 @@ const lastUpdated = "October 15, 2024";
 
 <style>
   .legal__title {
+    /* Same headline scale as Approach's .approach__headline so the editorial
+       rhythm reads identically. */
     margin: var(--s-5) 0 var(--s-3);
+    font-size: clamp(36px, 4.4vw, 64px);
+    max-width: 20ch;
   }
   .legal__updated {
     margin: 0 0 var(--s-8);
@@ -200,8 +204,11 @@ const lastUpdated = "October 15, 2024";
     letter-spacing: -0.005em;
     line-height: 1.35;
     color: var(--fg);
-    margin-top: var(--s-8);
+    margin-top: var(--s-7);
     margin-bottom: var(--s-3);
+    padding-top: var(--s-4);
+    /* Same 2px yellow top accent as Approach's .approach__item. */
+    border-top: 2px solid var(--hs-yellow);
   }
   .legal__prose :global(h2)::before {
     content: counter(legal-section, decimal-leading-zero);
@@ -211,11 +218,15 @@ const lastUpdated = "October 15, 2024";
     font-weight: 500;
     letter-spacing: 0.04em;
     color: var(--hs-yellow-deep);
-    margin-bottom: var(--s-2);
+    margin-bottom: var(--s-3);
   }
+  /* Match Approach's body type — 16px t-body, gray --fg-secondary — instead
+     of .prose's body-lg default which reads too loose for this pattern. */
   .legal__prose :global(p),
   .legal__prose :global(li) {
     color: var(--fg-secondary);
+    font-size: var(--t-body-size);
+    line-height: var(--t-body-lh);
   }
   .legal__prose :global(p) {
     margin: 0 0 var(--s-5);
