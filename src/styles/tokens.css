@@ -379,14 +379,27 @@
   :root { color-scheme: dark; }
 
   /* Paper-themed pages (Privacy / Terms) get the design system's "richer
-     dark surface" treatment in dark mode — warm #1C1A15 — so they match
-     the dark-mode look of the Approach (.section--paper) section instead
-     of falling through to pure ink. --fg stays at the @media :root white
-     so titles and labels match Approach's explicit var(--fg) treatment;
-     long-form body uses var(--fg-secondary) in the legal page styles. */
+     dark surface" treatment in dark mode — warm #1C1A15 — matching the
+     dark-mode .section--paper look used by Approach. --fg stays white so
+     explicit var(--fg) uses (h2 titles, header text) still read pure
+     white the way Approach's .approach__t does. */
   [data-theme="paper"] {
     --bg:      #1C1A15;
     --surface: #1C1A15;
+  }
+  /* Approach's section--paper sets color: #E4DDC8 inline on the section,
+     so children with no explicit color inherit cream (the .approach__headline
+     does this — "How we build." is cream, not white). Mirror that here by
+     tinting body's default inherited color, while leaving --fg/--fg-secondary
+     alone so explicit token uses keep their stronger white / gray contrasts. */
+  [data-theme="paper"] body {
+    color: #E4DDC8;
+  }
+  /* The header stays brand-ink in dark mode even on paper pages — matches
+     the dark-mode home page treatment rather than blending into the warm
+     surface below. */
+  [data-theme="paper"] .site-header {
+    background: var(--hs-ink-1000);
   }
 }
 

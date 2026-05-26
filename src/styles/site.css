@@ -370,9 +370,14 @@ html, body { overflow-x: clip; }
    `[data-theme="paper"]` is also matched so paper-themed pages (Privacy / Terms)
    pick up the dark header treatment in dark mode — matches the home page. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) .site-header,
-  [data-theme="paper"] .site-header {
+  :root:not([data-theme]) .site-header {
     background: var(--bg);
+    border-bottom-color: var(--border);
+  }
+  /* Paper-themed pages keep the header brand-ink even though the page
+     background is warm #1C1A15 — matches the home page header in dark. */
+  [data-theme="paper"] .site-header {
+    background: var(--hs-ink-1000);
     border-bottom-color: var(--border);
   }
   :root:not([data-theme]) .site-header__nav a,
