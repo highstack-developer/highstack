@@ -17,8 +17,12 @@ const root = path.resolve(__dirname, "..");
 
 // Render at high res; browsers downscale for tabs.
 const SIZE = 512;
-// Needle takes ~62% of canvas height so the eye + shaft both breathe.
-const NEEDLE_H = Math.round(SIZE * 0.62);
+// Disc takes 88% of the canvas — leaves clear transparent padding so the
+// circular shape reads at small favicon sizes (16-32px) where an inscribed
+// disc would look like a yellow square.
+const DISC_RADIUS = Math.round(SIZE * 0.44);
+// Needle sized off the disc, not the canvas, so it scales with the disc.
+const NEEDLE_H = Math.round(DISC_RADIUS * 2 * 0.62);
 
 const needleSrc = path.join(root, "public/brand/highstack-needle-short-black.png");
 const needleResized = await sharp(needleSrc)
@@ -30,7 +34,7 @@ const { width: needleW, height: needleH } = await sharp(needleResized).metadata(
 // outside the circle stay alpha=0.
 const discSvg = Buffer.from(`
 <svg width="${SIZE}" height="${SIZE}" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="${SIZE / 2}" cy="${SIZE / 2}" r="${SIZE / 2}" fill="#F9C219"/>
+  <circle cx="${SIZE / 2}" cy="${SIZE / 2}" r="${DISC_RADIUS}" fill="#F9C219"/>
 </svg>
 `);
 
