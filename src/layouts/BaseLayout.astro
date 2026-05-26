@@ -136,64 +136,29 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
       };
       revealEyebrows();
 
-      // iOS Safari paints its bottom URL bar AND top status bar with the
-      // page's theme-color — there's no separate top/bottom control. So we
-      // dynamically pick whichever surface is dominant in the viewport:
-      //   - footer (>40% visible)         → ink
-      //   - header still visible at top   → yellow (matches the header band)
-      //   - scrolled past header on paper → paper (matches the visible page)
-      //   - all other cases               → yellow (home page is yellow)
+      // iOS Safari paints its top status bar AND bottom URL bar / safe-area
+      // with the same theme-color. Brand yellow at all times, swapping to
+      // ink only when the ink footer is the dominant content in view — so
+      // the bottom safe-area matches the footer at end-of-page, and matches
+      // the brand yellow everywhere else (including on paper-themed pages).
       const themeMeta = document.querySelector<HTMLMetaElement>(
         'meta[name="theme-color"][media*="light"]',
       );
       const footerEl = document.querySelector<HTMLElement>(".site-footer");
-      const headerEl = document.querySelector<HTMLElement>(".site-header");
-      const isPaper = document.documentElement.dataset.theme === "paper";
-      if (themeMeta && "IntersectionObserver" in window) {
+      if (themeMeta && footerEl && "IntersectionObserver" in window) {
         const YELLOW = "#F9C219";
         const INK = "#0A0A0A";
-        const PAPER = "#F6F3EC";
-        let footerDominant = false;
-        let pastHeader = false;
-
-        const updateTheme = () => {
-          let color = YELLOW;
-          if (footerDominant) color = INK;
-          else if (pastHeader && isPaper) color = PAPER;
-          themeMeta.setAttribute("content", color);
-        };
-
-        if (footerEl) {
-          const fio = new IntersectionObserver(
-            (entries) => {
-              footerDominant = entries[0].intersectionRatio > 0.4;
-              updateTheme();
-            },
-            { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] },
-          );
-          fio.observe(footerEl);
-        }
-
-        // Header is position:sticky so a plain IO on it never reports
-        // "out of view." Track scroll past the header's natural height
-        // instead, throttled with rAF.
-        if (headerEl) {
-          let ticking = false;
-          const onScroll = () => {
-            if (ticking) return;
-            ticking = true;
-            requestAnimationFrame(() => {
-              const next = window.scrollY > headerEl.offsetHeight;
-              if (next !== pastHeader) {
-                pastHeader = next;
-                updateTheme();
-              }
-              ticking = false;
-            });
-          };
-          window.addEventListener("scroll", onScroll, { passive: true });
-        }
-        updateTheme();
+        const io = new IntersectionObserver(
+          (entries) => {
+            const e = entries[0];
+            themeMeta.setAttribute(
+              "content",
+              e.intersectionRatio > 0.4 ? INK : YELLOW,
+            );
+          },
+          { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] },
+        );
+        io.observe(footerEl);
       }
       document.addEventListener("astro:page-load", () => {
         wrapLegalSections();
