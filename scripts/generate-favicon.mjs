@@ -15,8 +15,6 @@ import sharp from "sharp";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 
-const YELLOW = { r: 0xf9, g: 0xc2, b: 0x19, alpha: 1 };
-
 // Render at high res; browsers downscale for tabs.
 const SIZE = 512;
 // Needle takes ~62% of canvas height so the eye + shaft both breathe.
@@ -28,14 +26,15 @@ const needleResized = await sharp(needleSrc)
   .toBuffer();
 const { width: needleW, height: needleH } = await sharp(needleResized).metadata();
 
-const composite = await sharp({
-  create: {
-    width: SIZE,
-    height: SIZE,
-    channels: 4,
-    background: YELLOW,
-  },
-})
+// Yellow disc on a transparent canvas — drawn as SVG so the corners
+// outside the circle stay alpha=0.
+const discSvg = Buffer.from(`
+<svg width="${SIZE}" height="${SIZE}" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="${SIZE / 2}" cy="${SIZE / 2}" r="${SIZE / 2}" fill="#F9C219"/>
+</svg>
+`);
+
+const composite = await sharp(discSvg)
   .composite([
     {
       input: needleResized,
