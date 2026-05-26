@@ -10,8 +10,10 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding-left: var(--grid-margin);
-  padding-right: var(--grid-margin);
+  /* max() with env() handles iPhone-landscape notch safe areas. On devices
+     without a notch, env() returns 0 and falls back to --grid-margin. */
+  padding-left: max(var(--grid-margin), env(safe-area-inset-left));
+  padding-right: max(var(--grid-margin), env(safe-area-inset-right));
 }
 .container--editorial { max-width: var(--container-editorial); }
 .container--text      { max-width: var(--container-text); }
@@ -32,7 +34,10 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
 .site-header {
   position: sticky; top: 0; z-index: var(--z-header);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 18px var(--grid-margin);
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: max(var(--grid-margin), env(safe-area-inset-left));
+  padding-right: max(var(--grid-margin), env(safe-area-inset-right));
   /* Solid page color so the header matches the body exactly — no off-tone
      band from a translucent layer. backdrop-filter would be a no-op here. */
   background: var(--bg);
